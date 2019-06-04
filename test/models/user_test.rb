@@ -16,9 +16,6 @@
 #  age                    :integer          not null
 #  status                 :integer          default("client")
 #  linkedin               :string
-#  address                :string
-#  latitude               :float
-#  longitude              :float
 #  age_range              :string
 #  study_scope            :string
 #  business_expertise     :string

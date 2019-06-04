@@ -16,9 +16,6 @@
 #  age                    :integer          not null
 #  status                 :integer          default("client")
 #  linkedin               :string
-#  address                :string
-#  latitude               :float
-#  longitude              :float
 #  age_range              :string
 #  study_scope            :string
 #  business_expertise     :string
@@ -49,9 +46,6 @@ class User < ApplicationRecord
 
   mount_uploader :video, VideoUploader
   mount_uploader :avatar, PhotoUploader
-
-  geocoded_by :address
-  after_validation :geocode, if: :will_save_change_to_address?
 
   def fullname
     "#{firstname.capitalize} #{lastname.capitalize}"
