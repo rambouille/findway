@@ -6,10 +6,10 @@
 #  client_id       :bigint
 #  coach_id        :bigint
 #  content         :text
-#  from_coach      :boolean
 #  attachment_path :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  author          :integer          default("client")
 #
 
 require 'test_helper'
