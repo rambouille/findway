@@ -44,7 +44,8 @@ BUSINESS_EXPERTISES = [
   "INDUSTRIES",
   "INFORMATIQUE - INTERNET",
   "RELATION CLIENT (ACCUEIL - RELATION CLIENT, COMMERCE, VENTE)",
-  "SANTÉ - SOCIAL - SPORT"
+  "SANTÉ - SOCIAL - SPORT",
+  "TOUS SECTEURS"
 ].freeze
 
 class User < ApplicationRecord
@@ -69,6 +70,14 @@ class User < ApplicationRecord
 
   validates :business_expertise, inclusion: { in: BUSINESS_EXPERTISES, message: "Vous devez choisir dans la liste!" }
   validates :speciality, inclusion: { in: SPECIALIZATIONS, message: "Vous devez choisir dans la liste!" }
+
+  validates :speciality, presence: true, if: :coach?
+  validates :business_expertise, presence: true, if: :coach?
+  validates :hourly_price_cents, presence: true, if: :coach?
+
+  # def coach?
+  #   self.coach?
+  # end
 
   def fullname
     "#{firstname.capitalize} #{lastname.capitalize}"
