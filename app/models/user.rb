@@ -26,29 +26,29 @@
 #  video                  :string
 #
 
-SPECIALIZATIONS = ["reconversion professionnelle", "conseiller d'orientation", "coaching personnalisé"]
-
-BUSINESS_EXPERTISES = [
-  "AGRICULTURE - BOIS",
-  "ARCHITECTURE - PAYSAGE - URBANISME",
-  "ARMÉE - SÉCURITÉ",
-  "ARTS - ARTISANAT - CULTURE",
-  "ASSURANCE - BANQUE",
-  "AUDIOVISUEL - INFORMATION - COMMUNICATION",
-  "CONSTRUCTION DURABLE - BÂTIMENT ET TRAVAUX PUBLICS",
-  "DROIT - ÉCONOMIE - GESTION",
-  "ENSEIGNEMENT - RECHERCHE",
-  "ÉNERGIES - ENVIRONNEMENT",
-  "GESTION ADMINISTRATIVE - TRANSPORT - LOGISTIQUE",
-  "HÔTELLERIE - RESTAURATION - TOURISME",
-  "INDUSTRIES",
-  "INFORMATIQUE - INTERNET",
-  "RELATION CLIENT (ACCUEIL - RELATION CLIENT, COMMERCE, VENTE)",
-  "SANTÉ - SOCIAL - SPORT",
-  "TOUS SECTEURS"
-].freeze
-
 class User < ApplicationRecord
+  SPECIALIZATIONS = ["reconversion professionnelle", "conseiller d'orientation", "coaching personnalisé"]
+
+  BUSINESS_EXPERTISES = [
+    "AGRICULTURE - BOIS",
+    "ARCHITECTURE - PAYSAGE - URBANISME",
+    "ARMÉE - SÉCURITÉ",
+    "ARTS - ARTISANAT - CULTURE",
+    "ASSURANCE - BANQUE",
+    "AUDIOVISUEL - INFORMATION - COMMUNICATION",
+    "CONSTRUCTION DURABLE - BÂTIMENT ET TRAVAUX PUBLICS",
+    "DROIT - ÉCONOMIE - GESTION",
+    "ENSEIGNEMENT - RECHERCHE",
+    "ÉNERGIES - ENVIRONNEMENT",
+    "GESTION ADMINISTRATIVE - TRANSPORT - LOGISTIQUE",
+    "HÔTELLERIE - RESTAURATION - TOURISME",
+    "INDUSTRIES",
+    "INFORMATIQUE - INTERNET",
+    "RELATION CLIENT (ACCUEIL - RELATION CLIENT, COMMERCE, VENTE)",
+    "SANTÉ - SOCIAL - SPORT",
+    "TOUS SECTEURS"
+  ].freeze
+
   has_many :client_bookings, class_name: "Booking", foreign_key: "client_id"
   has_many :coach_bookings, class_name: "Booking", foreign_key: "coach_id"
 
@@ -74,10 +74,6 @@ class User < ApplicationRecord
   validates :speciality, presence: true, if: :coach?
   validates :business_expertise, presence: true, if: :coach?
   validates :hourly_price_cents, presence: true, if: :coach?
-
-  # def coach?
-  #   self.coach?
-  # end
 
   def fullname
     "#{firstname.capitalize} #{lastname.capitalize}"

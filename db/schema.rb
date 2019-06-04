@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_04_153153) do
+ActiveRecord::Schema.define(version: 2019_06_04_163320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2019_06_04_153153) do
     t.datetime "start_time"
     t.datetime "end_time"
     t.boolean "weekly"
-    t.float "amount"
+    t.integer "amount_cents"
     t.integer "video_channel"
     t.text "client_need"
     t.jsonb "payment"

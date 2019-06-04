@@ -8,7 +8,7 @@
 #  start_time    :datetime
 #  end_time      :datetime
 #  weekly        :boolean
-#  amount        :float
+#  amount_cents  :integer
 #  video_channel :integer
 #  client_need   :text
 #  payment       :jsonb
