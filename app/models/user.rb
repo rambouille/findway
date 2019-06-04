@@ -27,6 +27,7 @@
 #  hangout_username       :string
 #  facetime_username      :string
 #  avatar                 :string
+#  video                  :string
 #
 
 class User < ApplicationRecord
@@ -45,6 +46,9 @@ class User < ApplicationRecord
 
   monetize :hourly_price_cents
   enum status: [:client, :coach]
+
+  mount_uploader :video, VideoUploader
+  mount_uploader :avatar, PhotoUploader
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
