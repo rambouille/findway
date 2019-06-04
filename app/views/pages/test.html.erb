@@ -1,0 +1,11 @@
+<p>page de test</p>
+<h1>Last Booking</h1>
+
+<p>start date : <%= @booking.start_time %></p>
+<p>end date : <%= @booking.end_time %></p>
+
+<h2>Coach : <%= @booking.coach.fullname %></h2>
+<%= image_tag @booking.coach.avatar.url(:bright_face) %>
+
+<h2>Client : <%= @booking.client.fullname %></h2>
+<%= image_tag @booking.client.avatar.url(:bright_face) %>

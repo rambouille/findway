@@ -34,8 +34,8 @@ class User < ApplicationRecord
   has_many :client_bookings, class_name: "Booking", foreign_key: "client_id"
   has_many :coach_bookings, class_name: "Booking", foreign_key: "coach_id"
 
-  has_many :client_messages, :class_name => "Message", :foreign_key => "client_id"
-  has_many :coach_messages, :class_name => "Message", :foreign_key => "coach_id"
+  has_many :client_messages, class_name: "Message", foreign_key: "client_id"
+  has_many :coach_messages, class_name: "Message", foreign_key: "coach_id"
 
   has_many :reviews
 
@@ -52,4 +52,8 @@ class User < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+
+  def fullname
+    "#{firstname.capitalize} #{lastname.capitalize}"
+  end
 end
