@@ -27,6 +27,7 @@
 #  hangout_username       :string
 #  facetime_username      :string
 #  avatar                 :string
+#  video                  :string
 #
 
 require 'test_helper'
