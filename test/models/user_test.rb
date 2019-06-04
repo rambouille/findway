@@ -26,6 +26,7 @@
 #  sype_username          :string
 #  hangout_username       :string
 #  facetime_username      :string
+#  avatar                 :string
 #
 
 require 'test_helper'

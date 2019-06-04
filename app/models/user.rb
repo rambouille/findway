@@ -26,11 +26,12 @@
 #  sype_username          :string
 #  hangout_username       :string
 #  facetime_username      :string
+#  avatar                 :string
 #
 
 class User < ApplicationRecord
-  has_many :client_bookings, :class_name => "Booking", :foreign_key => "client_id"
-  has_many :coach_bookings, :class_name => "Booking", :foreign_key => "coach_id"
+  has_many :client_bookings, class_name: "Booking", foreign_key: "client_id"
+  has_many :coach_bookings, class_name: "Booking", foreign_key: "coach_id"
 
   has_many :client_messages, :class_name => "Message", :foreign_key => "client_id"
   has_many :coach_messages, :class_name => "Message", :foreign_key => "coach_id"
@@ -44,4 +45,7 @@ class User < ApplicationRecord
 
   monetize :hourly_price_cents
   enum status: [:client, :coach]
+
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 end
