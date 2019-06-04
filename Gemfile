@@ -1,11 +1,13 @@
 source 'https://rubygems.org'
 ruby '2.5.3'
 
+gem 'annotate'
 gem 'autoprefixer-rails'
 gem 'bootsnap', require: false
 gem 'devise'
 gem 'font-awesome-sass', '~> 5.6.1'
 gem 'jbuilder', '~> 2.0'
+gem 'money-rails'
 gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'pundit'

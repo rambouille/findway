@@ -10,10 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_04_094432) do
+ActiveRecord::Schema.define(version: 2019_06_04_113716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "client_id"
+    t.bigint "coach_id"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.boolean "weekly"
+    t.float "amount"
+    t.integer "video_channel"
+    t.text "client_need"
+    t.jsonb "payment"
+    t.integer "state", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_bookings_on_client_id"
+    t.index ["coach_id"], name: "index_bookings_on_coach_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "client_id"
+    t.bigint "coach_id"
+    t.text "content"
+    t.string "attachment_path"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "author", default: 0
+    t.index ["client_id"], name: "index_messages_on_client_id"
+    t.index ["coach_id"], name: "index_messages_on_coach_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "booking_id"
+    t.bigint "user_id"
+    t.string "content"
+    t.integer "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_reviews_on_booking_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +63,26 @@ ActiveRecord::Schema.define(version: 2019_06_04_094432) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "firstname", null: false
+    t.string "lastname", null: false
+    t.text "description", null: false
+    t.integer "age", null: false
+    t.integer "status", default: 0
+    t.string "linkedin"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "age_range"
+    t.string "study_scope"
+    t.string "business_expertise"
+    t.integer "hourly_price_cents", default: 0, null: false
+    t.string "sype_username"
+    t.string "hangout_username"
+    t.string "facetime_username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "reviews", "bookings"
+  add_foreign_key "reviews", "users"
 end
