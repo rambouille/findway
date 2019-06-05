@@ -68,14 +68,17 @@ class User < ApplicationRecord
   mount_uploader :video, VideoUploader
   mount_uploader :avatar, PhotoUploader
 
-  validates :business_expertise, inclusion: { in: BUSINESS_EXPERTISES, message: "Vous devez choisir dans la liste!" }
-  validates :speciality, inclusion: { in: SPECIALIZATIONS, message: "Vous devez choisir dans la liste!" }
-
-  validates :speciality, presence: true, if: :coach?
-  validates :business_expertise, presence: true, if: :coach?
-  validates :hourly_price_cents, presence: true, if: :coach?
+  with_options if: :is_coach? do |coach|
+    coach.validates :speciality, presence: true, inclusion: { in: SPECIALIZATIONS, message: "Vous devez choisir dans la liste!" }
+    coach.validates :business_expertise, presence: true, inclusion: { in: BUSINESS_EXPERTISES, message: "Vous devez choisir dans la liste!" }
+    coach.validates :hourly_price_cents, presence: true
+  end
 
   def fullname
     "#{firstname.capitalize} #{lastname.capitalize}"
+  end
+
+  def is_coach?
+    status == "coach"
   end
 end
