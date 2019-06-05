@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'pages/test', to: 'pages#test'
+  resources :coaches, only: [ :index, :show ]
 end

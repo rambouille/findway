@@ -46,7 +46,7 @@ puts "affecting booking to client"
 b.client = titeuf
 b.client_need = "Je suis complètement perdu. S'il vous plait aidez-moi!!"
 b.video_channel = "skype"
-b.amount = pascal.hourly_price_cents
+b.amount_cents = pascal.hourly_price_cents
 b.save
 
 puts "creating message from coach"

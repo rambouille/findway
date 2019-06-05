@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 2019_06_04_163320) do
   create_table "bookings", force: :cascade do |t|
     t.bigint "client_id"
     t.bigint "coach_id"
-    t.datetime "start_time"
-    t.datetime "end_time"
+    t.datetime "start_time", null: false
+    t.datetime "end_time", null: false
     t.boolean "weekly"
     t.integer "amount_cents"
     t.integer "video_channel"
