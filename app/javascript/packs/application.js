@@ -5,16 +5,17 @@ import '@fullcalendar/timegrid/main.css';
 
 import { Calendar } from '@fullcalendar/core';
 import timeGridPlugin from '@fullcalendar/timegrid';
-import momentTimezonePlugin from '@fullcalendar/moment-timezone';
+// import momentTimezonePlugin from '@fullcalendar/moment-timezone';
 
 document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');
 
   var calendar = new Calendar(calendarEl, {
-    plugins: [ timeGridPlugin, momentTimezonePlugin ],
-    titleFormat: '{MMMM {D}}, YYYY',
+    plugins: [ timeGridPlugin ],
+    // plugins: [ timeGridPlugin, momentTimezonePlugin ],
+    // titleFormat: '{MMMM {D}}, YYYY',
     defaultView: 'timeGridWeek',
-    timeZone: 'Europe/Paris',
+    // timeZone: 'Europe/Paris',
     events: {
       url: 'http://localhost:3000/api/v1/bookings',
     }
