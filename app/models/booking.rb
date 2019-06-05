@@ -26,7 +26,7 @@ class Booking < ApplicationRecord
 
   has_many :reviews
 
-  enum state: [:pending, :booked, :payed]
+  enum state: [:pending, :booked, :payed, :passed, :cancelled]
   enum video_channel: [:skype, :hangout, :facetime]
 
   after_validation :set_amount

@@ -7,7 +7,10 @@
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
+<!--     <link href='node_modules/@fullcalendar/core/main.css' rel='stylesheet' />
+    <link href='node_modules/@fullcalendar/timegrid/main.css' rel='stylesheet' />
+ -->
+  <%= stylesheet_pack_tag 'application', media: 'all' %>
   </head>
   <body>
     <%= render 'shared/navbar' %>

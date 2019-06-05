@@ -38,7 +38,7 @@ pascal = User.new(
 pascal.remote_avatar_url = "https://o1.ldh.be/image/thumb/58a52af9cd703b981540caa0.jpg"
 pascal.save!
 
-puts "creating 2 bookings from coach"
+puts "creating 5 bookings from coach"
 b = Booking.create(
   coach: pascal,
   start_time: "06/06/2019 at 14:00",
@@ -51,10 +51,29 @@ b2 = Booking.create(
   end_time: "08/06/2019 at 12:00",
   weekly: false)
 
+b3 = Booking.create(
+  coach: pascal,
+  start_time: "08/06/2019 at 12:00",
+  end_time: "08/06/2019 at 13:00",
+  weekly: false)
+
+b4 = Booking.create(
+  coach: pascal,
+  start_time: "08/06/2019 at 14:00",
+  end_time: "08/06/2019 at 15:00",
+  weekly: false)
+
+b5 = Booking.create(
+  coach: pascal,
+  start_time: "08/06/2019 at 15:00",
+  end_time: "08/06/2019 at 16:00",
+  weekly: false)
+
 puts "affecting booking to client"
 b.client = titeuf
 b.client_need = "Je suis complètement perdu. S'il vous plait aidez-moi!!"
 b.video_channel = "skype"
+b.state = "booked"
 b.save
 
 puts "creating message from coach"
