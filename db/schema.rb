@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_04_133245) do
+ActiveRecord::Schema.define(version: 2019_06_04_163320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2019_06_04_133245) do
     t.datetime "start_time"
     t.datetime "end_time"
     t.boolean "weekly"
-    t.float "amount"
+    t.integer "amount_cents"
     t.integer "video_channel"
     t.text "client_need"
     t.jsonb "payment"
@@ -69,14 +69,10 @@ ActiveRecord::Schema.define(version: 2019_06_04_133245) do
     t.integer "age", null: false
     t.integer "status", default: 0
     t.string "linkedin"
-    t.string "address"
-    t.float "latitude"
-    t.float "longitude"
-    t.string "age_range"
-    t.string "study_scope"
+    t.string "speciality"
     t.string "business_expertise"
     t.integer "hourly_price_cents", default: 0, null: false
-    t.string "sype_username"
+    t.string "skype_username"
     t.string "hangout_username"
     t.string "facetime_username"
     t.string "avatar"

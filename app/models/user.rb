@@ -16,14 +16,10 @@
 #  age                    :integer          not null
 #  status                 :integer          default("client")
 #  linkedin               :string
-#  address                :string
-#  latitude               :float
-#  longitude              :float
-#  age_range              :string
-#  study_scope            :string
+#  speciality             :string
 #  business_expertise     :string
 #  hourly_price_cents     :integer          default(0), not null
-#  sype_username          :string
+#  skype_username         :string
 #  hangout_username       :string
 #  facetime_username      :string
 #  avatar                 :string
@@ -31,6 +27,28 @@
 #
 
 class User < ApplicationRecord
+  SPECIALIZATIONS = ["reconversion professionnelle", "conseiller d'orientation", "coaching personnalisé"]
+
+  BUSINESS_EXPERTISES = [
+    "AGRICULTURE - BOIS",
+    "ARCHITECTURE - PAYSAGE - URBANISME",
+    "ARMÉE - SÉCURITÉ",
+    "ARTS - ARTISANAT - CULTURE",
+    "ASSURANCE - BANQUE",
+    "AUDIOVISUEL - INFORMATION - COMMUNICATION",
+    "CONSTRUCTION DURABLE - BÂTIMENT ET TRAVAUX PUBLICS",
+    "DROIT - ÉCONOMIE - GESTION",
+    "ENSEIGNEMENT - RECHERCHE",
+    "ÉNERGIES - ENVIRONNEMENT",
+    "GESTION ADMINISTRATIVE - TRANSPORT - LOGISTIQUE",
+    "HÔTELLERIE - RESTAURATION - TOURISME",
+    "INDUSTRIES",
+    "INFORMATIQUE - INTERNET",
+    "RELATION CLIENT (ACCUEIL - RELATION CLIENT, COMMERCE, VENTE)",
+    "SANTÉ - SOCIAL - SPORT",
+    "TOUS SECTEURS"
+  ].freeze
+
   has_many :client_bookings, class_name: "Booking", foreign_key: "client_id"
   has_many :coach_bookings, class_name: "Booking", foreign_key: "coach_id"
 
@@ -50,8 +68,12 @@ class User < ApplicationRecord
   mount_uploader :video, VideoUploader
   mount_uploader :avatar, PhotoUploader
 
-  geocoded_by :address
-  after_validation :geocode, if: :will_save_change_to_address?
+  validates :business_expertise, inclusion: { in: BUSINESS_EXPERTISES, message: "Vous devez choisir dans la liste!" }
+  validates :speciality, inclusion: { in: SPECIALIZATIONS, message: "Vous devez choisir dans la liste!" }
+
+  validates :speciality, presence: true, if: :coach?
+  validates :business_expertise, presence: true, if: :coach?
+  validates :hourly_price_cents, presence: true, if: :coach?
 
   def fullname
     "#{firstname.capitalize} #{lastname.capitalize}"

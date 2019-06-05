@@ -17,4 +17,7 @@ class Message < ApplicationRecord
   belongs_to :client, class_name: "User", foreign_key: "client_id"
 
   enum author: [:client, :coach]
+
+  validates :content, presence: true, length: { minimum: 2,
+    too_short:  "Votre message doit au moins contenir %{count} caractères" }
 end

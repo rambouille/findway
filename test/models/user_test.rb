@@ -16,14 +16,10 @@
 #  age                    :integer          not null
 #  status                 :integer          default("client")
 #  linkedin               :string
-#  address                :string
-#  latitude               :float
-#  longitude              :float
-#  age_range              :string
-#  study_scope            :string
+#  speciality             :string
 #  business_expertise     :string
 #  hourly_price_cents     :integer          default(0), not null
-#  sype_username          :string
+#  skype_username         :string
 #  hangout_username       :string
 #  facetime_username      :string
 #  avatar                 :string
