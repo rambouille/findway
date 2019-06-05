@@ -1,23 +1,17 @@
-<!-- [...] -->
-<%= form_tag coaches_path, method: :get do %>
-  <%= select_tag :speciality,
-    options_for_select(User::SPECIALIZATIONS),
-    class: "form-control"
-  %>
-  <button type='submit'>filter</button>
+<div class="d-flex justify-content-center py-3">
+  <%= form_tag coaches_path, method: :get, class: 'form-inline' do %>
+    <%= select_tag :speciality, options_for_select(User::SPECIALIZATIONS),
+        include_blank: "Spécialité", class: "form-control" %>
+    <%= select_tag :business_expertise, options_for_select(User::BUSINESS_EXPERTISES),
+        include_blank: "Expertise", class: "form-control" %>
+    <%= number_field_tag :price_min, params[:price_min], in: 1...150,
+        placeholder: "min €", class: "form-control" %>
+    <%= number_field_tag :price_max, params[:price_max], in: 1...150,
+        placeholder: "max €", class: "form-control" %>
+    <%=  submit_tag "Filtrer", class: "btn btn-success" %>
+    <!-- <button type='submit', class: 'btn btn-success'>filtrer</button> -->
   <% end %>
-  <%= form_tag coaches_path, method: :get do %>
-  <%= select_tag :business_expertise,
-    options_for_select(User::BUSINESS_EXPERTISES),
-    class: "form-control"
-  %>
-  <button type='submit'>filter</button>
-  <% end %>
-  <%= form_tag coaches_path, method: :get do %>
-    <%= text_field_tag :price_min, params[:price_min], class: "form-control" %>
-    <%= text_field_tag :price_max, params[:price_max],  class: "form-control" %>
-    <button type='submit'>filter</button>
-  <% end %>
+</div>
 <!-- the list of movies -->
 <div class="container">
   <div class="row">
