@@ -9,7 +9,7 @@ if Rails.env.development?
   User.destroy_all
 end
 
-puts "creating 2 users"
+puts "creating client"
 titeuf = User.new(
   firstname: "Titeuf",
   lastname: "",
@@ -20,8 +20,9 @@ titeuf = User.new(
   status: "client"
 )
 titeuf.remote_avatar_url = "https://i.pinimg.com/originals/a7/6f/33/a76f33faee9ebf5390edfc298c33703f.gif"
-titeuf.save
+titeuf.save!
 
+puts "creating coach"
 pascal = User.new(
   firstname: "Pascal",
   lastname:"legrandfrere",
@@ -30,23 +31,30 @@ pascal = User.new(
   age: 30,
   password: "123456",
   status: "coach",
-  hourly_price_cents: 3400)
+  hourly_price_cents: 3400,
+  speciality: "coaching personnalisé",
+  business_expertise: "TOUS SECTEURS"
+  )
 pascal.remote_avatar_url = "https://o1.ldh.be/image/thumb/58a52af9cd703b981540caa0.jpg"
-pascal.save
+pascal.save!
 
-puts "creating booking from coach"
-b = Booking.new(
+puts "creating 2 bookings from coach"
+b = Booking.create(
   coach: pascal,
   start_time: "06/06/2019 at 14:00",
   end_time: "06/06/2019 at 16:00",
   weekly: true)
-b.save
+
+b2 = Booking.create(
+  coach: pascal,
+  start_time: "08/06/2019 at 11:00",
+  end_time: "08/06/2019 at 12:00",
+  weekly: false)
 
 puts "affecting booking to client"
 b.client = titeuf
 b.client_need = "Je suis complètement perdu. S'il vous plait aidez-moi!!"
 b.video_channel = "skype"
-b.amount_cents = pascal.hourly_price_cents
 b.save
 
 puts "creating message from coach"
