@@ -29,7 +29,7 @@
 class User < ApplicationRecord
   SPECIALIZATIONS = ["reconversion professionnelle", "conseiller d'orientation", "coaching personnalisé"]
 
-  HOURLY_PRICE_CENTS = [0..20, 21..40, 41..60, 61..80, 81..100, 101..120]
+  # HOURLY_PRICE_CENTS = [0..20, 21..40, 41..60, 61..80, 81..100, 101..120]
 
   BUSINESS_EXPERTISES = [
     "AGRICULTURE - BOIS",
