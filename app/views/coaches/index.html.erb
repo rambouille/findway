@@ -1,1 +1,39 @@
-<%= @users  %>
+<!-- [...] -->
+<%= form_tag coaches_path, method: :get do %>
+  <%= select_tag :speciality,
+    options_for_select(User::SPECIALIZATIONS),
+    class: "form-control"
+  %>
+  <button type='submit'>filter</button>
+  <% end %>
+  <%= form_tag coaches_path, method: :get do %>
+  <%= select_tag :business_expertise,
+    options_for_select(User::BUSINESS_EXPERTISES),
+    class: "form-control"
+  %>
+  <button type='submit'>filter</button>
+  <% end %>
+  <%= form_tag coaches_path, method: :get do %>
+  <%= select_tag :hourly_price_cents,
+    options_for_select(User::HOURLY_PRICE_CENTS),
+    class: "form-control"
+  %>
+  <button type='submit'>filter</button>
+  <% end %>
+<!-- the list of movies -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div id="users">
+        <% @users.each do |user| %>
+          <h4><%= user.firstname %></h4>
+          <p><%= user.lastname %></p>
+          <p><%= user.speciality %></p>
+          <p><%= user.business_expertise %></p>
+          <p><%= user.hourly_price_cents %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
