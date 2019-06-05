@@ -32,24 +32,24 @@ class User < ApplicationRecord
   # HOURLY_PRICE_CENTS = [0..20, 21..40, 41..60, 61..80, 81..100, 101..120]
 
   BUSINESS_EXPERTISES = [
-    "AGRICULTURE - BOIS",
-    "ARCHITECTURE - PAYSAGE - URBANISME",
-    "ARMÉE - SÉCURITÉ",
-    "ARTS - ARTISANAT - CULTURE",
-    "ASSURANCE - BANQUE",
-    "AUDIOVISUEL - INFORMATION - COMMUNICATION",
-    "CONSTRUCTION DURABLE - BÂTIMENT ET TRAVAUX PUBLICS",
-    "DROIT - ÉCONOMIE - GESTION",
-    "ENSEIGNEMENT - RECHERCHE",
-    "ÉNERGIES - ENVIRONNEMENT",
-    "GESTION ADMINISTRATIVE - TRANSPORT - LOGISTIQUE",
-    "HÔTELLERIE - RESTAURATION - TOURISME",
-    "INDUSTRIES",
-    "INFORMATIQUE - INTERNET",
-    "RELATION CLIENT (ACCUEIL - RELATION CLIENT, COMMERCE, VENTE)",
-    "SANTÉ - SOCIAL - SPORT",
-    "TOUS SECTEURS"
-  ].freeze
+    'agriculture - bois',
+    'architecture - paysage - urbanisme',
+    'armée - sécurité',
+    'arts - artisanat - culture',
+    'assurance - banque',
+    'audiovisuel - information - communication',
+    'construction durable - bâtiment et travaux publics',
+    'droit - économie - gestion',
+    'enseignement - recherche',
+    'énergies - environnement',
+    'gestion administrative - transport - logistique',
+    'hôtellerie - restauration - tourisme',
+    'industries',
+    'informatique - internet',
+    'relation client (accueil - relation client, commerce, vente)',
+    'santé - social - sport',
+    'tous secteurs']
+.freeze
 
   has_many :client_bookings, class_name: "Booking", foreign_key: "client_id"
   has_many :coach_bookings, class_name: "Booking", foreign_key: "coach_id"

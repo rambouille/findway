@@ -1,18 +1,16 @@
 <div class="d-flex justify-content-center py-3">
   <%= form_tag coaches_path, method: :get, class: 'form-inline' do %>
     <%= select_tag :speciality, options_for_select(User::SPECIALIZATIONS),
-        include_blank: "Spécialité", class: "form-control" %>
+        include_blank: "Spécialité", class: "form-control filter", id: "spe-filter" %>
     <%= select_tag :business_expertise, options_for_select(User::BUSINESS_EXPERTISES),
-        include_blank: "Expertise", class: "form-control" %>
-    <%= number_field_tag :price_min, params[:price_min], in: 1...150,
-        placeholder: "min €", class: "form-control" %>
-    <%= number_field_tag :price_max, params[:price_max], in: 1...150,
-        placeholder: "max €", class: "form-control" %>
+        include_blank: "Expertise", class: "form-control filter", id: "exp-filter" %>
+    <%= number_field_tag :price_min, params[:price_min], in: 1...150, placeholder: "min €/h",
+        style: "width: 7rem; text-align: center;", class: "form-control filter", id: "min-filter" %>
+    <%= number_field_tag :price_max, params[:price_max], in: 1...150, placeholder: "max €/h",
+        style: "width: 7rem; text-align: center;", class: "form-control filter", id: "max-filter" %>
     <%=  submit_tag "Filtrer", class: "btn btn-success" %>
-    <!-- <button type='submit', class: 'btn btn-success'>filtrer</button> -->
   <% end %>
 </div>
-<!-- the list of movies -->
 <div class="container">
   <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
