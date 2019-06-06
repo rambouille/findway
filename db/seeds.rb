@@ -104,3 +104,49 @@ Review.create(
   content: "Titeuf est très gentil. Mais il n'avait pas fait les tests que je lui avais demandé...",
   rating: 4)
 
+puts "creating 10 clients"
+10.times do
+  client = User.new(email: Faker::Internet.email, password: "123456", firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, description: Faker::Lorem.paragraphs, age: (11..60).to_a.sample, status: "client")
+  client.remote_avatar_url = Faker::Avatar.image("50x50")
+  client.save
+end
+
+puts "creating 10 coaches"
+10.times do
+  coach = User.new(email: Faker::Internet.email, password: "123456", firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, description: Faker::Lorem.paragraphs, age: (11..60).to_a.sample, status: "coach", hourly_price_cents: (2000..8000).to_a.sample, speciality: ["reconversion professionnelle", "conseiller d'orientation", "coaching personnalisé"].sample, business_expertise: [
+    "AGRICULTURE - BOIS",
+    "ARCHITECTURE - PAYSAGE - URBANISME",
+    "ARMÉE - SÉCURITÉ",
+    "ARTS - ARTISANAT - CULTURE",
+    "ASSURANCE - BANQUE",
+    "AUDIOVISUEL - INFORMATION - COMMUNICATION",
+    "CONSTRUCTION DURABLE - BÂTIMENT ET TRAVAUX PUBLICS",
+    "DROIT - ÉCONOMIE - GESTION",
+    "ENSEIGNEMENT - RECHERCHE",
+    "ÉNERGIES - ENVIRONNEMENT",
+    "GESTION ADMINISTRATIVE - TRANSPORT - LOGISTIQUE",
+    "HÔTELLERIE - RESTAURATION - TOURISME",
+    "INDUSTRIES",
+    "INFORMATIQUE - INTERNET",
+    "RELATION CLIENT (ACCUEIL - RELATION CLIENT, COMMERCE, VENTE)",
+    "SANTÉ - SOCIAL - SPORT",
+    "TOUS SECTEURS"
+  ].sample)
+  coach.remote_avatar_url = Faker::Avatar.image("50x50")
+  coach.save
+end
+
+puts "creating 10 coaches all sectors"
+10.times do
+  coach = User.new(email: Faker::Internet.email, password: "123456", firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, description: Faker::Lorem.paragraphs, age: (11..60).to_a.sample, status: "coach", hourly_price_cents: (2000..8000).to_a.sample, speciality: ["reconversion professionnelle", "conseiller d'orientation", "coaching personnalisé"].sample, business_expertise: "TOUS SECTEURS")
+  coach.remote_avatar_url = Faker::Avatar.image("50x50")
+  coach.save
+end
+
+puts "creating 10 bookings"
+10.times do
+  start_hour = DateTime.now + rand(7).day + rand(7).hour
+  end_hour = start_hour + (1..2).to_a.shuffle.first
+  booking = Booking.create(coach: User.where(status: "coach").sample, start_time: start_hour, end_time: end_hour)
+  booking.save
+end
