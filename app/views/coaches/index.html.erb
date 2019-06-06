@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center py-3">
+<div class="d-flex justify-content-aroun m-0">
   <%= form_tag coaches_path, method: :get, class: 'form-inline' do %>
     <%= select_tag :speciality, options_for_select(User::SPECIALIZATIONS),
         include_blank: "Spécialité", class: "form-control filter", id: "spe-filter" %>
@@ -11,7 +11,7 @@
     <%=  submit_tag "Filtrer", class: "btn btn-success" %>
   <% end %>
 </div>
-<div class="container">
+<div class="index container">
   <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
       <div id="users">

@@ -1,0 +1,67 @@
+select.form-control.filter {
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   text-indent: 1px;
+   text-overflow: ‘’;
+   outline: none !important;
+   box-shadow: none !important;
+}
+
+select:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+input.form-control.filter {
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   text-indent: 1px;
+   text-overflow: ‘’;
+   outline: none !important;
+   box-shadow: none !important;
+}
+
+input:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
+.filtre {
+  border-radius: 30px;
+  width: 100%;
+}
+
+.filter {
+  border-bottom: 1px solid $my-red;
+  opacity: 0.8;
+  margin-right: 5px;
+  border-radius: 0px;
+}
+
+
+.form-control {
+  border-top: transparent;
+  border-left: transparent;
+  border-right: transparent;
+  border-bottom: 2px solid $my-red;
+  opacity: 0.8;
+  border-radius: 0px;
+}
+
+.form-inline {
+ background: white;
+ width: 100%;
+ padding-top: 30px;
+ padding-bottom:20px;
+ justify-content: space-around;
+                       /* White background */                            /* Internal space */                        /* Small radius */
+ box-shadow: 0 10px 30px rgba(0,0,0,.1);
+ .btn {
+  color: white;
+  border-radius:5px;
+  background-color: $my-red;
+  border-color: $my-red;
+ }
+}
+
