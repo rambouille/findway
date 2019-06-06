@@ -17,7 +17,6 @@
 #  updated_at    :datetime         not null
 #
 
-
 class Booking < ApplicationRecord
   COMMISSION_RATE = 0.1
 
@@ -26,12 +25,22 @@ class Booking < ApplicationRecord
 
   has_many :reviews
 
-  enum state: [:pending, :booked, :payed, :passed, :cancelled]
-  enum video_channel: [:skype, :hangout, :facetime]
+  enum state: %i[pending booked payed passed cancelled]
+  enum video_channel: %i[skype hangout facetime]
+
+  validate :end_must_be_after_start
 
   after_validation :set_amount
 
+  private
+
   def set_amount
     self.amount_cents = self.coach.hourly_price_cents * (1 + COMMISSION_RATE)
+  end
+
+  def end_must_be_after_start
+    if start_time >= end_time
+      errors.add(:end_time, "l'horaire de fin doit être après l'horaire de début")
+    end
   end
 end
