@@ -1,0 +1,29 @@
+<div class="d-flex justify-content-center py-3">
+  <%= form_tag coaches_path, method: :get, class: 'form-inline' do %>
+    <%= select_tag :speciality, options_for_select(User::SPECIALIZATIONS),
+        include_blank: "Spécialité", class: "form-control filter", id: "spe-filter" %>
+    <%= select_tag :business_expertise, options_for_select(User::BUSINESS_EXPERTISES),
+        include_blank: "Expertise", class: "form-control filter", id: "exp-filter" %>
+    <%= number_field_tag :price_min, params[:price_min], in: 1...150, placeholder: "min €/h",
+        style: "width: 7rem; text-align: center;", class: "form-control filter", id: "min-filter" %>
+    <%= number_field_tag :price_max, params[:price_max], in: 1...150, placeholder: "max €/h",
+        style: "width: 7rem; text-align: center;", class: "form-control filter", id: "max-filter" %>
+    <%=  submit_tag "Filtrer", class: "btn btn-success" %>
+  <% end %>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div id="users">
+        <% @users.each do |user| %>
+          <h4><%= user.firstname %></h4>
+          <p><%= user.lastname %></p>
+          <p><%= user.speciality %></p>
+          <p><%= user.business_expertise %></p>
+          <p><%= humanized_money_with_symbol(user.hourly_price) %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

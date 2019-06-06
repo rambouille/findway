@@ -12,3 +12,10 @@
 @import "components/index";
 @import "pages/index";
 
+.height-wrapper {
+  min-height: 100vh;
+}
+
+p {
+  margin-bottom: 0px;
+}

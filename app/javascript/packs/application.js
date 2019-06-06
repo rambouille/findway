@@ -80,3 +80,4 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   setTimeout(renderCalendar, 250);
 });
+

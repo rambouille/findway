@@ -1,0 +1,66 @@
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid;
+  display: inline-block;
+  position: relative;
+}
+
+.avatar-card {
+  padding: 30px;
+}
+
+.avatar-shadow {
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);
+}
+
+.coach-show {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-elements: center;
+}
+
+.card-coach {
+  width: 60vw;
+  margin-right: 20px;
+  h3, p {
+    margin-left: 20px;
+  }
+}
+
+.redbar {
+  width: 15px;
+  border-bottom: 2px solid #ff4338;
+  border-radius: 1px;
+  margin-left: 20px;
+  padding-bottom: 10px;
+}
+
+.coach-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.coach-main {
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.coach-info {
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 12px;
+}
+
+.coach-calendar {
+  width: 200px;
+  height: 160px;
+  object-fit: cover;
+  padding: 15px;
+}
