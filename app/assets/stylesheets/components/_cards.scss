@@ -1,3 +1,81 @@
-.users {
+// I - 3 cartes côte à côte, divisée en deux : une photo en haut, du texte en bas.
 
+.contents {
+  height:90vh;
+}
+
+.why-us h1 {
+  text-shadow: 1px 1px 2px $my-blue;
+  color: rgba(20,20,20,0.8);
+  font-size: 40px;
+  margin: 70px 0;
+}
+
+#cards {
+  position: relative;
+  &:after{
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    background-image: linear-gradient(90deg,#9FD2D6,#1B264F);
+    border-radius:50px;
+    height: 3px;
+    width: 100%;
+
+  }
+}
+
+#cards img {
+  height: 200px;
+  object-fit:cover;
+}
+
+#cards h5 {
+  font-size: 20px;
+  text-shadow: 1px 0px 1px $my-blue;
+  color: rgba(20,20,20,0.8);
+  padding-bottom: 20px;
+}
+
+.card-title {
+  font-size: 30px;
+  color: $my-blue;
+}
+
+.card-text {
+  font-size: 20px;
+}
+
+// II - Cartes allongées avec photos sur la gauche et texte sur la droite
+
+
+.why-us h1 {
+  text-shadow: 1px 1px 2px $my-blue;
+  color: rgba(20,20,20,0.8);
+  font-size: 40px;
+  margin: 70px 0;
+}
+
+
+.card-title {
+  font-size: 30px;
+  color: $my-blue;
+}
+
+.card-text {
+  font-size: 20px;
+}
+
+.card-img {
+  height: 190px;
+  object-fit: cover;
+}
+
+.card-photos h5 {
+  font-size: 20px;
+  color: black;
+}
+
+.card-photos p {
+  font-size: 18px;
 }
