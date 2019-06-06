@@ -81,3 +81,9 @@ document.addEventListener('DOMContentLoaded', function() {
   setTimeout(renderCalendar, 250);
 });
 
+// js index coaches
+
+const card = document.querySelectorAll('.card-index');
+card.addEventListener("click", (event) => {
+  console.log(event);
+});
