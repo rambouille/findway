@@ -7,4 +7,10 @@ class BookingPolicy < ApplicationPolicy
       scope.where(coach: user)
     end
   end
+
+  class VisitorScope < Scope
+    def resolve
+      scope.where(state: 'pending')
+    end
+  end
 end
