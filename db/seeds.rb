@@ -124,10 +124,10 @@ puts "creating 10 coaches all sectors"
   coach.save
 end
 
-# puts "creating 10 bookings"
-# 10.times do
-#   booking = Booking.create(coach: User.where(status: "coach").sample, start_time: Faker::Time.forward((1..3).to_a.sample), end_time: Faker::Time.forward((4..7).to_a.sample))
-#   booking.save
-# end
-
-
+puts "creating 10 bookings"
+10.times do
+  start_hour = DateTime.now + rand(7).day + rand(7).hour
+  end_hour = start_hour + (1..2).to_a.shuffle.first
+  booking = Booking.create(coach: User.where(status: "coach").sample, start_time: start_hour, end_time: end_hour)
+  booking.save
+end
