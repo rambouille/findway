@@ -1,26 +1,16 @@
-<!-- [...] -->
-<%= form_tag coaches_path, method: :get do %>
-  <%= select_tag :speciality,
-    options_for_select(User::SPECIALIZATIONS),
-    class: "form-control"
-  %>
-  <button type='submit'>filter</button>
+<div class="d-flex justify-content-center py-3">
+  <%= form_tag coaches_path, method: :get, class: 'form-inline' do %>
+    <%= select_tag :speciality, options_for_select(User::SPECIALIZATIONS),
+        include_blank: "Spécialité", class: "form-control filter", id: "spe-filter" %>
+    <%= select_tag :business_expertise, options_for_select(User::BUSINESS_EXPERTISES),
+        include_blank: "Expertise", class: "form-control filter", id: "exp-filter" %>
+    <%= number_field_tag :price_min, params[:price_min], in: 1...150, placeholder: "min €/h",
+        style: "width: 7rem; text-align: center;", class: "form-control filter", id: "min-filter" %>
+    <%= number_field_tag :price_max, params[:price_max], in: 1...150, placeholder: "max €/h",
+        style: "width: 7rem; text-align: center;", class: "form-control filter", id: "max-filter" %>
+    <%=  submit_tag "Filtrer", class: "btn btn-success" %>
   <% end %>
-  <%= form_tag coaches_path, method: :get do %>
-  <%= select_tag :business_expertise,
-    options_for_select(User::BUSINESS_EXPERTISES),
-    class: "form-control"
-  %>
-  <button type='submit'>filter</button>
-  <% end %>
-  <%= form_tag coaches_path, method: :get do %>
-  <%= select_tag :hourly_price_cents,
-    options_for_select(User::HOURLY_PRICE_CENTS),
-    class: "form-control"
-  %>
-  <button type='submit'>filter</button>
-  <% end %>
-<!-- the list of movies -->
+</div>
 <div class="container">
   <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
@@ -30,7 +20,7 @@
           <p><%= user.lastname %></p>
           <p><%= user.speciality %></p>
           <p><%= user.business_expertise %></p>
-          <p><%= user.hourly_price_cents %></p>
+          <p><%= humanized_money_with_symbol(user.hourly_price) %></p>
         <% end %>
       </div>
     </div>

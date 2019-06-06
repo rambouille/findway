@@ -33,7 +33,7 @@ pascal = User.new(
   status: "coach",
   hourly_price_cents: 3400,
   speciality: "coaching personnalisé",
-  business_expertise: "TOUS SECTEURS"
+  business_expertise: "tous secteurs"
   )
 pascal.remote_avatar_url = "https://o1.ldh.be/image/thumb/58a52af9cd703b981540caa0.jpg"
 pascal.save!
