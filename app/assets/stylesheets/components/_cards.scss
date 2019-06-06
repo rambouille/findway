@@ -1,3 +1,24 @@
+
+.card-index {
+  background: white;                         /* White background */
+  padding: 30px;                             /* Internal space */
+  border-radius: 4px;                        /* Small radius */
+  box-shadow: 0 10px 30px rgba(0,0,0,.1);
+  display: flex;
+  height: 200px;
+}
+
+.card-index:hover {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  animation-name: example;
+  animation-duration: 0.25s;
+  border-left: 8px solid $my-red;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.card-index img {
+  width: 50;
 // I - 3 cartes côte à côte, divisée en deux : une photo en haut, du texte en bas.
 
 .contents {

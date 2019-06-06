@@ -11,17 +11,23 @@
     <%=  submit_tag "Filtrer", class: "btn btn-success" %>
   <% end %>
 </div>
-<div class="index container">
-  <div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
-      <div id="users">
+<div class="index container px-5">
+  <div class="card-index my-4">
+    <div class="avatar avatar-card avatar-large avatar-bordered avatar-square">
+      <% @users.each do |user| %>
+      <%= user.avatar %>
+          <% end %>
+    </div>
+    <div class="index-info-calendar">
+      <div class="index-info">
         <% @users.each do |user| %>
           <h4><%= user.firstname %></h4>
-          <p><%= user.lastname %></p>
           <p><%= user.speciality %></p>
           <p><%= user.business_expertise %></p>
           <p><%= humanized_money_with_symbol(user.hourly_price) %></p>
         <% end %>
+      </div>
+      <div class="index-calendar">
       </div>
     </div>
   </div>
