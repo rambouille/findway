@@ -1,36 +1,14 @@
-// Specific CSS for your home-page
-.content {
-  display: flex;
-  height: 100vh;
-  align-items: center;
-  background-image: url("../../assets/home-background-4.png");
-  background-size: cover;
-  justify-content: space-around;
-}
-
-
-.top-box p{
-  color: white;
-  font-size: 18px;
-  opacity:1;
-}
-
-
-.top-box h1{
-  text-shadow: 1px 1px 2px $my-blue;
-  color: rgba(20,20,20,0.8);
-  font-size: 100px;
-}
-
-.top-box h2{
-  text-shadow: 1px 1px 2px $my-blue;
-  color: rgba(20,20,20,0.8);
-  font-size: 30px;
-  padding-bottom: 12px;
-}
+// I - 3 cartes côte à côte, divisée en deux : une photo en haut, du texte en bas.
 
 .contents {
   height:90vh;
+}
+
+.why-us h1 {
+  text-shadow: 1px 1px 2px $my-blue;
+  color: rgba(20,20,20,0.8);
+  font-size: 40px;
+  margin: 70px 0;
 }
 
 #cards {
@@ -68,6 +46,26 @@
   font-size: 20px;
 }
 
+// II - Cartes allongées avec photos sur la gauche et texte sur la droite
+
+
+.why-us h1 {
+  text-shadow: 1px 1px 2px $my-blue;
+  color: rgba(20,20,20,0.8);
+  font-size: 40px;
+  margin: 70px 0;
+}
+
+
+.card-title {
+  font-size: 30px;
+  color: $my-blue;
+}
+
+.card-text {
+  font-size: 20px;
+}
+
 .card-img {
   height: 190px;
   object-fit: cover;
@@ -82,9 +80,3 @@
   font-size: 18px;
 }
 
-.why-us h1 {
-  text-shadow: 1px 1px 2px $my-blue;
-  color: rgba(20,20,20,0.8);
-  font-size: 40px;
-  margin: 70px 0;
-}

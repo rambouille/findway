@@ -3,3 +3,4 @@ class BookingsController < ApplicationController
     @bookings = current_user.coach_bookings
   end
 end
+
