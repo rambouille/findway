@@ -25,10 +25,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const calendar = new Calendar(calendarEl, {
     plugins: [
-      timeGridPlugin,
-      momentPlugin,
-      momentTimezonePlugin,
-      interactionPlugin
+    timeGridPlugin,
+    momentPlugin,
+    momentTimezonePlugin,
+    interactionPlugin
     ],
     titleFormat: 'DD/MM',
     slotLabelFormat: genericTimeFormat,
@@ -64,8 +64,17 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log('event drop')
       // call ajax?
     },
+
+    eventClick:  function(event, jsEvent, view) {
+      $('#modalTitle').html(event.title);
+      $('#modalBody').html(event.description);
+      $('#eventUrl').attr('href',event.url);
+      $('#calendarModal').modal();
+    },
+
     selectable: true,
     editable: true,
+    selectHelper: true, // add
     locale: 'fr',
     timeZone: 'Europe/Paris',
     timeFormat: 'H(:mm)',
