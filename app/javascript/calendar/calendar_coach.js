@@ -26,10 +26,10 @@ const displayCalendarCoach = () => {
 
     const calendar = new Calendar(calendarEl, {
       plugins: [
-        timeGridPlugin,
-        momentPlugin,
-        momentTimezonePlugin,
-        interactionPlugin
+      timeGridPlugin,
+      momentPlugin,
+      momentTimezonePlugin,
+      interactionPlugin
       ],
       titleFormat: 'DD/MM',
       slotLabelFormat: genericTimeFormat,
@@ -61,17 +61,27 @@ const displayCalendarCoach = () => {
       //     req.open('DELETE', '/api/v1/bookings', false);
       //     req.send(null);
       //   }
-      },
-      eventDragStart: function(){
-        console.log('event drag start')
-      },
-      eventDragStop: function(){
-        console.log('event drag stop')
-      },
-      eventDrop: function(){
-        console.log('event drop')
+    },
+    eventDragStart: function(){
+      console.log('event drag start')
+    },
+    eventDragStop: function(){
+      console.log('event drag stop')
+    },
+
+
+    eventClick:  function(event, jsEvent, view) {
+      $('#modalTitle').html(event.title);
+      $('#modalBody').html(event.description);
+      $('#eventUrl').attr('href',event.url);
+      $('#calendarModal').modal();
+    },
+    eventDrop: function(){
+      console.log('event drop')
         // call ajax?
       },
+
+
       selectable: true,
       editable: true,
       locale: 'fr',

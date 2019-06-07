@@ -38,12 +38,14 @@ const displayCalendarVisitor = () => {
       eventTimeFormat: genericTimeFormat,
       minTime: '08:00:00',
       maxTime: '20:00:00',
+      columnHeaderFormat: 'ddd',
+      slotDuration: '02:00:00',
+      slotLabelInterval: '02:00',
+      minTime: "06:00:00",
+      maxTime: "22:00:00",
+      allDaySlot: false,
       firstDay: 1,
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'month,agendaWeek,agendaDay'
-      },
+      header: false,
       eventRender: function() {
         console.log('rendered')
       },
