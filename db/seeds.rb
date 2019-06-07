@@ -167,6 +167,7 @@ puts "creating 50 past bookings with reviews"
 end
 
 
+
 # puts "affecting booking to client"
 # 10.times do
 #   booking.sample.client = User.where(status: "client").sample
