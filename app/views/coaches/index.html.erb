@@ -12,6 +12,13 @@
   <% end %>
 </div>
 <div class="index container px-5">
+  <div id="results-infos" class="pt-3">
+    <p>
+      <strong><%= @users.count %> coachs</strong> trouvés
+    </p>
+
+
+  </div>
   <% @users.each do |user| %>
     <a href="/coaches/<%=user.id%>" style="text-decoration : none; color : #000000;">
       <div class="card-index my-4">
