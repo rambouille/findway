@@ -17,7 +17,7 @@ const displayCalendarVisitor = () => {
     const calendarEl = document.getElementById('calendar-visitor');
 
     const idCoach = window.location.pathname.split('/')[2]
-    var urlApi = `http://localhost:3000/api/v1/coaches/${idCoach}/availabilities`
+    var urlApi = `/api/v1/coaches/${idCoach}/availabilities`
 
     console.log(urlApi)
     const genericTimeFormat = {

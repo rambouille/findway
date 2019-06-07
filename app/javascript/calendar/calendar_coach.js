@@ -16,7 +16,7 @@ const displayCalendarCoach = () => {
   document.addEventListener('DOMContentLoaded', function() {
     const calendarEl = document.getElementById('calendar-coach');
 
-    const urlApi = 'http://localhost:3000/api/v1/bookings';
+    const urlApi = '/api/v1/bookings';
 
     const genericTimeFormat = {
       hour: '2-digit',
