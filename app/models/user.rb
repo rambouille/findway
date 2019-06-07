@@ -81,4 +81,8 @@ class User < ApplicationRecord
   def is_coach?
     status == "coach"
   end
+
+  def rating_average
+    self.reviews.average(:rating)
+  end
 end
