@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :coaches, only: [ :index, :show ]
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :bookings, only: [ :index ]
+      resources :bookings, only: [ :index, :destroy ]
       resources :coaches, only: [ :index ] do
         resources :availabilities, only: [:index]
       end

@@ -85,4 +85,4 @@ const displayCalendarVisitor = () => {
   });
 }
 
-export { displayCalendarVisitor }
+export { displayCalendarVisitor };

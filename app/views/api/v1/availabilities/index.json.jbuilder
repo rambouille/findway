@@ -1,5 +1,5 @@
 json.array! @bookings do |booking|
-  json.title "Séance #{booking.id}"
+  json.title ""
   json.start booking.start_time.strftime("%Y-%m-%dT%H:%M:%S")
   json.end booking.end_time.strftime("%Y-%m-%dT%H:%M:%S")
   json.allDay false

@@ -1,8 +1,8 @@
 json.array! @bookings do |booking|
   if booking.client
-    json.title "Avec #{booking.client.fullname}"
+    json.title "Client: #{booking.client.fullname}"
   else
-      json.title "Séance #{booking.id}"
+    json.title ""
   end
   json.start booking.start_time.strftime("%Y-%m-%dT%H:%M:%S")
   json.end booking.end_time.strftime("%Y-%m-%dT%H:%M:%S")

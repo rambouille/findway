@@ -51,9 +51,16 @@ const displayCalendarCoach = () => {
       dateClick: function(){
         console.log('date clicked')
       },
-      eventClick: function(){
+      eventClick: function(info) {
         console.log('event clicked')
-        console.log(event.currentTarget).remove()
+        console.log(event.currentTarget)
+        console.log(info.el)
+      //   info.el.remove();
+      //   const destroyDispo = (event) => {
+      //     const req = new XMLHttpRequest();
+      //     req.open('DELETE', '/api/v1/bookings', false);
+      //     req.send(null);
+      //   }
       },
       eventDragStart: function(){
         console.log('event drag start')
@@ -83,4 +90,4 @@ const displayCalendarCoach = () => {
   });
 }
 
-export { displayCalendarCoach }
+export { displayCalendarCoach };
