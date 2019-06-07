@@ -125,8 +125,8 @@ puts "creating 10 coaches all sectors"
   coach.save!
 end
 
-puts "creating 10 bookings"
-10.times do
+puts "creating 100 bookings"
+100.times do
   start_hour = DateTime.now + rand(7).day + rand(7).hour
   end_hour = start_hour + (1..2).to_a.shuffle.first.hour
   booking = Booking.create(coach: User.where(status: "coach").sample, start_time: start_hour, end_time: end_hour)

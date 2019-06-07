@@ -27,8 +27,10 @@
 .card-coach {
   width: 60vw;
   margin-right: 20px;
+  padding: 20px;
   h3, p {
     margin-left: 20px;
+    text-align: justify;
   }
 }
 
@@ -41,8 +43,13 @@
 }
 
 .coach-right {
-  display: flex;
-  flex-direction: column;
+  position: sticky;
+  top: 0;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
 }
 
 .coach-main {

@@ -1,11 +1,12 @@
 import "bootstrap";
 
-import '@fullcalendar/core/main.css';
-import '@fullcalendar/timegrid/main.css';
 
-import { Calendar } from '@fullcalendar/core';
-import timeGridPlugin from '@fullcalendar/timegrid';
+// calendars
+import { displayCalendarVisitor } from "calendar/calendar_visitor";
+import { displayCalendarCoach } from "calendar/calendar_coach";
 
+displayCalendarCoach();
+displayCalendarVisitor();
 import frLocale from '@fullcalendar/core/locales/fr';
 import momentPlugin from '@fullcalendar/moment';
 import momentTimezonePlugin from '@fullcalendar/moment-timezone';
@@ -25,10 +26,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const calendar = new Calendar(calendarEl, {
     plugins: [
-      timeGridPlugin,
-      momentPlugin,
-      momentTimezonePlugin,
-      interactionPlugin
+    timeGridPlugin,
+    momentPlugin,
+    momentTimezonePlugin,
+    interactionPlugin
     ],
     titleFormat: 'DD/MM',
     slotLabelFormat: genericTimeFormat,
@@ -64,8 +65,17 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log('event drop')
       // call ajax?
     },
+
+    eventClick:  function(event, jsEvent, view) {
+      $('#modalTitle').html(event.title);
+      $('#modalBody').html(event.description);
+      $('#eventUrl').attr('href',event.url);
+      $('#calendarModal').modal();
+    },
+
     selectable: true,
     editable: true,
+    selectHelper: true, // add
     locale: 'fr',
     timeZone: 'Europe/Paris',
     timeFormat: 'H(:mm)',
@@ -81,3 +91,9 @@ document.addEventListener('DOMContentLoaded', function() {
   setTimeout(renderCalendar, 250);
 });
 
+// js index coaches
+
+const card = document.querySelectorAll('.card-index');
+card.addEventListener("click", (event) => {
+  console.log(event);
+});
