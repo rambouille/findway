@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon <%= yield(:navbar_class) %>">
   <%= link_to "/", class: "navbar-brand" do %>
-  <img src="../../assets/logo.png">
+  <%= image_tag 'logo.png'%>
   <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,10 +21,10 @@
             <%= link_to "Devenir Coach", "#", class: "nav-link" %>
           </li>
           <li class="nav-item active">
-            <%= link_to "Trouver un coach", "#", class: "nav-link" %>
+            <%= link_to "Trouver un coach", coaches_path, class: "nav-link" %>
           </li>
           <li class="nav-item active">
-            <%= link_to "Mes réservations", "#", class: "nav-link" %>
+            <%= link_to "Mes réservations", bookings_path, class: "nav-link" %>
           </li>
           <li class="nav-item active">
             <%= link_to "Messages", "#", class: "nav-link" %>

@@ -25,7 +25,7 @@ class Booking < ApplicationRecord
 
   has_many :reviews
 
-  enum state: %i[pending booked payed passed cancelled]
+  enum state: %i[pending booked payed cancelled]
   enum video_channel: %i[skype hangout facetime]
 
   validate :end_must_be_after_start

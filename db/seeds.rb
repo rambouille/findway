@@ -190,3 +190,4 @@ puts "creating 1 past bookings without review for Pascal"
  booking.state = "booked"
  booking.video_channel = "skype"
  booking.save!
+

@@ -2,11 +2,12 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-
 }
 
 #calendar-coach {
 flex: 0 1 60%;
+position: sticky;
+top: 0;
 }
 
 .fc-head {
@@ -44,6 +45,7 @@ flex: 0 1 60%;
   align-items: center;
 }
 
+
 .bookings_reviews h1 {
   text-shadow: 1px 1px 2px $my-blue;
   color: rgba(20,20,20,0.8);
@@ -62,6 +64,21 @@ flex: 0 1 60%;
     margin: 20px auto;
 }
 
+#past-bookings-reviewed .card {
+    font-size: 20px;
+    margin: 20px auto;
+    position: relative;
+  &:after{
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    background-image: linear-gradient(90deg,#9FD2D6,#1B264F);
+    border-radius:50px;
+    height: 3px;
+    width: 100%;
+ }
+}
+
 .reviews {
   display: flex;
   flex-direction: column;
@@ -74,7 +91,7 @@ flex: 0 1 60%;
 .title-reviews {
   display: flex;
   align-items: center;
-  background-color: $my-blue;
+  background-color: #E5FCFF;
   background-size: cover;
   justify-content: space-around;
 }
