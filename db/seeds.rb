@@ -1,4 +1,4 @@
-if Rails.env.development?
+# if Rails.env.development?
   puts "deleting Messages"
   Message.destroy_all
   puts "deleting Reviews"
@@ -7,7 +7,7 @@ if Rails.env.development?
   Booking.destroy_all
   puts "deleting Users"
   User.destroy_all
-end
+# end
 
 REVIEWS_FOR_COACH = [
   { content: "Une magnifique expérience. Merci!", rating: 5 },
