@@ -33,7 +33,7 @@
               <h1>Réservations prochaines</h1>
                 <p> <%= booking.start_time.strftime("%d-%m à %I:%M%p") %> </p>
                 <p> <%= (booking.end_time - booking.start_time) / 3600 %> h </p>
-                <p> <%= booking.client.fullname %> </p>
+                <p> <%= booking.client.fullname if booking.client %> </p>
               </div>
             </div>
           <% elsif booking.state == "booked" && booking.start_time < Time.now && booking.end_time > Time.now %>
@@ -48,8 +48,8 @@
             <% if booking.reviews.empty? %>
               <div id="past-bookings-not-reviewed">
                 <div class="card text-center">
-
                 <h1>Réservations passées</h1>
+
                 </div>
                 <div class="card text-center">
                   <p> <%= booking.start_time.strftime("%d-%m à %I:%M%p") %> </p>
@@ -59,14 +59,14 @@
                 </div>
               </div>
             <% else  %>
+                    <h1>Réservations passées</h1>
               <div id="past-bookings-reviewed">
                 <div class="card">
                   <div class="text-center">
-                    <h1>Réservations passées</h1>
                   </div>
                   <p>Date : <%= booking.start_time.strftime("%d-%m à %I:%M%p") %> </p>
                   <p> Temps : <%= (booking.end_time - booking.start_time) / 3600 %>h </p>
-                  <p> Client : <%=  booking.client.fullname %> </p>
+                  <p> Client : <%=  booking.client.fullname if booking.client %> </p>
                 </div>
               </div>
 
