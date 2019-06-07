@@ -1,11 +1,12 @@
 import "bootstrap";
 
-import '@fullcalendar/core/main.css';
-import '@fullcalendar/timegrid/main.css';
 
-import { Calendar } from '@fullcalendar/core';
-import timeGridPlugin from '@fullcalendar/timegrid';
+// calendars
+import { displayCalendarVisitor } from "calendar/calendar_visitor";
+import { displayCalendarCoach } from "calendar/calendar_coach";
 
+displayCalendarCoach();
+displayCalendarVisitor();
 import frLocale from '@fullcalendar/core/locales/fr';
 import momentPlugin from '@fullcalendar/moment';
 import momentTimezonePlugin from '@fullcalendar/moment-timezone';
