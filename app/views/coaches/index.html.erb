@@ -12,24 +12,32 @@
   <% end %>
 </div>
 <div class="index container px-5">
+        <% @users.each do |user| %>
   <div class="card-index my-4">
-    <div class="avatar avatar-card avatar-large avatar-bordered avatar-square">
-      <% @users.each do |user| %>
-      <%= user.avatar %>
-          <% end %>
+    <div class="avatar-large">
+      <img src="<%= user.avatar %>" alt="avatar" class="avatar avatar-large avatar-index">
     </div>
     <div class="index-info-calendar">
       <div class="index-info">
-        <% @users.each do |user| %>
           <h4><%= user.firstname %></h4>
-          <p><%= user.speciality %></p>
-          <p><%= user.business_expertise %></p>
-          <p><%= humanized_money_with_symbol(user.hourly_price) %></p>
-        <% end %>
+           <div class="colorbar"></div>
+           <div class="info-metier">
+            <div>
+           <p class="card-font">SPECIALISATION</p>
+          <p class="font-helve"><%= user.speciality.capitalize %></p>
+           <p class="card-font">EXPERTISE SECTORIELLE</p>
+          <p class="font-helve"><%= user.business_expertise.capitalize %></p>
+            </div>
+            <div>
+          <p class="card-font">TARIF HORAIRE</p>
+          <p class="font-helve"><%= humanized_money_with_symbol(user.hourly_price) %></p>
+            </div>
+           </div>
       </div>
       <div class="index-calendar">
       </div>
     </div>
   </div>
+        <% end %>
 </div>
 
