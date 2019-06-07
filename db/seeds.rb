@@ -153,25 +153,41 @@ end
 
 puts "creating 50 past bookings with reviews"
 50.times do
-  start_hour = DateTime.now - rand(30).day + rand(24).hour
-  end_hour = start_hour + (1..2).to_a.shuffle.first.hour
-  coach = User.where(status: "coach").sample
-  booking = Booking.create(coach: coach, start_time: start_hour, end_time: end_hour)
-  booking.state = "passed"
-  booking.video_channel = "skype"
-  client = User.where(status: "coach").sample
-  booking.save!
+ start_hour = DateTime.now - rand(30).day + rand(24).hour
+ end_hour = start_hour + (1..2).to_a.shuffle.first.hour
+ coach = User.where(status: "coach").sample
+ booking = Booking.create(coach: coach, start_time: start_hour, end_time: end_hour)
+ booking.state = "booked"
+ booking.video_channel = "skype"
+ client = User.where(status: "client").sample
+ booking.save!
 
-  Review.create!(REVIEWS_FOR_COACH.sample.merge(user: client, booking: booking))
-  Review.create!(REVIEWS_FOR_CLIENT.sample.merge(user: coach, booking: booking))
+ Review.create!(REVIEWS_FOR_COACH.sample.merge(user: client, booking: booking))
+ Review.create!(REVIEWS_FOR_CLIENT.sample.merge(user: coach, booking: booking))
 end
 
+puts "creating 5 past bookings with reviews for Pascal"
+5.times do
+ start_hour = DateTime.now - rand(10).day + rand(24).hour
+ end_hour = start_hour + (1..2).to_a.shuffle.first.hour
+ coach = User.where(firstname: "Pascal").first
+ client = User.where(status: "client").sample
+ booking = Booking.create(coach: coach, client: client, start_time: start_hour, end_time: end_hour)
+ booking.state = "booked"
+ booking.video_channel = "skype"
+ booking.save!
 
-# puts "affecting booking to client"
-# 10.times do
-#   booking.sample.client = User.where(status: "client").sample
-#   booking.client_need = Faker::Lorem.paragraph
-#   b.video_channel = "skype"
-#   b.state = "booked"
-#   b.save
-# end
+ Review.create!(REVIEWS_FOR_COACH.sample.merge(user: client, booking: booking))
+ Review.create!(REVIEWS_FOR_CLIENT.sample.merge(user: coach, booking: booking))
+end
+
+puts "creating 1 past bookings without review for Pascal"
+ start_hour = DateTime.now - rand(10).day + rand(24).hour
+ end_hour = start_hour + (1..2).to_a.shuffle.first.hour
+ coach = User.where(firstname: "Pascal").first
+ client = User.where(status: "client").sample
+ booking = Booking.create(coach: coach, client: client, start_time: start_hour, end_time: end_hour)
+ booking.state = "booked"
+ booking.video_channel = "skype"
+ booking.save!
+
