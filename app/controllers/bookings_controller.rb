@@ -3,7 +3,9 @@ class BookingsController < ApplicationController
   before_action :set_user, only: [ :new ]
 
   def index
-    @bookings = current_user.coach_bookings
+    @bookings = current_user.coach_bookings.order(start_time: :desc)
+    @future_bookings = @bookings.booked.where("start_time > ?", Time.now)
+    @past_bookings = @bookings.booked.where("end_time < ?", Time.now)
   end
 
   def new
@@ -23,6 +25,7 @@ class BookingsController < ApplicationController
   end
 
   private
+
   def set_user
     @user = current_user
   end

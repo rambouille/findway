@@ -4,21 +4,6 @@
 </div>
 
 <hr>
-<% if false %>
-  <div id="test" class="d-flex my-5">
-    <% @bookings.order(:id).each do |booking| %>
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h2><%= "Séance #{booking.id}" %></h2>
-          <p> Date : <%= booking.start_time.to_date %> à <%= booking.start_time.strftime("%I:%M%p") %> </p>
-          <p> Temps : <%= (booking.end_time - booking.start_time) / 3600 %> h</p>
-          <p> <%=  booking.client ? "Réservé" : "Disponible" %> </p>
-        </div>
-      </div>
-    <% end %>
-  </div>
-  <hr>
-<% end %>
 
 <div id="container-reviews">
 
@@ -26,61 +11,37 @@
 
     <div class="bookings_reviews">
       <div class="container">
-        <% @bookings.each do |booking| %>
-          <% if booking.state == "booked" && booking.start_time > Time.now %>
-            <div id="futur-bookings">
+        <div id="futur-bookings">
+          <h2>Réservations prochaines</h2>
+          <% @future_bookings.each do |booking| %>
               <div class="card text-center">
-              <h1>Réservations prochaines</h1>
                 <p> <%= booking.start_time.strftime("%d-%m à %I:%M%p") %> </p>
                 <p> <%= (booking.end_time - booking.start_time) / 3600 %> h </p>
-                <p> <%= booking.client.fullname %> </p>
+                <p> <%= booking.client.fullname if booking.client %> </p>
               </div>
-            </div>
-          <% elsif booking.state == "booked" && booking.start_time < Time.now && booking.end_time > Time.now %>
-              <div id="current-bookings">
-                <div class="card text-center">
-                <h1>Réservations en cours</h1>
-                  <p> <%= booking.start_time.strftime("%d-%m à %I:%M%p") %> </p>
-                  <p> <%= (booking.end_time - booking.start_time) / 3600 %>h </p>
-                </div>
-              </div>
-          <% elsif booking.state == "booked" && booking.end_time < Time.now %>
-            <% if booking.reviews.empty? %>
-              <div id="past-bookings-not-reviewed">
-                <div class="card text-center">
-                  <h1>Réservations passées</h1>
-                  <p> <%= booking.start_time.strftime("%d-%m à %I:%M%p") %> </p>
-                  <p> <%= (booking.end_time - booking.start_time) / 3600 %>h </p>
-
-                  <%= link_to "review", new_booking_review_path(booking), class: "btn btn-primary" %>
-                </div>
-              </div>
-            <% else  %>
-              <div id="past-bookings-reviewed">
-                <div class="card">
-                  <div class="text-center">
-                    <h1>Réservations passées</h1>
-                  </div>
-                  <p>Date : <%= booking.start_time.strftime("%d-%m à %I:%M%p") %> </p>
-                  <p> Temps : <%= (booking.end_time - booking.start_time) / 3600 %>h </p>
-                  <p> Client : <%=  booking.client.fullname %> </p>
-                </div>
-              </div>
-
-            <% end %>
           <% end %>
-        <% end %>
+        </div>
+        <div id="past-bookings" class="mt-3">
+          <h2>Réservations passées</h2>
+          <% @past_bookings.each do |booking| %>
+            <div class="card text-center my-2 p-3">
+              <p> <%= booking.start_time.strftime("%d-%m à %I:%M%p") %> </p>
+              <p> <%= (booking.end_time - booking.start_time) / 3600 %>h </p>
+              <p> Client : <%=  booking.client.fullname if booking.client %> </p>
+              <% if booking.reviews.empty? %>
+                <%= link_to "Laisser un avis", new_booking_review_path(booking), class: "btn btn-primary mt-3" %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
-
+  </div
+>
+  <div id="calendar-coach" class="m-3">
     <div class="bouton-resa">
       <a href="bookings/new" class="btn btn-primary my-3 d-flex justify-content-center"><p>Créer nouvelle disponibilité</p></a>
     </div>
-
-  </div>
-
-
-  <div id="calendar-coach" class="m-3">
   </div>
 </div>
 
