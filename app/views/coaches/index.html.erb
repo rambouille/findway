@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center py-3">
+<div class="d-flex justify-content-aroun m-0">
   <%= form_tag coaches_path, method: :get, class: 'form-inline' do %>
     <%= select_tag :speciality, options_for_select(User::SPECIALIZATIONS),
         include_blank: "Spécialité", class: "form-control filter", id: "spe-filter" %>
@@ -11,19 +11,33 @@
     <%=  submit_tag "Filtrer", class: "btn btn-success" %>
   <% end %>
 </div>
-<div class="container">
-  <div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
-      <div id="users">
+<div class="index container px-5">
         <% @users.each do |user| %>
+  <div class="card-index my-4">
+    <div class="avatar-large">
+      <img src="<%= user.avatar %>" alt="avatar" class="avatar avatar-large avatar-index">
+    </div>
+    <div class="index-info-calendar">
+      <div class="index-info">
           <h4><%= user.firstname %></h4>
-          <p><%= user.lastname %></p>
-          <p><%= user.speciality %></p>
-          <p><%= user.business_expertise %></p>
-          <p><%= humanized_money_with_symbol(user.hourly_price) %></p>
-        <% end %>
+           <div class="colorbar"></div>
+           <div class="info-metier">
+            <div>
+           <p class="card-font">SPECIALISATION</p>
+          <p class="font-helve"><%= user.speciality.capitalize %></p>
+           <p class="card-font">EXPERTISE SECTORIELLE</p>
+          <p class="font-helve"><%= user.business_expertise.capitalize %></p>
+            </div>
+            <div>
+          <p class="card-font">TARIF HORAIRE</p>
+          <p class="font-helve"><%= humanized_money_with_symbol(user.hourly_price) %></p>
+            </div>
+           </div>
+      </div>
+      <div class="index-calendar">
       </div>
     </div>
   </div>
+        <% end %>
 </div>
 

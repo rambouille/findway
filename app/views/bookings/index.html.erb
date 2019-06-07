@@ -15,10 +15,64 @@
   </div>
   <hr>
 <% end %>
+
+
+<div id="calendar" class="m-3">
+</div>
 <div class="container px-5">
   <%= link_to "Créer nouvelle disponibilité", new_booking_path, class: 'btn btn-success py-3 text-white d-flex justify-content-center'  %>
 
   <div id="calendar-coach" class="m-3">
   </div>
 
+<div class="container">
+  <% @bookings.each do |booking| %>
+    <% if booking.state == "booked" %>
+      <div id="futur-bookings">
+        <h1>Réservations prochaines</h1>
+        <div class="card">
+          <p> <%= booking.start_time.strftime("%d-%m à %I:%M%p") %> </p>
+          <p> <%= (booking.end_time - booking.start_time) / 3600 %> h </p>
+          <p> <%= booking.client.fullname %> </p>
+        </div>
+      </div>
+    <% elsif booking.state == "passed" %>
+      <% if booking.reviews.empty? %>
+        <div id="past-bookings-not-reviewed">
+          <h1>Réservations passées</h1>
+          <div class="card">
+            <p> <%= booking.start_time.strftime("%d-%m à %I:%M%p") %> </p>
+            <p> <%= (booking.end_time - booking.start_time) / 3600 %>h </p>
+            <%= link_to "review", new_booking_review_path(booking), class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% else  %>
+        <div id="past-bookings-reviewed">
+          <div class="card">
+            <p> <%= booking.start_time.strftime("%d-%m à %I:%M%p") %> </p>
+            <p> <%= (booking.end_time - booking.start_time) / 3600 %>h </p>
+            <p> <%=  booking.client.fullname %> </p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<div id="calendarModal" class="modal fade">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+            <h4 id="modalTitle" class="modal-title"></h4>
+        </div>
+        <div id="modalBody" class="modal-body">
+        <button type="button" class="btn btn-danger">Supprimer la reservation</button>
+        <button type="button" class="btn btn-info">Mon eleve</button>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>
 </div>
