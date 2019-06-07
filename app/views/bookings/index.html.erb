@@ -48,7 +48,10 @@
             <% if booking.reviews.empty? %>
               <div id="past-bookings-not-reviewed">
                 <div class="card text-center">
-                  <h1>Réservations passées</h1>
+
+                <h1>Réservations passées</h1>
+                </div>
+                <div class="card text-center">
                   <p> <%= booking.start_time.strftime("%d-%m à %I:%M%p") %> </p>
                   <p> <%= (booking.end_time - booking.start_time) / 3600 %>h </p>
 
