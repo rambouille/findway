@@ -66,13 +66,6 @@ document.addEventListener('DOMContentLoaded', function() {
       // call ajax?
     },
 
-    eventClick:  function(event, jsEvent, view) {
-      $('#modalTitle').html(event.title);
-      $('#modalBody').html(event.description);
-      $('#eventUrl').attr('href',event.url);
-      $('#calendarModal').modal();
-    },
-
     selectable: true,
     editable: true,
     selectHelper: true, // add
