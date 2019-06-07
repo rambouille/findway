@@ -1,7 +1,7 @@
 class CoachesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show ]
   def index
-    @users = User.where(status: "coach")
+    @users = User.coach
     if params[:speciality].present?
       @users = @users.where(speciality: params[:speciality])
     end
