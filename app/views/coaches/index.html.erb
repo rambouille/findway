@@ -13,17 +13,18 @@
 </div>
 <div class="index container px-5">
   <div id="results-infos" class="pt-3">
-    <p>
-      <strong><%= @users.count %> coachs</strong> trouvés
-    </p>
-
-
+    <p><strong><%= @users.count %> coachs</strong> trouvés</p>
   </div>
   <% @users.each do |user| %>
     <a href="/coaches/<%=user.id%>" style="text-decoration : none; color : #000000;">
       <div class="card-index my-4">
         <div class="avatar-large">
           <img src="<%= user.avatar %>" alt="avatar" class="avatar avatar-large avatar-index">
+          <div class="text-center pt-2">
+            <p><%= user.rating_average.round(2) %></p>
+            <p><%= user.reviews.count(:rating) %> avis</p>
+
+          </div>
         </div>
         <div class="index-info-calendar">
           <div class="index-info">
