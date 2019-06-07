@@ -9,6 +9,24 @@ if Rails.env.development?
   User.destroy_all
 end
 
+REVIEWS_FOR_COACH = [
+  { content: "Une magnifique expérience. Merci!", rating: 5 },
+  { content: "C'était très agréable. Ce coach m'a vraiment aidé!", rating: 4 },
+  { content: "C'était très instructif", rating: 3 },
+  { content: "Ce client est sympathique, mais il était en retard...", rating: 2 },
+  { content: "Je suis très déçu...", rating: 1 },
+  { content: "Une perte de temps et d'argent... :(", rating: 0 }
+]
+
+REVIEWS_FOR_CLIENT = [
+  { content: "Une magnifique expérience. Merci!", rating: 5 },
+  { content: "Un chouette partage. Très ponctuel et agréable.", rating: 4 },
+  { content: "C'était très instructif", rating: 3 },
+  { content: "Ce client est sympathique, mais il était en retard...", rating: 2 },
+  { content: "Je suis très déçu...", rating: 1 },
+  { content: "Ne prenez pas ce client. Il était en retard et très désagréable.", rating: 0 }
+]
+
 puts "creating client"
 titeuf = User.new(
   firstname: "Titeuf",
@@ -113,25 +131,41 @@ end
 
 puts "creating 10 coaches"
 10.times do
-  coach = User.new(email: Faker::Internet.email, password: "123456", firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, description: Faker::Lorem.paragraphs, age: (11..60).to_a.sample, status: "coach", hourly_price_cents: (2000..8000).to_a.sample, speciality: User::SPECIALIZATIONS.sample, business_expertise: User::BUSINESS_EXPERTISES.sample)
+  coach = User.new(email: Faker::Internet.email, password: "123456", firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, description: Faker::Lorem.paragraphs, age: (11..60).to_a.sample, status: "coach", hourly_price_cents: (2000..8000).to_a.sample.round(-2), speciality: User::SPECIALIZATIONS.sample, business_expertise: User::BUSINESS_EXPERTISES.sample)
   coach.remote_avatar_url = Faker::Avatar.image("50x50")
   coach.save!
 end
 
 puts "creating 10 coaches all sectors"
 10.times do
-  coach = User.new(email: Faker::Internet.email, password: "123456", firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, description: Faker::Lorem.paragraphs, age: (11..60).to_a.sample, status: "coach", hourly_price_cents: (2000..8000).to_a.sample, speciality: User::SPECIALIZATIONS.sample, business_expertise: 'tous secteurs')
+  coach = User.new(email: Faker::Internet.email, password: "123456", firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, description: Faker::Lorem.paragraphs, age: (11..60).to_a.sample, status: "coach", hourly_price_cents: (2000..8000).to_a.sample.round(-2), speciality: User::SPECIALIZATIONS.sample, business_expertise: 'tous secteurs')
   coach.remote_avatar_url = Faker::Avatar.image("50x50")
   coach.save!
 end
 
-puts "creating 100 bookings"
-100.times do
+puts "creating 50 future bookings "
+50.times do
   start_hour = DateTime.now + rand(7).day + rand(7).hour
   end_hour = start_hour + (1..2).to_a.shuffle.first.hour
   booking = Booking.create(coach: User.where(status: "coach").sample, start_time: start_hour, end_time: end_hour)
   booking.save!
 end
+
+puts "creating 50 past bookings with reviews"
+50.times do
+  start_hour = DateTime.now - rand(30).day + rand(24).hour
+  end_hour = start_hour + (1..2).to_a.shuffle.first.hour
+  coach = User.where(status: "coach").sample
+  booking = Booking.create(coach: coach, start_time: start_hour, end_time: end_hour)
+  booking.state = "passed"
+  booking.video_channel = "skype"
+  client = User.where(status: "coach").sample
+  booking.save!
+
+  Review.create!(REVIEWS_FOR_COACH.sample.merge(user: client, booking: booking))
+  Review.create!(REVIEWS_FOR_CLIENT.sample.merge(user: coach, booking: booking))
+end
+
 
 # puts "affecting booking to client"
 # 10.times do
