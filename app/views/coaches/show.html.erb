@@ -4,14 +4,22 @@
       <div class="card mt-3">
         <div class="row no-gutters">
           <div class="avatar-card">
-            <img src="<%= @user.avatar %>" class="avatar" alt="Avatar">
+            <img src="<%= @user.avatar %>" class="avatar avatar-large avatar-index" alt="Avatar">
           </div>
           <div class="col-md-8">
-            <div class="card-body">
-              <p><strong>Nom:</strong> <%= @user.firstname %> <%= @user.lastname %></p>
-              <p><strong>Age:</strong> <%= @user.age %></p>
-              <p><strong>Expertise:</strong> <%= @user.business_expertise %></p>
-              <div class="redbar"></div>
+            <div class="card-body info-metier">
+              <div>
+              <h4><%= @user.firstname %></h4>
+              <div class="colorbar"></div>
+              <p class="card-font">SPECIALISATION</p>
+              <p class="font-helve"><%= @user.speciality.capitalize %></p>
+              </div>
+              <div>
+                <p class="card-font">TARIF HORAIRE</p>
+                <p class="font-helve"><%= humanized_money_with_symbol(@user.hourly_price) %></p>
+                <p class="card-font">EXPERTISE SECTORIELLE</p>
+                <p class="font-helve"><%= @user.business_expertise.capitalize %></p>
+              </div>
             </div>
           </div>
         </div>
@@ -19,18 +27,24 @@
       <div class="coach-info mt-3">
         <div class="card-coach mt-3">
           <h3 class="pt-2">Description</h3>
+          <div class="colorbar"></div>
+          <br>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, velit nam? Officia, quam quibusdam asperiores laboriosam hic doloremque ratione cupiditate, maxime quis ab unde repellat incidunt. Eos dicta, maiores aspernatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam repudiandae alias totam ducimus. Animi nesciunt, a quidem voluptates perferendis corrupti dolorem fugit, tempora, nam qui totam nihil officiis natus. Vero. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo saepe amet sequi doloremque aperiam ipsum consectetur minus assumenda tempore quibusdam, eum illo consequuntur ipsam officia necessitatibus, praesentium et distinctio voluptates! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim eum, quo sapiente. Cum autem possimus odit nostrum quia voluptatibus aliquam illo, unde vero nam, architecto aperiam officia, aliquid voluptas, porro. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius magni architecto eaque cupiditate cum iure sequi fugiat atque laboriosam, doloremque nostrum quo exercitationem corrupti quae nisi praesentium, quisquam necessitatibus tempora!</p>
         </div>
         </div>
         <div class="coach-info mt-3">
         <div class="card-coach mt-1">
           <h3 class="pt-2">CV</h3>
+          <div class="colorbar"></div>
+          <br>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, velit nam? Officia, quam quibusdam asperiores laboriosam hic doloremque ratione cupiditate, maxime quis ab unde repellat incidunt. Eos dicta, maiores aspernatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam repudiandae alias totam ducimus. Animi nesciunt, a quidem voluptates perferendis corrupti dolorem fugit, tempora, nam qui totam nihil officiis natus. Vero. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo saepe amet sequi doloremque aperiam ipsum consectetur minus assumenda tempore quibusdam, eum illo consequuntur ipsam officia necessitatibus, praesentium et distinctio voluptates!</p>
         </div>
         </div>
         <div class="coach-info mt-3">
         <div class="card-coach mt-1">
           <h3 class="pt-2">Avis</h3>
+          <div class="colorbar"></div>
+          <br>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, velit nam? Officia, quam quibusdam asperiores laboriosam hic doloremque ratione cupiditate, maxime quis ab unde repellat incidunt. Eos dicta, maiores aspernatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam repudiandae alias totam ducimus. Animi nesciunt, a quidem voluptates perferendis corrupti dolorem fugit, tempora, nam qui totam nihil officiis natus. Vero. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo saepe amet sequi doloremque aperiam ipsum consectetur minus assumenda tempore quibusdam, eum illo consequuntur ipsam officia necessitatibus, praesentium et distinctio voluptates!</p>
         </div>
       </div>
@@ -41,6 +55,10 @@
         <img src="<%= @user.avatar %>" class="coach-calendar" alt="Avatar">
         <div class="card-body">
           <a class="btn btn-lg btn-primary" href="<%= booking_path%>">Vérifier la disponibilité</a>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <div id="calendar-visitor">
         </div>
       </div>
     </div>

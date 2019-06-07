@@ -3,8 +3,20 @@ class BookingPolicy < ApplicationPolicy
     def new?
       user.is_coach?
     end
+
+    def destroy?
+      record.coach == user
+    end
+
     def resolve
       scope.where(coach: user)
     end
   end
+
+  class VisitorScope < Scope
+    def resolve
+      scope.where(state: 'pending')
+    end
+  end
 end
+
