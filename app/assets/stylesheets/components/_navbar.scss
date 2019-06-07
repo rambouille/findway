@@ -26,11 +26,18 @@
   font-weight: bold;
 }
 
+.logo {
+  width: 50px;
+}
+
 .nav-item {
   h5 {
-    line-height: 1.5 !important;
+    line-height: 2.5 !important;
+     color: $my-blue;
+     font-size: 14px;    
     text-shadow: 1px 1px 2px $my-blue;
     color: rgba(20,20,20,0.8);
+
   }
 }
 
@@ -115,7 +122,7 @@ label {
     z-index: 200;
     position: absolute;
     top: 80%;
-    left: 77%;
+    left: 82%;
     width: 900px;
     transform: translate(-50%,-50%);
     opacity: 0;
