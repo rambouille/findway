@@ -34,4 +34,3 @@ class BookingsController < ApplicationController
     params.require(:booking).permit(:start_time, :weekly)
   end
 end
-

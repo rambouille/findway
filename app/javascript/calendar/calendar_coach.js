@@ -51,17 +51,17 @@ const displayCalendarCoach = () => {
       dateClick: function(){
         console.log('date clicked')
       },
-      eventClick: function(info) {
-        console.log('event clicked')
-        console.log(event.currentTarget)
-        console.log(info.el)
+      // eventClick: function(info) {
+      //   console.log('event clicked')
+      //   console.log(event.currentTarget)
+      //   console.log(info.el)
       //   info.el.remove();
       //   const destroyDispo = (event) => {
       //     const req = new XMLHttpRequest();
       //     req.open('DELETE', '/api/v1/bookings', false);
       //     req.send(null);
       //   }
-    },
+    // },
     eventDragStart: function(){
       console.log('event drag start')
     },
@@ -69,13 +69,42 @@ const displayCalendarCoach = () => {
       console.log('event drag stop')
     },
 
-
-    eventClick:  function(event, jsEvent, view) {
-      $('#modalTitle').html(event.title);
-      $('#modalBody').html(event.description);
-      $('#eventUrl').attr('href',event.url);
-      $('#calendarModal').modal();
+    eventClick: function(event, jsEvent, view) {
+      const booking_id = event.event._def.extendedProps.booking_id;
+      const client_id = event.event._def.extendedProps.client_id;
+      const state = event.event._def.extendedProps.state;
+      fetch(`/api/v1/bookings/${booking_id}`)
+        .then(response => response.json())
+        .then((data) => {
+            var state = data.state;
+            var day = data.day;
+            var start_hour = data.start_hour;
+            var end_hour = data.end_hour;
+            if (state === 'booked') {
+              var client_firstname = data.client_firstname;
+              var client_lastname = data.client_lastname;
+              var video_channel = data.video_channel
+              var client_avatar_url = data.client_avatar_urls.bright_face.url
+              var title = `Entretien réservé`;
+              var bodyText = `<p style="opacity: 0.6;"><i class="fas fa-user"></i>   ${client_firstname} ${client_lastname}</p>
+                          <p style="opacity: 0.6;"><i class="fas fa-calendar-day"></i>   ${day}</p>
+                          <p style="opacity: 0.6;"><i class="far fa-clock"></i>   ${start_hour} - ${end_hour}</p>
+                          <p style="opacity: 0.6;"><i class="fas fa-video"></i>   ${video_channel}</p>`;
+              var bodyImage = `<img src=${client_avatar_url} class="rounded-circle;" width="100px;" alt="avatar"/>`;
+            } else {
+              var title = `Entretien proposé`;
+              var bodyText = `<p style="opacity: 0.6;"><i class="fas fa-calendar-day"></i>   ${day}</p>
+                          <p style="opacity: 0.6;"><i class="far fa-clock"></i>   ${start_hour} - ${end_hour}</p>`;
+              var bodyImage = '';
+            }
+          $('#modalTitle').html(title);
+          $('#modalBodyText').html(bodyText);
+          $('#modalBodyImage').html(bodyImage);
+          $('#eventUrl').attr('href', 'https://www.google.com');
+          $('#calendarModal').modal();
+        });
     },
+
     eventDrop: function(){
       console.log('event drop')
         // call ajax?
