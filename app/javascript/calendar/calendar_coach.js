@@ -91,6 +91,7 @@ const displayCalendarCoach = () => {
                           <p style="opacity: 0.6;"><i class="far fa-clock"></i>   ${start_hour} - ${end_hour}</p>
                           <p style="opacity: 0.6;"><i class="fas fa-video"></i>   ${video_channel}</p>`;
               var bodyImage = `<img src=${client_avatar_url} class="rounded-circle;" width="100px;" alt="avatar"/>`;
+              // var baliseDelete = `<a data-confirm="Êtes vous sûr de supprimer cette réservation ?" class="fas fa-trash-alt" rel="nofollow" data-method="delete" href="/bookings/${booking_id}"></a>`
             } else {
               var title = `Entretien proposé`;
               var bodyText = `<p style="opacity: 0.6;"><i class="fas fa-calendar-day"></i>   ${day}</p>
@@ -100,7 +101,7 @@ const displayCalendarCoach = () => {
           $('#modalTitle').html(title);
           $('#modalBodyText').html(bodyText);
           $('#modalBodyImage').html(bodyImage);
-          $('#eventUrl').attr('href', 'https://www.google.com');
+          // $('#delButton').html(baliseDelete);
           $('#calendarModal').modal();
         });
     },

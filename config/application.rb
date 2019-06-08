@@ -17,6 +17,9 @@ module Findway
     config.load_defaults 5.2
 
     config.time_zone = "Paris"
+
+    config.i18n.default_locale = :fr
+
     config.active_record.default_timezone = :local
 
 
