@@ -77,21 +77,31 @@ const displayCalendarCoach = () => {
         .then(response => response.json())
         .then((data) => {
             var state = data.state;
-            var start_time = data.start_time;
-            var end_time = data.end_time;
+            var day = data.day;
+            var start_hour = data.start_hour;
+            var end_hour = data.end_hour;
             if (state === 'booked') {
               var client_firstname = data.client_firstname;
               var client_lastname = data.client_lastname;
+              var video_channel = data.video_channel
+              var client_avatar_url = data.client_avatar_urls.bright_face.url
               var title = `Entretien réservé`;
-              var body = `avec : ${client_firstname} ${client_lastname}`;
+              var bodyText = `<p style="opacity: 0.6;"><i class="fas fa-user"></i>   ${client_firstname} ${client_lastname}</p>
+                          <p style="opacity: 0.6;"><i class="fas fa-calendar-day"></i>   ${day}</p>
+                          <p style="opacity: 0.6;"><i class="far fa-clock"></i>   ${start_hour} - ${end_hour}</p>
+                          <p style="opacity: 0.6;"><i class="fas fa-video"></i>   ${video_channel}</p>`;
+              var bodyImage = `<img src=${client_avatar_url} class="rounded-circle;" width="100px;" alt="avatar"/>`;
             } else {
               var title = `Entretien proposé`;
-              var body = ``;
+              var bodyText = `<p style="opacity: 0.6;"><i class="fas fa-calendar-day"></i>   ${day}</p>
+                          <p style="opacity: 0.6;"><i class="far fa-clock"></i>   ${start_hour} - ${end_hour}</p>`;
+              var bodyImage = '';
             }
-        $('#modalTitle').html(title);
-        $('#modalBody').html(body);
-        $('#eventUrl').attr('href',event.url);
-        $('#calendarModal').modal();
+          $('#modalTitle').html(title);
+          $('#modalBodyText').html(bodyText);
+          $('#modalBodyImage').html(bodyImage);
+          $('#eventUrl').attr('href', 'https://www.google.com');
+          $('#calendarModal').modal();
         });
     },
 
