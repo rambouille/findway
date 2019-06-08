@@ -1,0 +1,16 @@
+<div class="booking-card d-flex  p-2">
+    <div class="booking-card-img">
+      <%= cl_image_tag booking.client.avatar, height:100, width:100, crop: :fill %>
+    </div>
+    <div class="booking-card-text justify-content-center ml-3">
+      <p><i class="fas fa-user"></i> <%= booking.client.fullname %> </p>
+      <p><i class="fas fa-calendar-day"></i>   <%= booking.french_date  %> </p>
+      <p><i class="far fa-clock"></i>   <%= booking.time_slot  %> </p>
+      <p><i class="fas fa-video"></i>   <%= booking.video_channel %> </p>
+    </div>
+    <div class="card-booking-buttons">
+      <% if booking.reviews.empty? && booking.end_time.past? %>
+        <%= link_to '<i class="fas fa-comments"></i>'.html_safe, new_booking_review_path(booking), class: "btn btn-outline-primary mt-3" %>
+      <% end %>
+    </div>
+</div>

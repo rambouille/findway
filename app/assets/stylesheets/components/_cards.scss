@@ -132,3 +132,11 @@
 .card-photos p {
   font-size: 18px;
 }
+
+.booking-card {
+  background: white;                         /* White background */
+  padding: 8px;                             /* Internal space */
+  border-radius: 4px;                        /* Small radius */
+  box-shadow: 0 10px 30px rgba(0,0,0,.1);
+  margin: 5px;
+}
