@@ -51,17 +51,17 @@ const displayCalendarCoach = () => {
       dateClick: function(){
         console.log('date clicked')
       },
-      eventClick: function(info) {
-        console.log('event clicked')
-        console.log(event.currentTarget)
-        console.log(info.el)
+      // eventClick: function(info) {
+      //   console.log('event clicked')
+      //   console.log(event.currentTarget)
+      //   console.log(info.el)
       //   info.el.remove();
       //   const destroyDispo = (event) => {
       //     const req = new XMLHttpRequest();
       //     req.open('DELETE', '/api/v1/bookings', false);
       //     req.send(null);
       //   }
-    },
+    // },
     eventDragStart: function(){
       console.log('event drag start')
     },
@@ -69,13 +69,32 @@ const displayCalendarCoach = () => {
       console.log('event drag stop')
     },
 
-
-    eventClick:  function(event, jsEvent, view) {
-      $('#modalTitle').html(event.title);
-      $('#modalBody').html(event.description);
-      $('#eventUrl').attr('href',event.url);
-      $('#calendarModal').modal();
+    eventClick: function(event, jsEvent, view) {
+      const booking_id = event.event._def.extendedProps.booking_id;
+      const client_id = event.event._def.extendedProps.client_id;
+      const state = event.event._def.extendedProps.state;
+      fetch(`/api/v1/bookings/${booking_id}`)
+        .then(response => response.json())
+        .then((data) => {
+            var state = data.state;
+            var start_time = data.start_time;
+            var end_time = data.end_time;
+            if (state === 'booked') {
+              var client_firstname = data.client_firstname;
+              var client_lastname = data.client_lastname;
+              var title = `Entretien réservé`;
+              var body = `avec : ${client_firstname} ${client_lastname}`;
+            } else {
+              var title = `Entretien proposé`;
+              var body = ``;
+            }
+        $('#modalTitle').html(title);
+        $('#modalBody').html(body);
+        $('#eventUrl').attr('href',event.url);
+        $('#calendarModal').modal();
+        });
     },
+
     eventDrop: function(){
       console.log('event drop')
         // call ajax?

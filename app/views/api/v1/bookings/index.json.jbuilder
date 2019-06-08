@@ -1,5 +1,7 @@
 json.array! @bookings do |booking|
+  json.booking_id booking.id
   if booking.client
+    json.client_id booking.client.id
     json.title "Client: #{booking.client.fullname}"
   else
     json.title ""
