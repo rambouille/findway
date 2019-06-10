@@ -31,6 +31,8 @@ const displayCalendarCoach = () => {
       momentTimezonePlugin,
       interactionPlugin
       ],
+      height: 500,
+      allDaySlot: false,
       titleFormat: 'DD/MM',
       slotLabelFormat: genericTimeFormat,
       eventTimeFormat: genericTimeFormat,
