@@ -2,6 +2,8 @@ class BookingsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, only: [ :new ]
 
+
+  # Cette action est pour es coaches
   def index
     @bookings = current_user.coach_bookings
     @future_bookings = @bookings.booked.where("start_time > ?", Time.now).order(:start_time)
@@ -29,6 +31,12 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @booking.destroy
     redirect_to '/bookings'
+  end
+
+  def dashboard_client
+    @bookings = current_user.client_bookings
+    @future_bookings = @bookings.where("start_time > ?", Time.now).order(:start_time)
+    @past_bookings = @bookings.where("end_time < ?", Time.now).order(start_time: :DESC)
   end
 
   private

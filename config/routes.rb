@@ -6,7 +6,13 @@ Rails.application.routes.draw do
   get 'pages/test', to: 'pages#test'
 
   resources :bookings, only: [ :index, :new, :create ]
+  get 'dashboard_client', to: 'bookings#dashboard_client', as: 'dashboard_client'
   resources :coaches, only: [ :index, :show ]
+  resources :coaches do
+    get 'book', to: 'coaches#see_slots', as: 'slots'
+    get 'book/:booking_id', to: 'coaches#book', as: 'book'
+    patch 'book/:booking_id', to: 'coaches#edit_booking'
+  end
   resources :bookings do
     resources :reviews, only: [:new, :create]
   end
