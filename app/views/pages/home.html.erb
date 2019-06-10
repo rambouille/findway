@@ -1,21 +1,30 @@
 <%= content_for(:navbar_class, "navbar-home") %>
 
- <div class="content">
+<div class="home-1">
+  <div class="container">
    <div class="top-box text-center">
      <h1>Find a way</h1>
-       <h2>Découvrez votre voie</h2>
+       <h2>La crème du coaching</h2>
         <div class="bouton text-center p-3">
-          <a href="/coaches" class="btn btn-primary btn-lg px-5 py-3 text-white"><strong>Trouver mon coach</strong></a>
+          <a href="/coaches" id="bouton-home" class="btn btn-danger btn-lg px-5 py-3"><strong>Trouver mon coach</strong></a>
         </div>
    </div>
- </div>
+  </div>
+  <div class="container">
+    <%= render 'shared/humaaans' %>
+  </div>
+</div>
+
+<div>
+    <%= render 'shared/bottom_bar' %>
+</div>
 
 <div class="container">
 
   <div class="contents">
 
     <div class="why-us text-center">
-      <h1>Pourquoi Find a Way ?</h1>
+      <h1>Qui sommes-nous ?</h1>
     </div>
 
     <div class="card-deck">
@@ -23,7 +32,7 @@
       <div id="cards", class="card">
         <%= image_tag 'photo-card-6.png', class: 'card-img-top' %>
         <div class="card-body">
-          <h5 class="card-title text-center">Pour tous !</h5>
+          <h5 class="card-title">Investis</h5>
           <p class="card-text">Quel que soit votre âge, votre niveau d'étude et votre expérience, trouvez le coach de vos rêves.</p>
         </div>
       </div>
@@ -31,7 +40,7 @@
       <div id="cards", class="card">
         <%= image_tag 'photo-card-7.png', class: 'card-img-top' %>
         <div class="card-body">
-          <h5 class="card-title text-center">Le suivi</h5>
+          <h5 class="card-title">Exigeants</h5>
           <p class="card-text">Nos coachs sont des professionnels aguerris, qui mettront tout en oeuvre pour vous aider dans vos recherches.</p>
         </div>
       </div>
@@ -39,28 +48,110 @@
       <div id="cards", class="card">
         <%= image_tag 'photo-card-8.png', class: 'card-img-top' %>
         <div class="card-body">
-          <h5 class="card-title text-center">95% de reconversion</h5>
+          <h5 class="card-title">Ambitieux</h5>
           <p class="card-text">95% des personnes que nos coachs accompagnent retrouvent un emploi dans le domaine qu'elles souhaitaient.</p>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="why-us text-center">
-      <h1>Nos actualités</h1>
+<div class="home-2">
+
+  <div class="top-bar">
+    <%= render 'shared/top_bar' %>
   </div>
 
-  <div class="card-photos">
-    <div class="card my-5";>
-      <div class="row no-gutters">
-        <div class="col-md-2">
-          <%= image_tag 'photo-card-1.png', class: 'card-img' %>
+  <div id="my-cards">
+
+    <div class="container">
+
+      <div class="actuality text-center">
+          <h1>Nos actualités</h1>
+      </div>
+
+      <div class="card-photos">
+        <div class="card my-5";>
+          <div class="row no-gutters">
+            <div class="col-md-2">
+              <%= image_tag 'photo-card-1.png', class: 'card-img' %>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Où travaillerons-nous dans 20 ans ? </h5>
+                <p class="card-text">Retour sur le salon de l'innovation de Hong-Kong où ont été présentés des espaces de travail particulièrement novateurs.</p>
+                <a href="#" class="text-muted">Voir plus</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Où travaillerons-nous dans 20 ans ? </h5>
-            <p class="card-text">Retour sur le salon de l'innovation de Hong-Kong où ont été présentés des espaces de travail particulièrement novateurs.</p>
-            <a href="#" class="text-muted">Voir plus</a>
+      </div>
+
+
+      <div class="card-photos">
+        <div class="card my-5";>
+          <div class="row no-gutters">
+            <div class="col-md-2">
+              <%= image_tag 'photo-card-2.png', class: 'card-img' %>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">En Suède, des bureaux au coeur de la nature</h5>
+                <p class="card-text">Les pays scandinaves, ultra-novateurs dans le bien-être au travail, nous surprennent de nouveau avec cette nouvelle façon d'exercer son activité professionnelle.</p>
+                <a href="#" class="text-muted">Voir plus</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-photos">
+        <div class="card my-5";>
+          <div class="row no-gutters">
+            <div class="col-md-2">
+              <%= image_tag 'photo-card-3.png', class: 'card-img' %>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">L'importance de l'esthétisme au travail</h5>
+                <p class="card-text">Des chercheurs ont récemment démontré que notre efficacité au travail était largement liée à notre cadre de travail.</p>
+                <a href="#" class="text-muted">Voir plus</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-photos">
+        <div class="card my-5";>
+          <div class="row no-gutters">
+            <div class="col-md-2">
+              <%= image_tag 'photo-card-4.png', class: 'card-img' %>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Le numérique en pleine croissance</h5>
+                <p class="card-text">Retour sur une transition numérique qui fait mal aux grands acteurs de l'imprimerie</p>
+                <a href="#" class="text-muted">Voir plus</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-photos">
+        <div class="card";>
+          <div class="row no-gutters">
+            <div class="col-md-2">
+              <%= image_tag 'photo-card-5.png', class: 'card-img' %>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Les femmes au travail : une place encore mal assurée. </h5>
+                <p class="card-text">Les inégalités salariales restent criantes dans certains secteurs, notamment ceux de l'ingénieurie.</p>
+                <a href="#" class="text-muted">Voir plus</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -68,71 +159,8 @@
   </div>
 
 
-  <div class="card-photos">
-    <div class="card my-5";>
-      <div class="row no-gutters">
-        <div class="col-md-2">
-          <%= image_tag 'photo-card-2.png', class: 'card-img' %>
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">En Suède, des bureaux au coeur de la nature</h5>
-            <p class="card-text">Les pays scandinaves, ultra-novateurs dans le bien-être au travail, nous surprennent de nouveau avec cette nouvelle façon d'exercer son activité professionnelle.</p>
-            <a href="#" class="text-muted">Voir plus</a>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="top-bar">
+    <%= render 'shared/bottom_bar_2' %>
   </div>
 
-  <div class="card-photos">
-    <div class="card my-5";>
-      <div class="row no-gutters">
-        <div class="col-md-2">
-          <%= image_tag 'photo-card-3.png', class: 'card-img' %>
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">L'importance de l'esthétisme et des couleurs dans notre environnement de travail</h5>
-            <p class="card-text">Des chercheurs ont récemment démontré que notre efficacité au travail était largement liée à notre cadre de travail.</p>
-            <a href="#" class="text-muted">Voir plus</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card-photos">
-    <div class="card my-5";>
-      <div class="row no-gutters">
-        <div class="col-md-2">
-          <%= image_tag 'photo-card-4.png', class: 'card-img' %>
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Le numérique devance largement les géants de l'imprimerie : 40% de perte d'emploi dans le secteur</h5>
-            <p class="card-text">Retour sur une transition numérique qui fait mal aux grands acteurs de l'imprimerie</p>
-            <a href="#" class="text-muted">Voir plus</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card-photos">
-    <div class="card my-5";>
-      <div class="row no-gutters">
-        <div class="col-md-2">
-          <%= image_tag 'photo-card-5.png', class: 'card-img' %>
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Les femmes au travail : une place encore mal assurée. </h5>
-            <p class="card-text">Les inégalités salariales restent criantes dans certains secteurs, notamment ceux de l'ingénieurie.</p>
-            <a href="#" class="text-muted">Voir plus</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
