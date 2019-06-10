@@ -3,7 +3,7 @@ class BookingsController < ApplicationController
   before_action :set_user, only: [ :new ]
 
 
-  # Cette action est pour es coaches
+  # Cette action est pour les coaches
   def index
     @bookings = current_user.coach_bookings
     @future_bookings = @bookings.booked.where("start_time > ?", Time.now).order(:start_time)

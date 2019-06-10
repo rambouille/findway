@@ -12,22 +12,22 @@
       <div class="container">
         <h2 class="my-3">Créez une nouvelle disponibilité</h2>
         <div class="card-booking">
-        <%= simple_form_for @booking do |f| %>
-        <%= f.label "Date" %>
-        <%= f.date_select :start_time %>
-        <br>
-        <%= f.label "Horaire de début" %>
-        <%= f.time_select :start_time, ignore_date: true, minute_step: 15 %>
-        <%= f.label "Horaire de fin" %>
-        <%= f.time_select :end_time, ignore_date: true, minute_step: 15 %>
-        <%= f.input :weekly %>
-        <%= f.button :submit, class: "btn btn-primary" %>
-        <% end %>
+          <%= simple_form_for @booking do |f| %>
+            <%= f.label "Date" %>
+            <%= f.date_select :start_time %>
+            <br>
+            <%= f.label "Horaire de début" %>
+            <%= f.time_select :start_time, ignore_date: true, minute_step: 15 %>
+            <%= f.label "Horaire de fin" %>
+            <%= f.time_select :end_time, ignore_date: true, minute_step: 15 %>
+            <%= f.input :weekly %>
+            <%= f.button :submit, class: "btn btn-primary" %>
+          <% end %>
         </div>
         <div id="futur-bookings">
           <h2>Réservations prochaines</h2>
           <% @future_bookings.each do |booking| %>
-            <%= render 'booking_card', booking: booking %>
+            <%= render 'booking_coach_card', booking: booking %>
           <% end %>
         </div>
         <div id="past-bookings" class="mt-3">

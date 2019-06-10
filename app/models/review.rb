@@ -18,5 +18,4 @@ class Review < ApplicationRecord
   validates :content, presence: true, length: { minimum: 2,
     too_short: "Votre avis doit au moins contenir %{count} caractères" }
   validates :rating, presence: true
-
 end

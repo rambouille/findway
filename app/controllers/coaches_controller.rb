@@ -12,28 +12,21 @@ class CoachesController < ApplicationController
     @user = User.find(params[:id])
     bookings = @user.coach_bookings
     @reviews = []
-    bookings.each do |b|
-      if b.reviews.present?
-        @reviews << b.reviews.where(user: b.client).first
-      end
-    end
+    bookings.each { |b| @reviews << b.reviews.where(user: b.client).first if b.reviews.present? }
     @next_slot = @user.coach_bookings.where("start_time > ?", Time.now).where(client: nil).order(:start_time).first
   end
 
   def see_slots
     @coach = User.find(params[:coach_id])
     @bookings = @coach.coach_bookings.where("start_time > ?", Time.now).where(client: nil).order(:start_time)
-  end
-
-  def book
-    @booking = Booking.find(params[:booking_id])
-    @price = @booking.coach.hourly_price_cents * (@booking.end_time - @booking.start_time) / 3600 /100
+    # @booking = Booking.find(params[:booking_id])
+    # @price = @booking.coach.hourly_price_cents * (@booking.end_time - @booking.start_time) / 3600 /100
   end
 
   def edit_booking
     @booking = Booking.find(params[:booking_id])
     @booking.client = current_user
     @booking.save
-    redirect_to coach_path(@booking.coach)
+    redirect_to dashboard_client_path
   end
 end
