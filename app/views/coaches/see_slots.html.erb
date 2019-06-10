@@ -1,0 +1,19 @@
+<div class="container">
+  <div id="slots">
+    <h1>Réserver un créneau</h1>
+    <% @bookings.group_by(&:french_date).each do |french_date, bookings| %>
+      <div class="card-day">
+        <div class="card-day-date text-center">
+          <h4><%= french_date %></h4>
+        </div>
+        <div class="card-day-bookings d-flex justify-content-center">
+          <% bookings.each do |booking| %>
+            <%= link_to "#{booking.start_time.strftime('%Hh%M')}", coach_book_path(@coach, booking), class: 'btn btn-success mx-1'  %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div id="coach-infos">
+  </div>
+</div>
