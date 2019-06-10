@@ -64,6 +64,7 @@ class Booking < ApplicationRecord
   private
 
   def set_amount
-    self.amount_cents = self.coach.hourly_price_cents * (1 + COMMISSION_RATE)
+    hourly_price_with_commission = self.coach.hourly_price_cents * (1 + COMMISSION_RATE)
+    self.amount_cents = hourly_price_with_commission * (end_time - start_time) / 3600
   end
 end
