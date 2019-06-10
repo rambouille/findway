@@ -1,21 +1,23 @@
-<div class="booking-card d-flex  p-2">
-    <div class="booking-card-img">
-      <%= cl_image_tag booking.client.avatar, height:100, width:100, crop: :fill %>
+<div class="booking-card d-flex p-2 mt-3">
+    <div class="avatar-large">
+      <img src="<%= booking.client.avatar %>" alt="avatar" class="avatar avatar-large avatar-index">
     </div>
+    <div class="d-flex booking-info">
     <div class="booking-card-text justify-content-center ml-3">
-      <p><i class="fas fa-user"></i> <%= booking.client.fullname %> </p>
+      <p><%= booking.client.fullname %> </p>
+      <p class="colorbar"></p>
       <p><i class="fas fa-calendar-day"></i>   <%= booking.french_date  %> </p>
       <p><i class="far fa-clock"></i>   <%= booking.time_slot  %> </p>
       <p><i class="fas fa-video"></i>   <%= booking.video_channel %> </p>
     </div>
     <div class="card-booking-buttons">
       <% if booking.reviews.empty? && booking.end_time.past? %>
-        <%= link_to '<i class="far fa-heart"></i>'.html_safe, new_booking_review_path(booking), class: "btn btn-outline-primary mt-3" %>
+        <%= link_to '<i class="far fa-heart"></i>'.html_safe, new_booking_review_path(booking), class: "btn btn-outline-primary mt-2" %>
       <% end %>
       <% if booking.start_time.future? %>
-        <%= link_to 'x', booking_path(booking), method: :delete, class: "btn btn-outline-primary mt-3" %>
-        <%= link_to '<i class="fas fa-comments"></i>'.html_safe, "messages_path(booking.client, booking.coach, booking.coach)", class: "btn btn-outline-primary mt-3" %>
-
+        <%= link_to 'x', booking_path(booking), method: :delete, class: "btn btn-outline-primary mt-2" %>
+        <%= link_to '<i class="fas fa-comments"></i>'.html_safe, "messages_path(booking.client, booking.coach, booking.coach)", class: "btn btn-outline-primary mb-2" %>
       <% end %>
+    </div>
     </div>
 </div>
