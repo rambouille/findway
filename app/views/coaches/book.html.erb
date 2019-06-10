@@ -1,0 +1,9 @@
+<div class="container card-confirmation-booking">
+  <h2>Confirmez-vous ce rendez-vous?</h2>
+  <p><%= @booking.french_date %></p>
+  <p><%= @booking.time_slot %></p>
+  <p><%= @price.to_i %> €</p>
+  <%= link_to 'Réserver', coach_book_path(@booking.coach, @booking), class: 'btn btn-primary', method: :patch  %>
+  <%= link_to 'Retour', coach_slots_path(@booking.coach), class: 'btn btn-secondary'  %>
+</div>
+
