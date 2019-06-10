@@ -13,7 +13,7 @@ REVIEWS_FOR_COACH = [
   { content: "Une magnifique expérience. Merci!", rating: 5 },
   { content: "C'était très agréable. Ce coach m'a vraiment aidé!", rating: 4 },
   { content: "C'était très instructif", rating: 3 },
-  { content: "Ce coach est sympathique et à l'écoute, mais était en retard...", rating: 2 },
+  { content: "Ce coach est sympathique, mais il était en retard...", rating: 2 },
   { content: "Je suis très déçu...", rating: 1 },
   { content: "Une perte de temps et d'argent... :(", rating: 0 }
 ]

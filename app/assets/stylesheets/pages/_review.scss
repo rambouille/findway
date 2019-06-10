@@ -9,6 +9,21 @@ position: sticky;
 top: 0;
 }
 
+#futur-bookings {
+  h2 {
+    margin-top: 20px;
+  }
+}
+
+.booking-info {
+  justify-content: space-between;
+  width: 70%;
+}
+
+select {
+  background-color: white;
+}
+
 .fc-head {
   background-color: $my-blue;
   color: white;
@@ -84,6 +99,9 @@ top: 0;
   align-items: center;
   justify-content: space-between;
   top: 0px;
+  h2 {
+    text-shadow: 1px 1px 2px #9FD2D6;
+  }
 }
 
 

@@ -8,6 +8,7 @@ class BookingsController < ApplicationController
     @bookings = current_user.coach_bookings
     @future_bookings = @bookings.booked.where("start_time > ?", Time.now).order(:start_time)
     @past_bookings = @bookings.booked.where("end_time < ?", Time.now).order(start_time: :DESC)
+    @booking = Booking.new
   end
 
   def new

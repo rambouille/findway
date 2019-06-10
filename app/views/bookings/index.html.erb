@@ -4,16 +4,30 @@
   <h1 class="text-center my-5">Mon planning</h1>
 </div>
 
-<hr>
+
 
 <div id="container-reviews">
   <div class="reviews">
     <div class="bookings_reviews">
       <div class="container">
+        <h2 class="my-3">Créez une nouvelle disponibilité</h2>
+        <div class="card-booking">
+        <%= simple_form_for @booking do |f| %>
+        <%= f.label "Date" %>
+        <%= f.date_select :start_time %>
+        <br>
+        <%= f.label "Horaire de début" %>
+        <%= f.time_select :start_time, ignore_date: true, minute_step: 15 %>
+        <%= f.label "Horaire de fin" %>
+        <%= f.time_select :end_time, ignore_date: true, minute_step: 15 %>
+        <%= f.input :weekly %>
+        <%= f.button :submit, class: "btn btn-primary" %>
+        <% end %>
+        </div>
         <div id="futur-bookings">
           <h2>Réservations prochaines</h2>
           <% @future_bookings.each do |booking| %>
-            <%= render 'booking_coach_card', booking: booking %>
+            <%= render 'booking_card', booking: booking %>
           <% end %>
         </div>
         <div id="past-bookings" class="mt-3">
@@ -30,7 +44,6 @@
   </div>
   <div id="calendar-coach" class="m-3">
     <div class="bouton-resa">
-      <a href="bookings/new" class="btn btn-primary my-3 d-flex justify-content-center"><p>Créer nouvelle disponibilité</p></a>
     </div>
   </div>
   <%= render 'calendar_modal' %>

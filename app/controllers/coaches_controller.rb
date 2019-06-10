@@ -10,6 +10,8 @@ class CoachesController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @reviews = @user.coach_bookings.reviews
+    raise
     @next_slot = @user.coach_bookings.where("start_time > ?", Time.now).where(client: nil).order(:start_time).first
   end
 
