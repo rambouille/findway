@@ -13,24 +13,16 @@
         <div id="futur-bookings">
           <h2>Réservations prochaines</h2>
           <% @future_bookings.each do |booking| %>
-              <div class="card text-center">
-                <p> <%= booking.start_time.strftime("%d-%m à %I:%M%p") %> </p>
-                <p> <%= (booking.end_time - booking.start_time) / 3600 %> h </p>
-                <p> <%= booking.client.fullname if booking.client %> </p>
-              </div>
+            <%= render 'booking_card', booking: booking %>
           <% end %>
         </div>
         <div id="past-bookings" class="mt-3">
           <h2>Réservations passées</h2>
-          <% @past_bookings.each do |booking| %>
-            <div class="card text-center my-2 p-3 card-booking">
-              <p> <%= booking.start_time.strftime("%d-%m à %I:%M%p") %> </p>
-              <p> <%= (booking.end_time - booking.start_time) / 3600 %>h </p>
-              <p> Client : <%=  booking.client.fullname if booking.client %> </p>
-              <% if booking.reviews.empty? %>
-                <%= link_to "Laisser un avis", new_booking_review_path(booking), class: "btn btn-primary mt-3" %>
-              <% end %>
-            </div>
+          <% @past_bookings.select { |booking| booking.reviews.empty? }.each do |booking| %>
+            <%= render 'booking_card', booking: booking %>
+          <% end %>
+          <% @past_bookings.select { |booking| !booking.reviews.empty? }.each do |booking| %>
+            <%= render 'booking_card', booking: booking %>
           <% end %>
         </div>
       </div>
@@ -43,21 +35,4 @@
   </div>
 </div>
 
-<div id="calendarModal" class="modal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
-          <h4 id="modalTitle" class="modal-title"></h4>
-      </div>
-      <div id="modalBody" class="modal-body">
-      <button type="button" class="btn btn-danger">Supprimer la reservation</button>
-      <button type="button" class="btn btn-info">Mon eleve</button>
-      </div>
-      <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
+<%= render 'calendar_modal' %>

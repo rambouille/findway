@@ -27,7 +27,22 @@ REVIEWS_FOR_CLIENT = [
   { content: "Ne prenez pas ce client. Il était en retard et très désagréable.", rating: 0 }
 ]
 
-puts "creating client"
+AVATAR_URLS = {
+    coaches: {
+      male: ['https://i.pravatar.cc/300?img=11', 'https://i.pravatar.cc/300?img=12', 'https://i.pravatar.cc/300?img=13', 'https://i.pravatar.cc/300?img=17', 'https://i.pravatar.cc/300?img=50', 'https://i.pravatar.cc/300?img=59', 'https://i.pravatar.cc/300?img=65', 'https://i.pravatar.cc/300?img=68', 'https://i.pravatar.cc/300?img=70', ],
+      female: ['https://i.pravatar.cc/300?img=16', 'https://i.pravatar.cc/300?img=23', 'https://i.pravatar.cc/300?img=35', 'https://i.pravatar.cc/300?img=44' ]
+    },
+    clients: {
+      male: ['https://i.pravatar.cc/300?img=4', 'https://i.pravatar.cc/300?img=7', 'https://i.pravatar.cc/300?img=18', 'https://i.pravatar.cc/300?img=51', 'https://i.pravatar.cc/300?img=55'],
+      female: ['https://i.pravatar.cc/300?img=1', 'https://i.pravatar.cc/300?img=5', 'https://i.pravatar.cc/300?img=9', 'https://i.pravatar.cc/300?img=23', 'https://i.pravatar.cc/300?img=24', 'https://i.pravatar.cc/300?img=25', 'https://i.pravatar.cc/300?img=30', 'https://i.pravatar.cc/300?img=38' ]
+    },
+}
+
+CLIENT_AVATAR_URL = [
+
+]
+
+puts "creating client Titeuf"
 titeuf = User.new(
   firstname: "Titeuf",
   lastname: "",
@@ -40,7 +55,7 @@ titeuf = User.new(
 titeuf.remote_avatar_url = "https://i.pinimg.com/originals/a7/6f/33/a76f33faee9ebf5390edfc298c33703f.gif"
 titeuf.save!
 
-puts "creating coach"
+puts "creating coach Pascal"
 pascal = User.new(
   firstname: "Pascal",
   lastname:"legrandfrere",
@@ -122,45 +137,65 @@ Review.create(
   content: "Titeuf est très gentil. Mais il n'avait pas fait les tests que je lui avais demandé...",
   rating: 4)
 
-puts "creating 10 clients"
-10.times do
-  client = User.new(email: Faker::Internet.email, password: "123456", firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, description: Faker::Lorem.paragraphs, age: (11..60).to_a.sample, status: "client")
-  client.remote_avatar_url = Faker::Avatar.image("50x50")
+puts "creating 5 male clients"
+5.times do
+  client = User.new(email: Faker::Internet.email, password: "123456", firstname: Faker::Name.male_first_name, lastname: Faker::Name.last_name, description: Faker::Lorem.paragraphs, age: (11..60).to_a.sample, status: "client")
+  client.remote_avatar_url = AVATAR_URLS[:clients][:male].sample
   client.save!
 end
 
-puts "creating 10 coaches"
-10.times do
-  coach = User.new(email: Faker::Internet.email, password: "123456", firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, description: Faker::Lorem.paragraphs, age: (11..60).to_a.sample, status: "coach", hourly_price_cents: (2000..8000).to_a.sample.round(-2), speciality: User::SPECIALIZATIONS.sample, business_expertise: User::BUSINESS_EXPERTISES.sample)
-  coach.remote_avatar_url = Faker::Avatar.image("50x50")
+puts "creating 5 female clients"
+5.times do
+  client = User.new(email: Faker::Internet.email, password: "123456", firstname: Faker::Name.female_first_name, lastname: Faker::Name.last_name, description: Faker::Lorem.paragraphs, age: (11..60).to_a.sample, status: "client")
+  client.remote_avatar_url = AVATAR_URLS[:clients][:female].sample
+  client.save!
+end
+
+puts "creating 5 male coaches"
+5.times do
+  coach = User.new(email: Faker::Internet.email, password: "123456", firstname: Faker::Name.male_first_name, lastname: Faker::Name.last_name, description: Faker::Lorem.paragraphs, age: (11..60).to_a.sample, status: "coach", hourly_price_cents: (2000..8000).to_a.sample.round(-2), speciality: User::SPECIALIZATIONS.sample, business_expertise: User::BUSINESS_EXPERTISES.sample)
+  coach.remote_avatar_url = AVATAR_URLS[:coaches][:male].sample
   coach.save!
 end
 
-puts "creating 10 coaches all sectors"
-10.times do
-  coach = User.new(email: Faker::Internet.email, password: "123456", firstname: Faker::Name.first_name, lastname: Faker::Name.last_name, description: Faker::Lorem.paragraphs, age: (11..60).to_a.sample, status: "coach", hourly_price_cents: (2000..8000).to_a.sample.round(-2), speciality: User::SPECIALIZATIONS.sample, business_expertise: 'tous secteurs')
-  coach.remote_avatar_url = Faker::Avatar.image("50x50")
+puts "creating 5 female coaches"
+5.times do
+  coach = User.new(email: Faker::Internet.email, password: "123456", firstname: Faker::Name.female_first_name, lastname: Faker::Name.last_name, description: Faker::Lorem.paragraphs, age: (11..60).to_a.sample, status: "coach", hourly_price_cents: (2000..8000).to_a.sample.round(-2), speciality: User::SPECIALIZATIONS.sample, business_expertise: User::BUSINESS_EXPERTISES.sample)
+  coach.remote_avatar_url = AVATAR_URLS[:coaches][:female].sample
   coach.save!
 end
 
-puts "creating 50 future bookings "
-50.times do
-  start_hour = DateTime.now + rand(7).day + rand(7).hour
+
+def create_past_booking(coach, client)
+ start_hour = (DateTime.now - rand(10).day + rand(24).hour).beginning_of_hour
+ end_hour = start_hour + (1..2).to_a.shuffle.first.hour
+ Booking.create!(coach: coach, client: client, start_time: start_hour, end_time: end_hour, state: 'booked', video_channel: 'skype')
+end
+
+def create_future_booking(coach, state = 'pending', client = nil, video_channel = nil)
+  start_hour = (DateTime.now + rand(7).day + rand(7).hour).beginning_of_hour
   end_hour = start_hour + (1..2).to_a.shuffle.first.hour
-  booking = Booking.create(coach: User.where(status: "coach").sample, start_time: start_hour, end_time: end_hour)
-  booking.save!
+  booking = Booking.create!(coach: coach, client: client, start_time: start_hour, end_time: end_hour, state: state, video_channel: video_channel)
+end
+
+puts "creating 100 future bookings without client"
+100.times do
+  coach = User.coach.sample
+  create_future_booking(coach)
+end
+
+puts "creating 40 future bookings with client"
+40.times do
+  coach = User.coach.sample
+  client = User.client.sample
+  create_future_booking(coach, 'booked', client, 'skype')
 end
 
 puts "creating 50 past bookings with reviews"
 50.times do
- start_hour = DateTime.now - rand(30).day + rand(24).hour
- end_hour = start_hour + (1..2).to_a.shuffle.first.hour
- coach = User.where(status: "coach").sample
- booking = Booking.create(coach: coach, start_time: start_hour, end_time: end_hour)
- booking.state = "booked"
- booking.video_channel = "skype"
- client = User.where(status: "client").sample
- booking.save!
+ coach = User.coach.sample
+ client = User.client.sample
+ booking = create_past_booking(coach, client)
 
  Review.create!(REVIEWS_FOR_COACH.sample.merge(user: client, booking: booking))
  Review.create!(REVIEWS_FOR_CLIENT.sample.merge(user: coach, booking: booking))
@@ -168,26 +203,17 @@ end
 
 puts "creating 5 past bookings with reviews for Pascal"
 5.times do
- start_hour = DateTime.now - rand(10).day + rand(24).hour
- end_hour = start_hour + (1..2).to_a.shuffle.first.hour
  coach = User.where(firstname: "Pascal").first
- client = User.where(status: "client").sample
- booking = Booking.create(coach: coach, client: client, start_time: start_hour, end_time: end_hour)
- booking.state = "booked"
- booking.video_channel = "skype"
- booking.save!
+ client = User.client.sample
+ booking = create_past_booking(coach, client)
 
  Review.create!(REVIEWS_FOR_COACH.sample.merge(user: client, booking: booking))
  Review.create!(REVIEWS_FOR_CLIENT.sample.merge(user: coach, booking: booking))
 end
 
-puts "creating 1 past bookings without review for Pascal"
- start_hour = DateTime.now - rand(10).day + rand(24).hour
- end_hour = start_hour + (1..2).to_a.shuffle.first.hour
+puts "creating 2 past bookings without review for Pascal"
+2.times do
  coach = User.where(firstname: "Pascal").first
- client = User.where(status: "client").sample
- booking = Booking.create(coach: coach, client: client, start_time: start_hour, end_time: end_hour)
- booking.state = "booked"
- booking.video_channel = "skype"
- booking.save!
-
+ client = User.client.sample
+ create_past_booking(coach, client)
+end

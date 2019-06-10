@@ -1,11 +1,15 @@
 class BookingPolicy < ApplicationPolicy
   class Scope < Scope
+    def show?
+      record.state == 'pending' || record.coach == user || record.client == user
+    end
+
     def new?
       user.is_coach?
     end
 
     def destroy?
-      record.coach == user
+      record.coach == user || record.client == user
     end
 
     def resolve
@@ -19,4 +23,3 @@ class BookingPolicy < ApplicationPolicy
     end
   end
 end
-
