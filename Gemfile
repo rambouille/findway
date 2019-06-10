@@ -20,6 +20,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'faker'
+gem 'rails-i18n'
 
 
 group :development do
