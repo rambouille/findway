@@ -16,16 +16,16 @@ json.array! @bookings do |booking|
   json.start_hour booking.start_time.strftime("%H:%M")
   json.end_hour booking.end_time.strftime("%H:%M")
   json.allDay false
-  if booking.state == "pending"
-    json.color "green"
+  if booking.start_time.past?
+    json.color "#F4F4F4"
+  elsif booking.state == "pending"
+    json.color "#49c5b6"
   elsif booking.state == "booked"
-    json.color "blue"
+    json.color "#9FD2D6"
   elsif booking.state == "payed"
-    json.color "blue"
-  elsif booking.state == "passed"
-    json.color "grey"
+    json.color "#9FD2D6"
   elsif booking.state == "cancelled"
-    json.color "red"
+    json.color "#FF4E4E"
   else
     json.color "orange"
   end
