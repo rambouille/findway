@@ -24,10 +24,10 @@
             <% unless user.review_ids.empty? %>
               <% nb_stars = user.rating_average.round.to_i %>
               <% nb_stars.times do %>
-                <span style="color: yellow"><i class="fas fa-star"></i></span>
+                <span style="color: #9FD2D6"><i class="fas fa-star"></i></span>
               <% end %>
               <% (5 - nb_stars).times do %>
-                <span style="color: yellow"><i class="far fa-star"></i></span>
+                <span style="color: #9FD2D6"><i class="far fa-star"></i></span>
               <% end %>
               <p><%= user.reviews.count %> avis</p>
             <% end %>
