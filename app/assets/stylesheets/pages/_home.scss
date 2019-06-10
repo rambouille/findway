@@ -1,12 +1,23 @@
 // Specific CSS for your home-page
-.content {
+.home-1 {
   display: flex;
   height: 100vh;
   align-items: center;
-  background-image: asset-url("Group.png");
+  background-color: #2F2FA2;
   background-size: cover;
+  justify-content: space-around;
 }
 
+
+.bottom-bar {
+  width: 1440px;
+  height: 112px;
+}
+
+.humaaans {
+  height: 500px;
+  padding-left: 100px;
+}
 
 .top-box {
   padding-left: 30px;
@@ -14,13 +25,11 @@
 
 
 .top-box h1{
-  text-shadow: 9px 0px 0px $my-red;
   color: white;
   font-size: 100px;
 }
 
 .top-box h2{
-  text-shadow: 13px 0px 23px $my-red;
   color: white;
   font-size: 30px;
   padding-bottom: 12px;
@@ -30,29 +39,14 @@
   height:90vh;
 }
 
-#cards {
-  position: relative;
-  &:after{
-    content: "";
-    position: absolute;
-    bottom: 0px;
-    background-image: linear-gradient(90deg,#9FD2D6,#1B264F);
-    border-radius:50px;
-    height: 3px;
-    width: 100%;
-
-  }
-}
-
 #cards img {
   height: 200px;
   object-fit:cover;
 }
 
 #cards h5 {
-  font-size: 20px;
-  text-shadow: 1px 0px 1px $my-blue;
-  color: rgba(20,20,20,0.8);
+  font-size: 30px;
+  color: $my-blue;
   padding-bottom: 20px;
 }
 
@@ -66,30 +60,57 @@
 }
 
 .card-img {
-  height: 190px;
+  height: 200px;
   object-fit: cover;
+  border: none;
+  border-radius: 0px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  margin: -1px;
 }
 
 .card-photos h5 {
   font-size: 20px;
-  color: black;
+  color: $my-blue;
 }
 
 .card-photos p {
   font-size: 18px;
 }
 
+.card-photos {
+  border: none;
+}
+
 .why-us h1 {
-  text-shadow: 1px 1px 2px $my-blue;
-  color: rgba(20,20,20,0.8);
+  color: $my-blue;
   font-size: 40px;
   margin: 70px 0;
 }
 
-.bouton-home {
-  background-color: rgba(200,200,200,0.5);
+.actuality h1 {
+  color: white;
+  font-size: 40px;
+  margin:0;
 }
 
-.bouton-home:hover {
-  background-color: $my-red;
+#bouton-home:hover {
+  background-color: white;
+  color: $my-red;
 }
+
+.top-bar {
+  width: 1440px;
+  height: 119px;
+}
+
+.bottom-bar-2 {
+  width: 1440px;
+  height: 119px;
+}
+
+#my-cards {
+  background-color:#2F2FA2;
+}
+
+
