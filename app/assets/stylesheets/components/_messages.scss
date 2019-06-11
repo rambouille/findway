@@ -17,15 +17,34 @@
 }
 
 .message {
-  display: flex;
   margin-bottom: 10px;
   &.right {
-    flex-direction: row-reverse;
-    .message-content {
-      background-color: #F2F9FC;
+    text-align: right;
+  }
+  .row-2 {
+    display: flex;
+    &.right {
+      text-align: right;
+      flex-direction: row-reverse;
+      .message-content {
+        background-color: #F2F9FC;
+      }
     }
   }
 }
+
+// .message {
+//   display: flex;
+//   margin-bottom: 10px;
+//   &.right {
+//     text-align: right;
+//     flex-direction: row-reverse;
+//     .message-content {
+//       background-color: #F2F9FC;
+//     }
+//   }
+// }
+
 .message-content {
   background-color: #F7F7F7;
   border-radius: 3px;

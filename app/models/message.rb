@@ -44,4 +44,18 @@ class Message < ApplicationRecord
       ChatRoom.find(chat_room_id).update new_for_coach: true
     end
   end
+
+  def french_date_time
+    date_time = created_at
+    if date_time.today?
+      date = "aujourd'hui"
+    else
+      day_in_week = date_time.strftime('%u').to_i
+      day = date_time.strftime('%d').to_i
+      month = date_time.strftime('%m').to_i
+      date = "#{DAYS[day_in_week]} #{day} #{MONTHS[month]}"
+    end
+    hour_minute = date_time.strftime('%Hh%M')
+    "#{date} à #{hour_minute}"
+  end
 end
