@@ -1,11 +1,12 @@
 .btn {
-  border-radius: 50px;
+  border-radius: 0px;
   margin: 10px;
 }
 
 .btn-primary {
   border: 2px solid $my-red;
-  color: $my-red;
+  color: white;
+  background-color: $my-red;
 }
 
 .btn-primary:hover {
