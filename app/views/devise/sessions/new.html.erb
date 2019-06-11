@@ -1,4 +1,7 @@
-<div class="container">
+<%= content_for(:navbar_class, "navbar-home") %>
+
+<div class="background-red">
+  <div class="background-blue">
   <div class="row justify-content-center">
     <div class="col-xs-12 col-sm-4 col-sm-offset-4">
       <div class="form-login">
@@ -10,14 +13,16 @@
         <%= f.input :email,
         required: false,
         autofocus: true,
+        placeholder: 'user@domain.com',
         input_html: { autocomplete: "email" } %>
         <%= f.input :password,
         required: false,
+        placeholder: '*******',
         input_html: { autocomplete: "current-password" } %>
         <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
       </div>
 
-      <div class="form-actions">
+      <div class="form-actions btn btn-primary">
         <%= f.button :submit, "Log in" %>
       </div>
       <% end %>
@@ -27,5 +32,20 @@
     </div>
   </div>
 </div>
+</div>
 
 
+<!-- <div class="background-red">
+  <div class="background-blue">
+    <div class="confirmation">
+      <h2>Confirmez-vous ce rendez-vous?</h2>
+      <br>
+      <h4><%#= @booking.french_date.capitalize %></h4>
+      <h4><%#= @booking.time_slot %></h4>
+      <h4><%#= @price.to_i %> €</h4>
+      <br>
+      <%#= link_to 'Réserver', coach_book_path(@booking.coach, @booking), class: 'btn btn-primary', method: :patch  %>
+      <%#= link_to 'Retour', coach_slots_path(@booking.coach), class: 'btn btn-danger'  %>
+    </div>
+  </div>
+</div> -->
