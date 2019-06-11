@@ -12,27 +12,27 @@
                         style: "width: 7rem; text-align: center;", class: "form-control filter", id: "min-filter" %>
         <%= number_field_tag :price_max, params[:price_max], in: 1...150, placeholder: "MAX €/H",
                         style: "width: 7rem; text-align: center;", class: "form-control filter", id: "max-filter" %>
-        <%=  submit_tag "Filtrer", class: "btn" %>
+        <%=  submit_tag "GO !", class: "btn" %>
       <% end %>
     </div>
 
     <div class="coachcards col-lg-8">
-      <div id="results-infos" class="pt-3">
+      <!-- div id="results-infos" class="pb-5">
         <p><strong><%= @users.count %> coachs</strong> trouvés</p>
-      </div>
+      </div> -->
       <% @users.each do |user| %>
         <a href="/coaches/<%=user.id%>" style="text-decoration : none; color : #000000;">
           <div class="card-index my-4">
             <div class="avatar-large">
               <img src="<%= user.avatar %>" alt="avatar" class="avatar avatar-large avatar-index">
-              <div class="text-center pt-2">
+              <div class="stars text-center pt-2">
                 <% unless user.review_ids.empty? %>
                   <% nb_stars = user.rating_average.round.to_i %>
                   <% nb_stars.times do %>
-                    <span style="color: #9FD2D6"><i class="fas fa-star"></i></span>
+                    <span style="color: #2F2FA2"><i class="fas fa-star"></i></span>
                   <% end %>
                   <% (5 - nb_stars).times do %>
-                    <span style="color: #9FD2D6"><i class="far fa-star"></i></span>
+                    <span style="color: #2F2FA2"><i class="far fa-star"></i></span>
                   <% end %>
                   <p><%= user.reviews.count %> avis</p>
                 <% end %>
@@ -49,8 +49,7 @@
                      <p class="font-helve"><%= user.speciality.capitalize %></p>
                      <p class="card-font">EXPERTISE SECTORIELLE</p>
                      <p class="font-helve"><%= user.business_expertise.capitalize %></p>
-                  </div>
-                  <div>
+
                     <p class="card-font">TARIF HORAIRE</p>
                     <p class="font-helve"><%= humanized_money_with_symbol(user.hourly_price) %></p>
                   </div>
