@@ -8,7 +8,9 @@
 }
 
 .fond-show {
-  background-color: $my-blue;
+  background: $my-blue;
+  padding-top: 90px;
+  color: $my-blue !important;
 }
 
 .coach-show {
@@ -55,10 +57,12 @@
 }
 
 .coach-info {
-  background-color: #fff;
+  background-color: white;
   background-clip: border-box;
   // border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 12px;
+  border-radius: 4px;
+  padding: 30px;                             /* Internal space */
+  box-shadow: 0 10px 30px rgba(0,0,0,.1);
 }
 
 .coach-calendar {
