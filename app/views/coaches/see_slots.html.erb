@@ -1,74 +1,29 @@
-<div class="container">
-  <h1 class="text-center mt-5">Réserver un créneau</h1>
-  <div class="container d-flex">
-    <div id="slots" class="flex-grow-1">
-      <% @bookings.group_by(&:french_date).each do |french_date, bookings| %>
-        <div class="card-day">
-          <div class="card-day-date text-center">
-            <h4><%= french_date %></h4>
-          </div>
-          <div class="card-day-bookings d-flex justify-content-center">
-            <% bookings.each do |booking| %>
-              <button type="button" class="btn btn-success mx-2" data-toggle="modal" data-target="#booking-<%= booking.id %>">
-                <%= booking.start_time.strftime('%Hh%M') %>
-              </button>
-
-              <div class="modal fade" id="booking-<%= booking.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">
-                        Confirmez-vous ce rendez-vous?
-                      </h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="container card-confirmation-booking">
-                        <h2></h2>
-                        <p><i class="fas fa-calendar-day"></i>  <%= booking.french_date %></p>
-                        <p><i class="far fa-clock"></i> <%= booking.time_slot %></p>
-                        <% price = booking.coach.hourly_price_cents * (booking.end_time - booking.start_time) / 3600 /100 %>
-                        <p><i class="fas fa-euro-sign"></i>  <%= price.to_i %></p>
-                      </div>
-                    </div>
-                    <div class="modal-footer d-flex align-items-center">
-                      <%= link_to 'Réserver', coach_book_path(booking.coach, booking), class: 'btn btn-primary', method: :patch  %>
-                      <%= link_to 'Retour', coach_slots_path(booking.coach), class: 'btn btn-secondary'  %>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div id="coach-infos" class="card-portrait">
-      <div class="my-4">
-        <div class="d-flex align-items-center">
-          <img src="<%= @coach.avatar %>" alt="avatar" class="avatar avatar-large avatar-index">
-          <div class="pt-2">
-            <h4><%= @coach.fullname %></h4>
-            <% unless @coach.review_ids.empty? %>
+  <%= content_for(:navbar_class, "navbar-home") %>
+  <div class="d-flex see-slot-color">
+    <div class="background-red">
+      <div id="coach-infos" class="card-portrait">
+          <div class="d-flex align-items-center">
+            <img src="<%= @coach.avatar %>" alt="avatar" class="avatar avatar-large avatar-index">
+            <div class="pt-2">
+              <h4><%= @coach.fullname %></h4>
+              <% unless @coach.review_ids.empty? %>
               <% nb_stars = @coach.rating_average.round.to_i %>
               <% nb_stars.times do %>
-                <span style="color: #9FD2D6"><i class="fas fa-star"></i></span>
+              <span style="color: #F64C72"><i class="fas fa-star"></i></span>
               <% end %>
               <% (5 - nb_stars).times do %>
-                <span style="color: #9FD2D6"><i class="far fa-star"></i></span>
+              <span style="color: #F64C72"><i class="far fa-star"></i></span>
               <% end %>
               <span>  <%= @coach.reviews.count %> avis</span>
-            <% end %>
+              <% end %>
+            </div>
           </div>
-        </div>
 
-        <div class="index-info-calendar">
-          <div class="index-info">
+          <div class="index-info-calendar">
+            <div class="index-info">
 
-            <div class="info-metier">
-              <div>
+              <div class="info-metier">
+                <div>
                  <p class="card-font">DESCRIPTION</p>
                  <p class="font-helve"><%= @coach.description.capitalize %></p>
                  <br>
@@ -78,15 +33,62 @@
                  <p class="card-font">EXPERTISE SECTORIELLE</p>
                  <p class="font-helve"><%= @coach.business_expertise.capitalize %></p>
                  <br>
-                <p class="card-font">TARIF HORAIRE</p>
-                <p class="font-helve"><%= humanized_money_with_symbol(@coach.hourly_price) %></p>
+                 <p class="card-font">TARIF HORAIRE</p>
+                 <p class="font-helve"><%= humanized_money_with_symbol(@coach.hourly_price) %></p>
+               </div>
+             </div>
+           </div>
+           <div class="index-calendar">
+           </div>
+       </div>
+     </div>
+   </div>
+   <div id="slots" class="flex-grow-1">
+  <h1 class="text-center mt-5">Réserver un créneau</h1>
+  <div class="wrap">
+    <% @bookings.group_by(&:french_date).each do |french_date, bookings| %>
+    <div class="card-day">
+      <div class="card-day-date text-center">
+        <h4><%= french_date %></h4>
+      </div>
+      <div class="card-day-bookings d-flex justify-content-center">
+        <% bookings.each do |booking| %>
+        <button type="button" class="btn btn-primary mx-2" data-toggle="modal" data-target="#booking-<%= booking.id %>">
+          <%= booking.start_time.strftime('%Hh%M') %>
+        </button>
+
+        <div class="modal fade" id="booking-<%= booking.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Confirmez-vous ce rendez-vous?
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="container card-confirmation-booking">
+                  <h2></h2>
+                  <p><i class="fas fa-calendar-day"></i>  <%= booking.french_date %></p>
+                  <p><i class="far fa-clock"></i> <%= booking.time_slot %></p>
+                  <% price = booking.coach.hourly_price_cents * (booking.end_time - booking.start_time) / 3600 /100 %>
+                  <p><i class="fas fa-euro-sign"></i>  <%= price.to_i %></p>
+                </div>
+              </div>
+              <div class="modal-footer d-flex align-items-center">
+                <%= link_to 'Réserver', coach_book_path(booking.coach, booking), class: 'btn btn-primary', method: :patch  %>
+                <%= link_to 'Retour', coach_slots_path(booking.coach), class: 'btn btn-secondary'  %>
               </div>
             </div>
           </div>
-          <div class="index-calendar">
-          </div>
         </div>
+        <% end %>
       </div>
     </div>
+    <% end %>
+  </div>
   </div>
 </div>
+

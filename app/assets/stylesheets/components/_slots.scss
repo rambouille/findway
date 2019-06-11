@@ -1,0 +1,16 @@
+#slots {
+  padding-left: 30px;
+}
+
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#coach-infos {
+  border-radius: 0px;
+  padding-top: 10px;     /* Small radius */
+  margin-left: 10px;
+  padding-right: 10px;
+}
