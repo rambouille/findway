@@ -1,3 +1,27 @@
 .btn {
   border-radius: 50px;
+  margin: 10px;
 }
+
+.btn-primary {
+  border: 2px solid $my-red;
+  color: $my-red;
+  font-weight: bold;
+}
+
+.btn-primary:hover {
+  background-color: $my-red;
+  color: $my-blue;
+  border: 2px solid $my-red;
+}
+
+.btn-danger {
+  color: $my-blue;
+  font-weight: bold;
+}
+
+.btn-danger:hover {
+  color: $my-red;
+  border: 2px solid $my-red;
+  background-color: $my-blue;
+  }
