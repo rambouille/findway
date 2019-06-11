@@ -1,14 +1,10 @@
-#big-container {
-  height: calc(100vh - 66px);
-}
-
 #summary {
-  height: 400px;
-  max-height: 100vh;
+  height: calc(100vh - 66px);
   overflow: scroll;
 }
 
 .messages {
+  height: calc(100vh - 66px - 48px - 120px);
   font-size: 14px;
   color: #868686;
   background-color: #ffffff;
@@ -18,7 +14,6 @@
   border-bottom-width: 0;
   overflow: scroll;
   padding-bottom: 60px;
-  flex-grow: 1;
 }
 
 .message {
@@ -70,7 +65,7 @@ input.form-control {
 }
 
 .card-channel {
-  width: 300px;
+  width: auto;
   padding-left: 20px;
   background: white;                         /* White background */
   border-radius: 0px;                        /* Small radius */
