@@ -1,11 +1,12 @@
 
 .card-index {
   background: white;                         /* White background */
-  padding: 30px;                             /* Internal space */
-  border-radius: 4px;                        /* Small radius */
+  padding: 30px;
+  margin:30px;                            /* Internal space */                  /* Small radius */
   box-shadow: 0 10px 30px rgba(0,0,0,.1);
   display: flex;
-  height: 210px;
+  height: 300px;
+  width: 400px;
 }
 
 .card-booking {
@@ -17,7 +18,7 @@
 
 .card-font {
   font-size: 12px;
-  color: grey;
+  color: $my-red;
   font-weight: lighter;
 }
 
@@ -43,7 +44,7 @@
   border-bottom-left-radius: 10px;
   animation-name: example;
   animation-duration: 0.25s;
-  border-left: 8px solid $my-red;
+  border-left: 8px solid $my-blue;
   box-shadow: 0 10px 10px rgba(0,0,0,0.22);
 }
 
@@ -58,7 +59,7 @@
 
 .colorbar {
   width: 15px;
-  border-bottom: 4px solid $my-red;
+  border-bottom: 2px solid $my-red;
   border-radius: 1px;
   margin-bottom: 10px;
 }
@@ -118,6 +119,7 @@
 .card-photos h5 {
   font-size: 20px;
   color: $my-blue;
+  border-radius: 0px;
   padding-bottom: 20px;
 }
 

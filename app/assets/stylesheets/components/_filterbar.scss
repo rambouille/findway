@@ -80,28 +80,40 @@ input#max-filter.form-control.filter {
       border-radius:5px;
       font-size: 20px;
       background-color: $my-red;
-      border-radius: 30px;
+      border-radius: 0px;
       padding: 5px 20px;
    }
 
    .btn:hover {
       color: $my-red;
       background-color: white;
-      border-radius: 30px;
-      border-color: $my-red;
+      border-radius: 0px;
+      border-color: none;
    }
 }
 
 .coachcards {
-  padding-top: 82px;
+  padding: 82px 20px;
   overflow-y: scroll;
   max-height: 100vh;
-  background-color: white;
+  background: linear-gradient($my-blue, $my-red);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.stars {
+  width: 119px;
+  color: $my-blue;
+}
+
+.index-info {
+  color: $my-blue;
 }
 
 
-
-
+#results-infos {
+  color: white;
+}
 
 // .form-inline {
 //  background: white;
