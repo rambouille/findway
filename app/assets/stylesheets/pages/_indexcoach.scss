@@ -1,0 +1,10 @@
+.indexcss {
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.formulaire .form-inline {
+  flex-direction: column;
+  text-decoration: none;
+}
