@@ -1,7 +1,8 @@
+ <%= content_for(:navbar_class, "navbar-home") %>
 <div class="flex-container fond-show">
   <div class="coach-show">
     <div class="coach-main">
-      <div class="card mt-3">
+      <div class="card-day mt-3">
         <div class="row no-gutters">
           <div class="avatar-card">
             <img src="<%= @user.avatar %>" class="avatar avatar-large avatar-index" alt="Avatar">
@@ -23,7 +24,6 @@
             </div>
           </div>
         </div>
-      <div class="coach-info">
         <div class="card-coach mt-3">
           <h3 class="pt-2">Description</h3>
           <div class="colorbar"></div>
@@ -31,8 +31,7 @@
           <p><%= @user.description %></p>
         </div>
       </div>
-      </div>
-      <div class="coach-info mt-3">
+      <div class="card-day mt-3">
         <div class="card-coach mt-1">
           <h3 class="pt-2">CV</h3>
           <div class="colorbar"></div>
@@ -40,7 +39,7 @@
           <p><%= @user.linkedin  %></p>
         </div>
       </div>
-      <div class="coach-info mt-3">
+      <div class="card-day mt-3">
         <div class="card-coach mt-1">
           <div class="card-title-coach">
           <div>
@@ -52,10 +51,10 @@
             <% unless @user.review_ids.empty? %>
               <% nb_stars = @user.rating_average.round.to_i %>
               <% nb_stars.times do %>
-                <span style="color: #9FD2D6"><i class="fas fa-star"></i></span>
+                <span style="color: #2F2FA2"><i class="fas fa-star"></i></span>
               <% end %>
               <% (5 - nb_stars).times do %>
-                <span style="color: #9FD2D6"><i class="far fa-star"></i></span>
+                <span style="color: #2F2FA2"><i class="far fa-star"></i></span>
               <% end %>
               <p class="text-center"><%= @user.reviews.count %> avis</p>
             <% end %>
@@ -66,10 +65,10 @@
           <p><% @reviews.each do |review| %></p>
           <% nb_stars = review.rating %>
               <% nb_stars.times do %>
-                <span style="color: #9FD2D6"><i class="fas fa-star"></i></span>
+                <span style="color: #2F2FA2"><i class="fas fa-star"></i></span>
               <% end %>
               <% (5 - nb_stars).times do %>
-                <span style="color: #9FD2D6"><i class="far fa-star"></i></span>
+                <span style="color: #2F2FA2"><i class="far fa-star"></i></span>
               <% end %>
               <br>
           <p><%= review.content  %></p>
@@ -85,7 +84,7 @@
 <!--         <div id="calendar-visitor">
         </div> -->
         <div id="next-dispo">
-          <div class="coach-info mt-3 text-center p-4">
+          <div class="card-day mt-3 text-center p-4">
             <div class="slot-coach">
               <h3>Prochain créneau</h3>
               <p><i class="fas fa-calendar-day"></i>   <%= @next_slot.french_date  %> </p>
