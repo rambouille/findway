@@ -38,6 +38,7 @@ class Booking < ApplicationRecord
   validate :end_must_be_after_start
 
   after_validation :set_amount
+  after_save :create_chat_room
 
   def end_must_be_after_start
     if start_time >= end_time
@@ -61,6 +62,12 @@ class Booking < ApplicationRecord
     "#{start_time.strftime('%Hh%M')} - #{end_time.strftime('%Hh%M')}"
   end
 
+  # create a chat_room as soon as a booking is booked by a client
+  def create_chat_room
+    if client
+      ChatRoom.create name: "#{coach.firstname} & #{client.firstname}", coach: coach, client: client
+    end
+  end
 
   private
 
@@ -68,4 +75,5 @@ class Booking < ApplicationRecord
     hourly_price_with_commission = self.coach.hourly_price_cents * (1 + COMMISSION_RATE)
     self.amount_cents = hourly_price_with_commission * (end_time - start_time) / 3600
   end
+
 end

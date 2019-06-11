@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'messages/create'
   devise_for :users
   root to: 'pages#home'
 
@@ -24,4 +25,9 @@ Rails.application.routes.draw do
       end
     end
   end
+  resources :chat_rooms, only: :show do
+    resources :messages, only: [ :create ]
+  end
+  mount ActionCable.server => "/cable"
+
 end

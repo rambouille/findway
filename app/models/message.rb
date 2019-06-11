@@ -13,11 +13,27 @@
 #
 
 class Message < ApplicationRecord
-  belongs_to :coach, class_name: "User", foreign_key: "coach_id"
-  belongs_to :client, class_name: "User", foreign_key: "client_id"
+  after_create :broadcast_message
 
-  enum author: [:client, :coach]
+  belongs_to :user, optional: true
+  belongs_to :chat_room
 
-  validates :content, presence: true, length: { minimum: 2,
+  # enum author: [:client, :coach]
+
+  validates :content, presence: true, length: { minimum: 1,
     too_short:  "Votre message doit au moins contenir %{count} caractères" }
+
+  def from?(some_user)
+    some_user == user
+  end
+
+  def broadcast_message
+    ActionCable.server.broadcast("chat_room_#{chat_room.id}", {
+      message_partial: ApplicationController.renderer.render(
+        partial: "messages/message",
+        locals: { message: self, user_is_messages_author: false }
+      ),
+      current_user_id: user.id
+    })
+  end
 end
