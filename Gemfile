@@ -22,7 +22,6 @@ gem 'webpacker'
 gem 'faker'
 gem 'rails-i18n'
 
-
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
