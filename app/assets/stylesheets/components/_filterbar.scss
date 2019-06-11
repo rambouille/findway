@@ -40,12 +40,10 @@ input:active {
 
 
 .form-control {
-  border-top: transparent;
-  border-left: transparent;
-  border-right: transparent;
-  border-bottom: 2px solid $my-blue;
+  border: 2px solid $my-red;
   opacity: 0.8;
-  border-radius: 0px;
+  border-radius: 33px;
+  background-color: transparent;
 }
 
 .form-inline {
