@@ -9,7 +9,7 @@
                 <div class="avatar-client">
                   <img src="<%= chat_room.client.avatar %>" class="avatar" alt="Avatar">
                 </div>
-                <div class="name"><%= chat_room.client.fullname %></div>
+                <div class="name pl-3"><%= chat_room.client.fullname %></div>
               </div>
               <div class="card-right notif">
                 <% if chat_room.new_for_coach %>
@@ -25,7 +25,7 @@
                 <div class="avatar-coach">
                   <img src="<%= chat_room.coach.avatar %>" class="avatar" alt="Avatar">
                 </div>
-                <div class="name"><%= chat_room.coach.fullname %></div>
+                <div class="name pl-3"><%= chat_room.coach.fullname %></div>
               </div>
               <div class="card-left notif">
                 <% if chat_room.new_for_client %>
