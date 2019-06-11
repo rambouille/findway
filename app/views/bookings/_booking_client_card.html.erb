@@ -16,7 +16,7 @@
       <% end %>
       <% if booking.start_time.future? %>
         <%= link_to 'x', booking_path(booking), method: :delete, class: "btn btn-outline-primary mt-3" %>
-        <%= link_to '<i class="fas fa-comments"></i>'.html_safe, "messages_path(booking.client, booking.coach, booking.coach)", class: "btn btn-outline-primary mt-3" %>
+        <%= link_to '<i class="fas fa-comments"></i>'.html_safe, chat_room_path(ChatRoom.where(client: booking.client, coach: booking.coach).first), class: "btn btn-outline-primary mt-3" %>
 
       <% end %>
     </div>

@@ -13,6 +13,7 @@
 
 class Message < ApplicationRecord
   after_create :broadcast_message
+  after_create :set_new
 
   belongs_to :user, optional: true
   belongs_to :chat_room
@@ -34,5 +35,13 @@ class Message < ApplicationRecord
       ),
       current_user_id: user.id
     })
+  end
+
+  def set_new
+    if user.coach?
+      ChatRoom.find(chat_room_id).update new_for_client: true
+    else
+      ChatRoom.find(chat_room_id).update new_for_coach: true
+    end
   end
 end

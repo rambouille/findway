@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'pages/test', to: 'pages#test'
 
-  resources :bookings, only: [ :index, :new, :create ]
+  resources :bookings, only: [ :new, :create ]
+  get 'dashboard_coach', to: 'bookings#index', as: 'dashboard_coach'
   get 'dashboard_client', to: 'bookings#dashboard_client', as: 'dashboard_client'
   resources :coaches, only: [ :index, :show ]
   resources :coaches do
