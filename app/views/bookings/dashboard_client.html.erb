@@ -1,7 +1,8 @@
-<div class="container client-bookings">
+  <%= content_for(:navbar_class, "navbar-home") %>
+<div class="client-bookings">
   <div class="container">
-    <div id="futur-bookings">
       <h2>Réservations prochaines</h2>
+    <div id="futur-bookings">
       <% @future_bookings.each do |booking| %>
         <%= render 'booking_client_card', booking: booking %>
       <% end %>
