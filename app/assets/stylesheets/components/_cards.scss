@@ -29,7 +29,7 @@
 }
 
 .index-info-calendar {
-  width: 50%;
+  width: 100%;
 }
 
 .info-metier {
@@ -146,20 +146,23 @@
 
 // card in booking for client
 .card-day {
-  background: white;                         /* White background */
-  padding: 30px;                             /* Internal space */
-  border-radius: 4px;                        /* Small radius */
-  box-shadow: 0 10px 30px rgba(0,0,0,.1);
+  background: linear-gradient($my-red, $my-blue);                         /* White background */
+  padding: 10px;                             /* Internal space */                       /* Small radius */
   margin: 2rem;
   margin-left: 0;
+  box-shadow: 0 1px 1px $my-red;
+  color: $my-blue;
+  .btn {
+    border-radius: 0px !important;
+    border: none;
+  }
 }
 
 .card-portrait {
   width: 35vw;
   padding-left: 30px;
-  background: white;                         /* White background */
+  background: transparent;                         /* White background */
   border-radius: 4px;                        /* Small radius */
-  box-shadow: 0 10px 30px rgba(0,0,0,.1);
   margin: 2rem;
   margin-left: 0;
 }

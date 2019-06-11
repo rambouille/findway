@@ -1,0 +1,19 @@
+<!-- <svg class="coach-book" viewBox="0 0 1440 1044" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="564" width="876" height="1044" fill="#2F2FA2"/>
+<rect x="-19" width="590" height="1044" fill="#F64C72"/>
+</svg> -->
+<div class="background-red">
+  <div class="background-blue">
+    <div class="confirmation">
+      <h2>Confirmez-vous ce rendez-vous?</h2>
+      <br>
+      <h4><%= @booking.french_date.capitalize %></h4>
+      <h4><%= @booking.time_slot %></h4>
+      <h4><%= @price.to_i %> €</h4>
+      <br>
+      <%= link_to 'Réserver', coach_book_path(@booking.coach, @booking), class: 'btn btn-primary', method: :patch  %>
+      <%= link_to 'Retour', coach_slots_path(@booking.coach), class: 'btn btn-danger'  %>
+    </div>
+  </div>
+</div>
+
