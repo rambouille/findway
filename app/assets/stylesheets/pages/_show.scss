@@ -8,7 +8,7 @@
 }
 
 .fond-show {
-  background: $my-blue;
+  background: linear-gradient($my-blue, $my-red);
   padding-top: 90px;
   color: $my-blue !important;
 }
@@ -58,7 +58,7 @@
 }
 
 .coach-info {
-  background-color: white;
+  background: rgba(255,255,255, 1);
   background-clip: border-box;
   // border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0px;

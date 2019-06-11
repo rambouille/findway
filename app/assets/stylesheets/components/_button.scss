@@ -10,8 +10,9 @@
 }
 
 .btn-primary:hover {
-  background-color: $my-red;
-  color: $my-blue;
+  background-color: white;
+  color: $my-red;
+  font-weight: bold;
   border: 2px solid $my-red;
 }
 
