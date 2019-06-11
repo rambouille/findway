@@ -1,3 +1,13 @@
+#big-container {
+  height: calc(100vh - 66px);
+}
+
+#summary {
+  height: 400px;
+  max-height: 100vh;
+  overflow: scroll;
+}
+
 .messages {
   font-size: 14px;
   color: #868686;
@@ -6,9 +16,9 @@
   border: 1px solid #ececec;
   border-top: none;
   border-bottom-width: 0;
-  max-height: calc(100vh - 300px);
   overflow: scroll;
   padding-bottom: 60px;
+  flex-grow: 1;
 }
 
 .message {
@@ -26,11 +36,6 @@
   border-radius: 3px;
   margin: 0 10px;
   padding: 11px 10px 8px 10px;
-}
-.avatar {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
 }
 
 #create-message {
@@ -53,12 +58,22 @@ input.form-control {
     box-shadow: none;
   }
 }
+
 .chat-header {
   background-color: #4F2F4C;
   color: white;
   padding: 10px 20px;
-  margin-top: 10px;
+  margin-top: 0.25rem;
   h4 {
     margin: 0;
   }
+}
+
+.card-channel {
+  width: 300px;
+  padding-left: 20px;
+  background: white;                         /* White background */
+  border-radius: 0px;                        /* Small radius */
+  // box-shadow: 0 10px 30px rgba(0,0,0,.1);
+  margin-left: 0;
 }

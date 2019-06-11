@@ -109,8 +109,13 @@ b.client = titeuf
 b.client_need = "Je suis complètement perdu. S'il vous plait aidez-moi!!"
 b.video_channel = "skype"
 b.state = "booked"
-b.save
+b.save!
 
+puts ""
+puts ""
+puts "!! Commenter la 1ere ligne du model message (appel de broadcast_message) si bug ici !!"
+puts ""
+puts ""
 puts "creating message from coach"
 Message.create(
   chat_room: ChatRoom.where(coach: pascal, client: titeuf).first,

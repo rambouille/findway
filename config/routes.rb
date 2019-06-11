@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   resources :chat_rooms, only: :show do
     resources :messages, only: [ :create ]
   end
+  # get 'messages', to: 'chat_rooms#index', as: 'messages'
   mount ActionCable.server => "/cable"
 
 end

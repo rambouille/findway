@@ -3,13 +3,12 @@
 # Table name: messages
 #
 #  id              :bigint           not null, primary key
-#  client_id       :bigint
-#  coach_id        :bigint
 #  content         :text
 #  attachment_path :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  author          :integer          default("client")
+#  chat_room_id    :integer
+#  user_id         :bigint
 #
 
 class Message < ApplicationRecord
