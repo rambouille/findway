@@ -10,7 +10,7 @@ $my-purple : #8154EF;
 $my-green : #49c5b6;
 
 .background-red {
-  background-color: #F64C72;
+  background: linear-gradient($my-blue, $my-red);
   height: 100vh;
 }
 
@@ -20,4 +20,19 @@ $my-green : #49c5b6;
   height: 100vh;
   background-color: #2F2FA2;
   vertical-align: middle;
+}
+
+.d-flex .background-red {
+  background-color: #2F2FA2;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  background: linear-gradient($my-blue, $my-red);
+}
+
+.see-slot-color {
+  background-color: $my-blue;
+  color: white !important;
+  padding-top: 90px;
+
 }
