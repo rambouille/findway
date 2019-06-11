@@ -13,11 +13,15 @@
 #
 
 class Message < ApplicationRecord
-  belongs_to :coach, class_name: "User", foreign_key: "coach_id"
-  belongs_to :client, class_name: "User", foreign_key: "client_id"
+  belongs_to :user, optional: true
+  belongs_to :chat_room
 
-  enum author: [:client, :coach]
+  # enum author: [:client, :coach]
 
-  validates :content, presence: true, length: { minimum: 2,
+  validates :content, presence: true, length: { minimum: 1,
     too_short:  "Votre message doit au moins contenir %{count} caractères" }
+
+  def from?(some_user)
+    some_user == user
+  end
 end

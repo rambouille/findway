@@ -1,6 +1,8 @@
 # if Rails.env.development?
   puts "deleting Messages"
   Message.destroy_all
+  puts "deleting ChatRooms"
+  ChatRoom.destroy_all
   puts "deleting Reviews"
   Review.destroy_all
   puts "deleting Bookings"
@@ -111,17 +113,15 @@ b.save
 
 puts "creating message from coach"
 Message.create(
-  coach: pascal,
-  client: titeuf,
-  content:"Hello Titeuf, Soon we will have a call. Please do this test. Pascal",
-  author: "coach")
+  chat_room: ChatRoom.where(coach: pascal, client: titeuf).first,
+  user: pascal,
+  content:"Hello Titeuf, Soon we will have a call. Please do this test. Pascal")
 
 puts "creating message from client"
 Message.create(
-  coach: pascal,
-  client: titeuf,
-  content:"Hi Coach, I'm doing my coach right now",
-  author: "client")
+  chat_room: ChatRoom.where(coach: pascal, client: titeuf).first,
+  user: titeuf,
+  content:"Hi Coach, I'm doing my test right now")
 
 puts "creating review from client"
 Review.create(
