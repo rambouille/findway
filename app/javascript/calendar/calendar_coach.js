@@ -33,11 +33,14 @@ const displayCalendarCoach = () => {
       ],
       height: 500,
       allDaySlot: false,
+      eventDurationEditable: false,
+      eventStartEditable: false,
       titleFormat: 'DD/MM',
       slotLabelFormat: genericTimeFormat,
       eventTimeFormat: genericTimeFormat,
       minTime: '08:00:00',
       maxTime: '20:00:00',
+      slotDuration: '01:00:00',
       firstDay: 1,
       header: {
         left: '',
@@ -50,20 +53,16 @@ const displayCalendarCoach = () => {
       eventPositioned: function() {
         console.log('positionned')
       },
-      dateClick: function(){
-        console.log('date clicked')
-      },
-      // eventClick: function(info) {
-      //   console.log('event clicked')
-      //   console.log(event.currentTarget)
-      //   console.log(info.el)
-      //   info.el.remove();
-      //   const destroyDispo = (event) => {
-      //     const req = new XMLHttpRequest();
-      //     req.open('DELETE', '/api/v1/bookings', false);
-      //     req.send(null);
-      //   }
-    // },
+      dateClick: function(info){
+        Rails.ajax({
+          url: '/api/v1/bookings',
+          type: 'POST',
+          data: info.dateStr,
+          success: function(data) {
+            location.reload();
+          }
+        });
+    },
     eventDragStart: function(){
       console.log('event drag start')
     },
