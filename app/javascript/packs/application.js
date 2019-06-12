@@ -5,9 +5,11 @@ import "bootstrap";
 import { displayCalendarVisitor } from "calendar/calendar_visitor";
 import { displayCalendarCoach } from "calendar/calendar_coach";
 
+
 if (window.location.pathname === "/dashboard_coach") {
   displayCalendarCoach();
-};
+}
+
 
 // displayCalendarVisitor();
 

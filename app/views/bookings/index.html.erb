@@ -68,13 +68,13 @@
 
 <div class="container">
 
-  <div class="contents">
+  <div id="contents-cards" class="contents">
 
     <div class="why-us text-center">
       <h1>Mes rdv futurs</h1>
     </div>
 
-    <div class="card-deck">
+    <div id="card-deck-center" class="card-deck">
 
       <div id="futur-bookings">
         <% @future_bookings.each do |booking| %>
@@ -101,12 +101,9 @@
 
 
       <div id="past-bookings" class="mt-3">
-          <% @past_bookings.select { |booking| booking.reviews.empty? }.each do |booking| %>
-            <%= render 'booking_coach_card', booking: booking %>
-          <% end %>
-          <% @past_bookings.select { |booking| !booking.reviews.empty? }.each do |booking| %>
-            <%= render 'booking_coach_card', booking: booking %>
-          <% end %>
+          <% (@past_bookings.select { |booking| booking.reviews.empty? }).uniq{ |x| x.client }.each do |booking| %>
+          <%= render 'booking_coach_card', booking: booking %>
+        <% end %>
       </div>
     </div>
   </div>
