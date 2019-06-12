@@ -19,13 +19,13 @@ json.array! @bookings do |booking|
   if booking.start_time.past?
     json.color "#F4F4F4"
   elsif booking.state == "pending"
-    json.color "#49c5b6"
+    json.color "#1282A2"
   elsif booking.state == "booked"
-    json.color "#9FD2D6"
+    json.color "#F64C72"
   elsif booking.state == "payed"
-    json.color "#9FD2D6"
+    json.color "#F64C72"
   elsif booking.state == "cancelled"
-    json.color "#FF4E4E"
+    json.color "#F64C72"
   else
     json.color "orange"
   end

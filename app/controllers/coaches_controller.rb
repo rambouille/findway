@@ -26,6 +26,7 @@ class CoachesController < ApplicationController
   def edit_booking
     @booking = Booking.find(params[:booking_id])
     @booking.client = current_user
+    @booking.booked!
     @booking.save
     redirect_to dashboard_client_path
   end

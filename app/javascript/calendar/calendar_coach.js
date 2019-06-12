@@ -38,14 +38,17 @@ const displayCalendarCoach = () => {
       titleFormat: 'DD/MM',
       slotLabelFormat: genericTimeFormat,
       eventTimeFormat: genericTimeFormat,
-      minTime: '08:00:00',
+      minTime: '8:00:00',
       maxTime: '19:00:00',
-      slotDuration: '01:00:00',
+      slotDuration: '02:00:00',
       firstDay: 1,
-      header: {
+      eventColor: '#F64C72',
+      eventBackgroundColor: '#F64C72',
+      header: false,
+      footer: {
         left: '',
-        center: 'title',
-        right: 'prev,next today,month,agendaWeek,agendaDay'
+        center: 'prev,next',
+        right: ''
       },
       eventRender: function() {
         console.log('rendered')
