@@ -5,7 +5,7 @@
     </p>
   </div>
   <div class="row-2 <%= user_is_messages_author ? "right" : "" %>">
-    <%= image_tag message.user.avatar_url, class: "avatar" %>
+    <%= image_tag message.user.avatar_url, class: "avatar" if message.user%>
     <div class="message-content"><%= message.content %></div>
   </div>
 </div>
