@@ -37,7 +37,8 @@ const displayCalendarCoach = () => {
       slotLabelFormat: genericTimeFormat,
       eventTimeFormat: genericTimeFormat,
       minTime: '08:00:00',
-      maxTime: '20:00:00',
+      maxTime: '19:00:00',
+      slotDuration: '01:00:00',
       firstDay: 1,
       header: {
         left: '',
