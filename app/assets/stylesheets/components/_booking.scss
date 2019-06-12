@@ -12,13 +12,19 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+#past-bookings {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .booking-card {
   width: 450px;
   margin-right: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
   border-radius: 0px;
-  box-shadow: 0 1px 1px $my-red;
 }
 
 .booking-card-text {
@@ -27,6 +33,29 @@
   color: $my-blue;
 }
 
-.booking-card-img {
+
+.booking-card-img .img{
   padding-top: 11px;
+  border-radius: 50px;
+}
+
+.humaaans2 {
+  height: 500px;
+}
+
+.booking-card-img img {
+  border-radius: 50px;
+}
+
+.planning {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  background: linear-gradient($my-blue, $my-red);
+  background-size: cover;
+  justify-content: space-around;
+}
+.bottom_pink {
+  height: 112px;
+  width: 100vw;
 }
