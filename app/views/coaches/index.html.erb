@@ -12,7 +12,7 @@
                         style: "width: 7rem; text-align: center;", class: "form-control filter", id: "min-filter" %>
         <%= number_field_tag :price_max, params[:price_max], in: 1...150, placeholder: "MAX €/H",
                         style: "width: 7rem; text-align: center;", class: "form-control filter", id: "max-filter" %>
-        <%=  submit_tag "GO !", class: "btn" %>
+        <%=  submit_tag "GO !", class: "btn btn-primary" %>
       <% end %>
     </div>
 
