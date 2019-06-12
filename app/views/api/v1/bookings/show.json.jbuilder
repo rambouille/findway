@@ -6,6 +6,7 @@ if @booking.client
   json.client_lastname @booking.client.lastname
   json.video_channel @booking.video_channel
   json.client_avatar_urls @booking.client.avatar
+  json.chat_room_id @booking.chat_room.id
 end
 json.start @booking.start_time.strftime("%Y-%m-%dT%H:%M:%S")
 json.end @booking.end_time.strftime("%Y-%m-%dT%H:%M:%S")

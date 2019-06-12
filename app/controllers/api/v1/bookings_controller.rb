@@ -20,7 +20,6 @@ class Api::V1::BookingsController < Api::V1::BaseController
   def destroy
     authorize @booking
     @booking.destroy
-    # head :no_content
   end
 
   private

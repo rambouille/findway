@@ -30,7 +30,7 @@ class Booking < ApplicationRecord
   belongs_to :coach, class_name: "User", foreign_key: "coach_id"
   belongs_to :client, class_name: "User", foreign_key: "client_id", optional: true
 
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 
   enum state: %i[pending booked payed cancelled]
   enum video_channel: %i[skype hangout facetime]
@@ -79,6 +79,13 @@ class Booking < ApplicationRecord
     end
   end
 
+  def chat_room
+    if client
+      ChatRoom.where(coach: coach, client: client).first
+    else
+      return nil
+    end
+  end
 
   private
 

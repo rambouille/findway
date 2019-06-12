@@ -84,25 +84,30 @@ const displayCalendarCoach = () => {
             if (state === 'booked') {
               var client_firstname = data.client_firstname;
               var client_lastname = data.client_lastname;
-              var video_channel = data.video_channel
-              var client_avatar_url = data.client_avatar_urls.bright_face.url
+              var video_channel = data.video_channel;
+              var chat_room_id = data.chat_room_id
+              var client_avatar_url = data.client_avatar_urls.bright_face.url;
               var title = `Entretien réservé`;
               var bodyText = `<p style="opacity: 0.6;"><i class="fas fa-user"></i>   ${client_firstname} ${client_lastname}</p>
                           <p style="opacity: 0.6;"><i class="fas fa-calendar-day"></i>   ${day}</p>
                           <p style="opacity: 0.6;"><i class="far fa-clock"></i>   ${start_hour} - ${end_hour}</p>
                           <p style="opacity: 0.6;"><i class="fas fa-video"></i>   ${video_channel}</p>`;
               var bodyImage = `<img src=${client_avatar_url} class="rounded-circle;" width="100px;" alt="avatar"/>`;
-              // var baliseDelete = `<a data-confirm="Êtes vous sûr de supprimer cette réservation ?" class="fas fa-trash-alt" rel="nofollow" data-method="delete" href="/bookings/${booking_id}"></a>`
+              var baliseChat = `<a class="btn btn-outline-primary mt-3" href="/chat_rooms/${chat_room_id}"><i class="fas fa-comments"></i></a>`
+              $('#chatButton').html(baliseChat);
+              $('#modalTitle').html(title);
+              $('#modalBodyText').html(bodyText);
+              $('#modalBodyImage').html(bodyImage);
             } else {
               var title = `Entretien proposé`;
               var bodyText = `<p style="opacity: 0.6;"><i class="fas fa-calendar-day"></i>   ${day}</p>
                           <p style="opacity: 0.6;"><i class="far fa-clock"></i>   ${start_hour} - ${end_hour}</p>`;
-              var bodyImage = '';
+              $('#modalTitle').html(title);
+              $('#modalBodyText').html(bodyText);
             }
-          $('#modalTitle').html(title);
-          $('#modalBodyText').html(bodyText);
-          $('#modalBodyImage').html(bodyImage);
-          // $('#delButton').html(baliseDelete);
+
+          var baliseDelete = `<a data-confirm="Êtes vous sûr de supprimer cette réservation ?" class="btn btn-outline-primary" rel="nofollow" data-method="delete" href="/bookings/${booking_id}">Annuler</a>`;
+          $('#delButton').html(baliseDelete);
           $('#calendarModal').modal();
         });
     },
