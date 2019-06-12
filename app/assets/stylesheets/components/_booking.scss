@@ -1,0 +1,32 @@
+.client-bookings {
+  background: linear-gradient($my-blue, $my-red);
+  padding-top: 100px;
+  h2 {
+    color: white;
+    text-align: center;
+  }
+}
+
+#futur-bookings {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.booking-card {
+  width: 450px;
+  margin-right: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 0px;
+  box-shadow: 0 1px 1px $my-red;
+}
+
+.booking-card-text {
+  width: 200px;
+  padding-top: 14px;
+  color: $my-blue;
+}
+
+.booking-card-img {
+  padding-top: 11px;
+}

@@ -1,7 +1,9 @@
-<div class="flex-container">
+
+<%= content_for(:navbar_class, "navbar-home") %>
+<div class="flex-container fond-show">
   <div class="coach-show">
     <div class="coach-main">
-      <div class="card mt-3">
+      <div class="coach-info mt-3">
         <div class="row no-gutters">
           <div class="avatar-card">
             <img src="<%= @user.avatar %>" class="avatar avatar-large avatar-index" alt="Avatar">
@@ -23,13 +25,11 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="coach-info mt-3">
         <div class="card-coach mt-3">
           <h3 class="pt-2">Description</h3>
           <div class="colorbar"></div>
           <br>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, velit nam? Officia, quam quibusdam asperiores laboriosam hic doloremque ratione cupiditate, maxime quis ab unde repellat incidunt. Eos dicta, maiores aspernatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam repudiandae alias totam ducimus. Animi nesciunt, a quidem voluptates perferendis corrupti dolorem fugit, tempora, nam qui totam nihil officiis natus. Vero. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo saepe amet sequi doloremque aperiam ipsum consectetur minus assumenda tempore quibusdam, eum illo consequuntur ipsam officia necessitatibus, praesentium et distinctio voluptates! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim eum, quo sapiente. Cum autem possimus odit nostrum quia voluptatibus aliquam illo, unde vero nam, architecto aperiam officia, aliquid voluptas, porro. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius magni architecto eaque cupiditate cum iure sequi fugiat atque laboriosam, doloremque nostrum quo exercitationem corrupti quae nisi praesentium, quisquam necessitatibus tempora!</p>
+          <p><%= @user.description %></p>
         </div>
       </div>
       <div class="coach-info mt-3">
@@ -37,7 +37,7 @@
           <h3 class="pt-2">CV</h3>
           <div class="colorbar"></div>
           <br>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, velit nam? Officia, quam quibusdam asperiores laboriosam hic doloremque ratione cupiditate, maxime quis ab unde repellat incidunt. Eos dicta, maiores aspernatur. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam repudiandae alias totam ducimus. Animi nesciunt, a quidem voluptates perferendis corrupti dolorem fugit, tempora, nam qui totam nihil officiis natus. Vero. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo saepe amet sequi doloremque aperiam ipsum consectetur minus assumenda tempore quibusdam, eum illo consequuntur ipsam officia necessitatibus, praesentium et distinctio voluptates!</p>
+          <p><%= @user.linkedin  %></p>
         </div>
       </div>
       <div class="coach-info mt-3">
@@ -52,10 +52,10 @@
             <% unless @user.review_ids.empty? %>
               <% nb_stars = @user.rating_average.round.to_i %>
               <% nb_stars.times do %>
-                <span style="color: #9FD2D6"><i class="fas fa-star"></i></span>
+                <span style="color: #2F2FA2"><i class="fas fa-star"></i></span>
               <% end %>
               <% (5 - nb_stars).times do %>
-                <span style="color: #9FD2D6"><i class="far fa-star"></i></span>
+                <span style="color: #2F2FA2"><i class="far fa-star"></i></span>
               <% end %>
               <p class="text-center"><%= @user.reviews.count %> avis</p>
             <% end %>
@@ -66,10 +66,10 @@
           <p><% @reviews.each do |review| %></p>
           <% nb_stars = review.rating %>
               <% nb_stars.times do %>
-                <span style="color: #9FD2D6"><i class="fas fa-star"></i></span>
+                <span style="color: #2F2FA2"><i class="fas fa-star"></i></span>
               <% end %>
               <% (5 - nb_stars).times do %>
-                <span style="color: #9FD2D6"><i class="far fa-star"></i></span>
+                <span style="color: #2F2FA2"><i class="far fa-star"></i></span>
               <% end %>
               <br>
           <p><%= review.content  %></p>
@@ -85,15 +85,15 @@
 <!--         <div id="calendar-visitor">
         </div> -->
         <div id="next-dispo">
-          <div class="coach-info mt-3">
-            <div class="card-body">
-              <a class="btn btn-lg btn-primary" href="<%= "/coaches/#{@user.id}/book" %>">Prendre rendez-vous</a>
-            </div>
-            <div class="card-coach">
-              <p>Prochain créneau</p>
+          <div class="coach-info mt-3 text-center mb-4">
+            <div class="slot-coach">
+              <h3>Prochain créneau</h3>
               <p><i class="fas fa-calendar-day"></i>   <%= @next_slot.french_date  %> </p>
               <p><i class="far fa-clock"></i>   <%= @next_slot.time_slot  %> </p>
               <p><i class="fas fa-euro-sign"></i>  <%= @next_slot.amount_cents.fdiv(100)  %></p>
+            </div>
+            <div class="card-body">
+              <a class="btn btn-lg btn-primary" href="<%= "/coaches/#{@user.id}/book" %>">Prendre rendez-vous</a>
             </div>
           </div>
         </div>

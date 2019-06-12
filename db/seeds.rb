@@ -67,6 +67,7 @@ pascal = User.new(
   password: "123456",
   status: "coach",
   hourly_price_cents: 3400,
+  linkedin: "Gagnez du temps dans l’orientation de vos enfants et aidez les à prendre confiance en eux ! En 3 séances avec un spécialiste de l’orientation collège, votre enfant aura trouvé sa voie et pourra se projeter en confiance dans l’avenir.",
   speciality: "coaching personnalisé",
   business_expertise: "tous secteurs"
   )
@@ -158,14 +159,14 @@ end
 
 puts "creating 5 male coaches"
 5.times do
-  coach = User.new(email: Faker::Internet.email, password: "123456", firstname: Faker::Name.male_first_name, lastname: Faker::Name.last_name, description: Faker::Lorem.paragraphs, age: (11..60).to_a.sample, status: "coach", hourly_price_cents: (2000..8000).to_a.sample.round(-2), speciality: User::SPECIALIZATIONS.sample, business_expertise: User::BUSINESS_EXPERTISES.sample)
+  coach = User.new(email: Faker::Internet.email, password: "123456", firstname: Faker::Name.male_first_name, lastname: Faker::Name.last_name, description: Faker::Lorem.paragraphs, linkedin: Faker::Lorem.paragraphs, age: (11..60).to_a.sample, status: "coach", hourly_price_cents: (2000..8000).to_a.sample.round(-2), speciality: User::SPECIALIZATIONS.sample, business_expertise: User::BUSINESS_EXPERTISES.sample)
   coach.remote_avatar_url = AVATAR_URLS[:coaches][:male].sample
   coach.save!
 end
 
 puts "creating 5 female coaches"
 5.times do
-  coach = User.new(email: Faker::Internet.email, password: "123456", firstname: Faker::Name.female_first_name, lastname: Faker::Name.last_name, description: Faker::Lorem.paragraphs, age: (11..60).to_a.sample, status: "coach", hourly_price_cents: (2000..8000).to_a.sample.round(-2), speciality: User::SPECIALIZATIONS.sample, business_expertise: User::BUSINESS_EXPERTISES.sample)
+  coach = User.new(email: Faker::Internet.email, password: "123456", firstname: Faker::Name.female_first_name, lastname: Faker::Name.last_name, description: Faker::Lorem.paragraphs, linkedin: Faker::Lorem.paragraphs, age: (11..60).to_a.sample, status: "coach", hourly_price_cents: (2000..8000).to_a.sample.round(-2), speciality: User::SPECIALIZATIONS.sample, business_expertise: User::BUSINESS_EXPERTISES.sample)
   coach.remote_avatar_url = AVATAR_URLS[:coaches][:female].sample
   coach.save!
 end

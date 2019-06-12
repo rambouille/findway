@@ -7,6 +7,12 @@
   box-shadow: 0 2px 8px 0 rgba(0,0,0,.25);
 }
 
+.fond-show {
+  background: linear-gradient($my-blue, $my-red);
+  padding-top: 90px;
+  color: $my-blue !important;
+}
+
 .coach-show {
   display: flex;
   flex-direction: row;
@@ -18,7 +24,9 @@
   width: 60vw;
   margin-right: 20px;
   margin-left: 20px;
-  padding: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 20px;
   h3, p {
     text-align: justify;
   }
@@ -44,15 +52,19 @@
 
 .coach-main {
   margin-right: 20px;
+  margin-bottom: 30px;
   display: flex;
   flex-direction: column;
 }
 
 .coach-info {
-  background-color: #fff;
+  background-color: white;
   background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 12px;
+  // border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0px;
+  padding: 10px;                             /* Internal space */
+  box-shadow: 0 10px 30px rgba(0,0,0,.1);
+
 }
 
 .coach-calendar {

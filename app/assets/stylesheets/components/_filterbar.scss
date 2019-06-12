@@ -1,66 +1,133 @@
-select.form-control.filter {
-   -webkit-appearance: none;
-   -moz-appearance: none;
-   text-indent: 1px;
-   text-overflow: ‘’;
-   outline: none !important;
-   box-shadow: none !important;
-}
+// select.form-control.filter {
+//    -webkit-appearance: none;
+//    -moz-appearance: none;
+//    text-indent: 1px;
+//    text-overflow: ‘’;
+//    outline: none !important;
+//    box-shadow: none !important;
+// }
 
-select:active {
-  outline: none !important;
-  box-shadow: none !important;
-}
+// select:active {
+//   outline: none !important;
+//   box-shadow: none !important;
+// }
 
-input.form-control.filter {
-   -webkit-appearance: none;
-   -moz-appearance: none;
-   text-indent: 1px;
-   text-overflow: ‘’;
-   outline: none !important;
-   box-shadow: none !important;
-}
+// input.form-control.filter {
+//    -webkit-appearance: none;
+//    -moz-appearance: none;
+//    text-indent: 1px;
+//    text-overflow: ‘’;
+//    outline: none !important;
+//    box-shadow: none !important;
+// }
 
-input:active {
-  outline: none !important;
-  box-shadow: none !important;
-}
+// input:active {
+//   outline: none !important;
+//   box-shadow: none !important;
+// }
 
 
-.filtre {
-  border-radius: 30px;
-  width: 100%;
-}
+// .filtre {
+//   border-radius: 30px;
+//   width: 100%;
+// }
 
-.filter {
-  border-bottom: 1px solid $my-blue;
-  margin-right: 5px;
-  border-radius: 0px;
-}
+// .filter {
+//   border-bottom: 1px solid $my-blue;
+//   margin-right: 5px;
+//   border-radius: 0px;
+// }
 
 
 .form-control {
-  border-top: transparent;
-  border-left: transparent;
-  border-right: transparent;
-  border-bottom: 2px solid $my-blue;
-  opacity: 0.8;
+  border: transparent;
+  color: white;
+  background-color: transparent;
   border-radius: 0px;
+  font-size: 20px;
 }
 
-.form-inline {
- background: white;
- width: 100%;
- padding-top: 30px;
- padding-bottom:20px;
- justify-content: space-around;
-                       /* White background */                            /* Internal space */                        /* Small radius */
- box-shadow: 0 10px 30px rgba(0,0,0,.1);
- .btn {
-  color: white;
-  border-radius:5px;
-  background-color: $my-blue;
-  border-color: $my-blue;
- }
+
+select {
+  appearance: none;
+  background: url("fleche.png") 96% / 5% no-repeat;
 }
+
+.form-control::placeholder {
+  color: white;
+}
+
+.form-control:focus {
+  background-color: transparent;
+  color: $my-red;
+}
+
+input#min-filter.form-control.filter {
+  width: 15rem !important;
+  text-align: left !important;
+}
+
+input#max-filter.form-control.filter {
+  width: 15rem !important;
+  text-align: left !important;
+}
+
+.filter-block {
+  background-color: $my-blue;
+  padding-top: 100px;
+    .btn {
+      color: white;
+      border-radius:5px;
+      font-size: 20px;
+      background-color: $my-red;
+      border-radius: 0px;
+      padding: 5px 20px;
+   }
+
+   .btn:hover {
+      color: $my-red;
+      background-color: white;
+      border-radius: 0px;
+      border-color: none;
+   }
+}
+
+.coachcards {
+  padding: 82px 20px;
+  overflow-y: scroll;
+  max-height: 100vh;
+  background: linear-gradient($my-blue, $my-red);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.stars {
+  width: 119px;
+  color: $my-blue;
+}
+
+.index-info {
+  color: $my-blue;
+}
+
+
+#results-infos {
+  color: white;
+}
+
+// .form-inline {
+//  background: white;
+//  width: 100%;
+//  padding-top: 30px;
+//  padding-bottom:20px;
+//  justify-content: space-around;
+//                        /* White background */                            /* Internal space */                        /* Small radius */
+//  box-shadow: 0 10px 30px rgba(0,0,0,.1);
+//  .btn {
+//   color: white;
+//   border-radius:5px;
+//   background-color: $my-blue;
+//   border-color: $my-blue;
+//  }
+// }
 
