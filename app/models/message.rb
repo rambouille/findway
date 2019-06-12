@@ -12,7 +12,7 @@
 #
 
 class Message < ApplicationRecord
-  after_create :broadcast_message
+  # after_create :broadcast_message
   after_create :set_new
 
   belongs_to :user, optional: true
