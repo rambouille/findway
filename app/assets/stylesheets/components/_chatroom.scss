@@ -27,10 +27,15 @@
   border-bottom-left-radius: 4px;
 }
 
+
 .card-channel:hover {
-  animation-name: example;
-  animation-duration: 0.25s;
-  border-left: 4px solid white;
+  margin-left: 20px;
+}
+
+#summary > a:hover{
+// .card-left.d-flex.align-items-center > .name:hover{
+  // color: red;
+  text-decoration: none;
 }
 
 .chatroom-background {

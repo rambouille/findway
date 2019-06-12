@@ -1,20 +1,22 @@
+<div class="dashboard-client-page">
   <%= content_for(:navbar_class, "navbar-home") %>
-<div class="client-bookings">
-  <div class="container">
+  <div class="client-bookings">
+    <div class="container">
       <h2>Réservations prochaines</h2>
-    <div id="futur-bookings">
-      <% @future_bookings.each do |booking| %>
+      <div id="futur-bookings">
+        <% @future_bookings.each do |booking| %>
         <%= render 'booking_client_card', booking: booking %>
-      <% end %>
-    </div>
-    <div id="past-bookings" class="mt-3">
-      <h2>Réservations passées</h2>
-      <% @past_bookings.select { |booking| booking.reviews.empty? }.each do |booking| %>
+        <% end %>
+      </div>
+      <div id="past-bookings" class="mt-3">
+        <h2>Réservations passées</h2>
+        <% @past_bookings.select { |booking| booking.reviews.empty? }.each do |booking| %>
         <%= render 'booking_client_card', booking: booking %>
-      <% end %>
-      <% @past_bookings.select { |booking| !booking.reviews.empty? }.each do |booking| %>
+        <% end %>
+        <% @past_bookings.select { |booking| !booking.reviews.empty? }.each do |booking| %>
         <%= render 'booking_client_card', booking: booking %>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
