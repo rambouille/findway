@@ -30,7 +30,11 @@ class BookingsController < ApplicationController
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy
-    redirect_to '/bookings'
+    if current_user.coach?
+      redirect_to '/dashboard_coach'
+    else
+      redirect_to '/dashboard_client'
+    end
   end
 
   def dashboard_client

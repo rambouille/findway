@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-  get 'messages/create'
   devise_for :users
   root to: 'pages#home'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'pages/test', to: 'pages#test'
 
-  resources :bookings, only: [ :new, :create ]
+  resources :bookings, only: [ :new, :create, :desctroy ]
   get 'dashboard_coach', to: 'bookings#index', as: 'dashboard_coach'
   get 'dashboard_client', to: 'bookings#dashboard_client', as: 'dashboard_client'
   resources :coaches, only: [ :index, :show ]
