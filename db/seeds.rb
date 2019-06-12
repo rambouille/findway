@@ -114,20 +114,6 @@ b.save
 
 puts ""
 puts ""
-puts "!! Commenter la 1ere ligne du model message (appel de broadcast_message) si bug ici !!"
-puts ""
-puts ""
-puts "creating message from coach"
-Message.create(
-  chat_room: ChatRoom.where(coach: pascal, client: titeuf).first,
-  user: pascal,
-  content:"Hello Titeuf, Soon we will have a call. Please do this test. Pascal")
-
-puts "creating message from client"
-Message.create(
-  chat_room: ChatRoom.where(coach: pascal, client: titeuf).first,
-  user: titeuf,
-  content:"Hi Coach, I'm doing my test right now")
 
 puts "creating review from client"
 Review.create(

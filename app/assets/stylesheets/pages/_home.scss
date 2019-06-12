@@ -3,14 +3,14 @@
   display: flex;
   height: 100vh;
   align-items: center;
-  background-color: #2F2FA2;
+  background: linear-gradient($my-blue, $my-red);
   background-size: cover;
   justify-content: space-around;
 }
 
 
 .bottom-bar {
-  width: 100%;
+  width: 100vw;
   height: 112px;
 }
 
@@ -94,26 +94,30 @@
 }
 
 #bouton-home:hover {
-  background-color: white;
-  color: $my-red;
+  background: linear-gradient($my-blue, $my-red);
+  color: white;
   border:none;
   transition: all 0.5s ease;
 }
 
 #bouton-home {
   color: white;
+  background-color: $my-blue;
   font-weight: 900;
+  border: none;
   border-radius: 0px;
   transition: all 0.5s ease;
+  background: linear-gradient($my-red, $my-blue);
+  border: none;
 }
 
 .top-bar {
-  width: 100%;
+  width: 100vw;
   height: 119px;
 }
 
 .bottom-bar-2 {
-  width: 100%;
+  width: 100vw;
   height: 119px;
 }
 

@@ -9,7 +9,7 @@
 
 .fond-show {
   background: linear-gradient($my-blue, $my-red);
-  padding-top: 90px;
+  padding: 95px;
   color: $my-blue !important;
 }
 
@@ -21,7 +21,7 @@
 }
 
 .card-coach {
-  width: 60vw;
+  width: 90%;
   margin-right: 20px;
   margin-left: 20px;
   padding-right: 20px;
@@ -51,7 +51,6 @@
 }
 
 .coach-main {
-  margin-right: 20px;
   margin-bottom: 30px;
   display: flex;
   flex-direction: column;
