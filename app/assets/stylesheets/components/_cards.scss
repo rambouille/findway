@@ -7,6 +7,7 @@
   display: flex;
   height: 300px;
   width: 400px;
+  border-radius: 4px;
 }
 
 .card-booking {
@@ -19,7 +20,7 @@
 .card-font {
   font-size: 12px;
   color: $my-red;
-  font-weight: lighter;
+  font-weight: bolder;
 }
 
 .font-helve {
@@ -37,6 +38,9 @@
   display: flex;
   justify-content: space-between;
   padding-top: 20px;
+  p {
+    font-size: 16px;
+  }
 }
 
 .card-index:hover {
@@ -44,7 +48,7 @@
   border-bottom-left-radius: 10px;
   animation-name: example;
   animation-duration: 0.25s;
-  border-left: 8px solid $my-blue;
+  border-left: 8px solid $my-red;
   box-shadow: 0 10px 10px rgba(0,0,0,0.22);
 }
 
@@ -81,6 +85,10 @@
   font-size: 30px;
   color: $my-blue;
   padding-bottom: 20px;
+}
+
+#cards {
+  border-radius: 4px;
 }
 
 .card-title {
@@ -155,15 +163,19 @@
 
 // card in booking for client
 .card-day {
-  background: linear-gradient($my-red, $my-blue);                         /* White background */
-  padding: 10px;                             /* Internal space */                       /* Small radius */
+  background-color: white;                         /* White background */
+  padding: 10px;
+  border-radius: 4px;                            /* Internal space */                       /* Small radius */
   margin: 2rem;
   margin-left: 0;
-  box-shadow: 0 1px 1px $my-red;
   color: $my-blue;
   .btn {
-    border-radius: 0px !important;
-    border: none;
+    border-radius: 4px !important;
+    border: 2px solid $my-red;
+
+  }
+  h4 {
+    color: $my-blue;
   }
 }
 

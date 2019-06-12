@@ -1,15 +1,13 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon <%= yield(:navbar_class) %>">
+
   <%= link_to "/", class: "navbar-brand" do %>
     <%= image_tag 'gouvernail.png', class: "logo" %>
   <% end %>
-  <%= current_user.fullname if current_user %>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
 
-
+ <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+   <span class="navbar-toggler-icon"></span>
+ </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
@@ -36,7 +34,9 @@
             <% if current_user.coach? %>
               <%= link_to "Messages", chat_room_path(current_user.coach_chat_rooms.first.id), class: "nav-link" %>
             <% else %>
-              <%= link_to "Messages", chat_room_path(current_user.client_chat_rooms.first.id), class: "nav-link" %>
+              <% if current_user.client_chat_rooms.any? %>
+                <%= link_to "Messages", chat_room_path(current_user.client_chat_rooms.first.id), class: "nav-link" %>
+              <% end %>
             <% end %>
           </li>
           <li class="nav-item active">

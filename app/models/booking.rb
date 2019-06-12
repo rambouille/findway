@@ -36,6 +36,7 @@ class Booking < ApplicationRecord
   enum video_channel: %i[skype hangout facetime]
 
   validate :end_must_be_after_start
+  validate :check_redundancy_schedule
 
   after_validation :set_amount
   after_save :create_chat_room
@@ -44,6 +45,14 @@ class Booking < ApplicationRecord
     if start_time >= end_time
       errors.add(:end_time, "l'horaire de fin doit être après l'horaire de début")
     end
+  end
+
+  def check_redundancy_schedule
+    # Booking.where(coach: coach).each do |coach_booking|
+    #   if start_time == coach_booking.start_time
+    #     errors.add(:start_time, "Vous avez déjà un booking")
+    #   end
+    # end
   end
 
   def french_date
@@ -65,9 +74,11 @@ class Booking < ApplicationRecord
   # create a chat_room as soon as a booking is booked by a client
   def create_chat_room
     if client && ChatRoom.where(coach: coach, client: client).empty?
-      ChatRoom.create name: "#{coach.firstname} & #{client.firstname}", coach: coach, client: client
+      chatroom = ChatRoom.create name: "#{coach.firstname} & #{client.firstname}", coach: coach, client: client
+      Message.create content: "Bonjour, merci pour votre réservation ! Si vous avez des questions avant notre entretien je suis à votre disposition.", chat_room: chatroom, user: chatroom.coach
     end
   end
+
 
   private
 

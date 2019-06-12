@@ -110,13 +110,7 @@ b.client = titeuf
 b.client_need = "Je suis complètement perdu. S'il vous plait aidez-moi!!"
 b.video_channel = "skype"
 b.state = "booked"
-b.save!
-
-puts ""
-puts ""
-puts ""
-puts ""
-puts ""
+b.save
 
 puts "creating review from client"
 Review.create(
@@ -136,41 +130,41 @@ puts "creating 5 male clients"
 5.times do
   client = User.new(email: Faker::Internet.email, password: "123456", firstname: Faker::Name.male_first_name, lastname: Faker::Name.last_name, description: Faker::Lorem.paragraphs, age: (11..60).to_a.sample, status: "client")
   client.remote_avatar_url = AVATAR_URLS[:clients][:male].sample
-  client.save!
+  client.save
 end
 
 puts "creating 5 female clients"
 5.times do
   client = User.new(email: Faker::Internet.email, password: "123456", firstname: Faker::Name.female_first_name, lastname: Faker::Name.last_name, description: Faker::Lorem.paragraphs, age: (11..60).to_a.sample, status: "client")
   client.remote_avatar_url = AVATAR_URLS[:clients][:female].sample
-  client.save!
+  client.save
 end
 
 puts "creating 5 male coaches"
 5.times do
   coach = User.new(email: Faker::Internet.email, password: "123456", firstname: Faker::Name.male_first_name, lastname: Faker::Name.last_name, description: Faker::Lorem.paragraphs, linkedin: Faker::Lorem.paragraphs, age: (11..60).to_a.sample, status: "coach", hourly_price_cents: (2000..8000).to_a.sample.round(-2), speciality: User::SPECIALIZATIONS.sample, business_expertise: User::BUSINESS_EXPERTISES.sample)
   coach.remote_avatar_url = AVATAR_URLS[:coaches][:male].sample
-  coach.save!
+  coach.save
 end
 
 puts "creating 5 female coaches"
 5.times do
   coach = User.new(email: Faker::Internet.email, password: "123456", firstname: Faker::Name.female_first_name, lastname: Faker::Name.last_name, description: Faker::Lorem.paragraphs, linkedin: Faker::Lorem.paragraphs, age: (11..60).to_a.sample, status: "coach", hourly_price_cents: (2000..8000).to_a.sample.round(-2), speciality: User::SPECIALIZATIONS.sample, business_expertise: User::BUSINESS_EXPERTISES.sample)
   coach.remote_avatar_url = AVATAR_URLS[:coaches][:female].sample
-  coach.save!
+  coach.save
 end
 
 
 def create_past_booking(coach, client)
  start_hour = (DateTime.now - rand(10).day + rand(24).hour).beginning_of_hour
  end_hour = start_hour + (1..2).to_a.shuffle.first.hour
- Booking.create!(coach: coach, client: client, start_time: start_hour, end_time: end_hour, state: 'booked', video_channel: 'skype')
+ Booking.create(coach: coach, client: client, start_time: start_hour, end_time: end_hour, state: 'booked', video_channel: 'skype')
 end
 
 def create_future_booking(coach, state = 'pending', client = nil, video_channel = nil)
   start_hour = (DateTime.now + rand(7).day + rand(7).hour).beginning_of_hour
   end_hour = start_hour + (1..2).to_a.shuffle.first.hour
-  booking = Booking.create!(coach: coach, client: client, start_time: start_hour, end_time: end_hour, state: state, video_channel: video_channel)
+  booking = Booking.create(coach: coach, client: client, start_time: start_hour, end_time: end_hour, state: state, video_channel: video_channel)
 end
 
 puts "creating 100 future bookings without client"
