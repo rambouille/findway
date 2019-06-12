@@ -94,8 +94,8 @@
 }
 
 #bouton-home:hover {
-  background-color: white;
-  color: $my-red;
+  background: linear-gradient($my-blue, $my-red);
+  color: white;
   border:none;
   transition: all 0.5s ease;
 }
@@ -107,6 +107,8 @@
   border: none;
   border-radius: 0px;
   transition: all 0.5s ease;
+  background: linear-gradient($my-red, $my-blue);
+  border: none;
 }
 
 .top-bar {

@@ -1,8 +1,9 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon <%= yield(:navbar_class) %>">
- <%= link_to "/", class: "navbar-brand" do %>
-   <%= image_tag 'gouvernail.png', class: "logo" %>
- <% end %>
- <%= current_user.fullname if current_user %>
+
+  <%= link_to "/", class: "navbar-brand" do %>
+    <%= image_tag 'gouvernail.png', class: "logo" %>
+  <% end %>
+
 
  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
    <span class="navbar-toggler-icon"></span>

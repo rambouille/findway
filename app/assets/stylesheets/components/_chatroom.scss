@@ -1,0 +1,100 @@
+.chatroom {
+  height: 102%;
+  position: absolute;
+}
+
+.chatroom-gradient {
+  background: linear-gradient($my-blue, $my-red);
+}
+
+.btn-chatbox {
+  border-radius: 38px;
+}
+
+.chatbox {
+  padding-top: 80px;
+}
+
+.card-channel {
+  width: 248px;
+  height: 50px;
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  border-radius: 38px;
+}
+
+.chatroom-background {
+  background-color: $my-blue;
+}
+
+.chat-header {
+  background: linear-gradient(0.25turn, $my-red, $my-blue);
+  margin-bottom: 3px;
+  border-radius: 16px;
+}
+
+.messages {
+  background-color: white;
+  border-radius: 16px;
+  border: 2px solid white;
+  margin-bottom: 10px;
+  height: 400px;
+  padding-top: 10px;
+  padding-bottom: 30px !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,.1);
+}
+
+#create-message {
+  background-color: white;
+  border-radius: 16px;
+  border: 2px solid white;
+  height: 70px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.1);
+  .btn {
+    margin: 0px !important;
+  }
+}
+
+.message .row-2.right .message-content {
+  color: $my-blue;
+  border-radius: 16px;
+  background-color: #F7F7F7;
+}
+
+#summary {
+  padding-left: 0px !important;
+  padding-top: 40px;
+  .avatar {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+.message .row-2.right {
+  color: $my-blue;
+}
+
+
+.message {
+  color: $my-red;
+  padding-top: 10px;
+  font-weight: bolder;
+  .avatar {
+    border: 1px solid white;
+    box-shadow: 0 10px 30px rgba(0,0,0,.1);
+    width: 35px;
+    height: 35px;
+  }
+}
+
+#message_content {
+  height: 40px;
+}
+
+.message .row-1 {
+  margin-bottom: 5px;
+}
+
+
+
