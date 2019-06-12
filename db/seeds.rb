@@ -112,9 +112,6 @@ b.video_channel = "skype"
 b.state = "booked"
 b.save
 
-puts ""
-puts ""
-
 puts "creating review from client"
 Review.create(
   booking: b,
