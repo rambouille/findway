@@ -1,39 +1,77 @@
-
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12 col-sm-offset-12">
-      <div class="chat-header"><h4>#<%= @chat_room.name %></h4></div>
-      <div class="messages">
-        <% @chat_room.messages.each do |message| %>
-          <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
+<div class="container mt-2">
+  <div class="row" id="big-container">
+    <div id="summary" class="col-sm-4">
+      <% @chat_rooms.each do |chat_room| %>
+        <% if current_user.coach? %>
+          <a href="/chat_rooms/<%=chat_room.id%>">
+            <div class="card-channel d-flex  justify-content-between my-1">
+              <div class="card-left d-flex align-items-center">
+                <div class="avatar-client">
+                  <img src="<%= chat_room.client.avatar %>" class="avatar" alt="Avatar">
+                </div>
+                <div class="name pl-3"><%= chat_room.client.fullname %></div>
+              </div>
+              <div class="card-right notif">
+                <% if chat_room.new_for_coach %>
+                  <i class="fas fa-bell"></i>
+                <% end %>
+              </div>
+            </div>
+          </a>
+        <% else %>
+          <a href="/chat_rooms/<%=chat_room.id%>">
+            <div class="card-channel d-flex align-items-center justify-content-between my-1">
+              <div class="card-left d-flex align-items-center">
+                <div class="avatar-coach">
+                  <img src="<%= chat_room.coach.avatar %>" class="avatar" alt="Avatar">
+                </div>
+                <div class="name pl-3"><%= chat_room.coach.fullname %></div>
+              </div>
+              <div class="card-left notif">
+                <% if chat_room.new_for_client %>
+                  <i class="fas fa-bell"></i>
+                <% end %>
+              </div>
+            </div>
+          </a>
         <% end %>
-      </div>
-      <div id="create-message">
-        <%= simple_form_for [ @chat_room, Message.new ], remote: true do |f| %>
-          <%= f.input :content, label: false %>
-          <%= button_tag(type: 'submit', class: "btn btn-outline-primary border-0") do %>
-            <i class="fab fa-telegram-plane"></i>
-          <% end %>
-
-        <% end %>
-      </div>
+      <% end %>
     </div>
+    <div class="col-sm-8" id="channel">
+        <div class="col-sm-12 col-sm-offset-12">
+          <div class="chat-header"><h4>#<%= @chat_room.name %></h4></div>
+          <div class="messages">
+            <% @chat_room.messages.each do |message| %>
+              <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
+            <% end %>
+          </div>
+          <div id="create-message">
+            <%= simple_form_for [ @chat_room, Message.new ], remote: true do |f| %>
+              <%= f.input :content, label: false %>
+              <%= button_tag(type: 'submit', class: "btn btn-outline-primary border-0") do %>
+                <i class="fab fa-telegram-plane"></i>
+              <% end %>
+
+            <% end %>
+          </div>
+        </div>
+    </div>
+    <% content_for :after_js do %>
+      <script>
+        scrollLastMessageIntoView();
+        App['chat_room_<%= @chat_room.id %>'] = App.cable.subscriptions.create(
+          { channel: 'ChatRoomsChannel', chat_room_id: <%= @chat_room.id %> },
+          {
+            received: (data) => {
+              if (data.current_user_id !== <%= current_user.id %>) {
+                const messagesContainer = document.querySelector('.messages');
+                messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
+              }
+              scrollLastMessageIntoView();
+            }
+          }
+        )
+      </script>
+    <% end %>
   </div>
 </div>
-<% content_for :after_js do %>
-  <script>
-    scrollLastMessageIntoView();
-    App['chat_room_<%= @chat_room.id %>'] = App.cable.subscriptions.create(
-      { channel: 'ChatRoomsChannel', chat_room_id: <%= @chat_room.id %> },
-      {
-        received: (data) => {
-          if (data.current_user_id !== <%= current_user.id %>) {
-            const messagesContainer = document.querySelector('.messages');
-            messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
-          }
-          scrollLastMessageIntoView();
-        }
-      }
-    )
-  </script>
-<% end %>

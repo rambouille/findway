@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_11_103244) do
+ActiveRecord::Schema.define(version: 2019_06_11_200907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 2019_06_11_103244) do
     t.datetime "updated_at", null: false
     t.bigint "client_id"
     t.bigint "coach_id"
+    t.boolean "new_for_client"
+    t.boolean "new_for_coach"
     t.index ["client_id"], name: "index_chat_rooms_on_client_id"
     t.index ["coach_id"], name: "index_chat_rooms_on_coach_id"
   end

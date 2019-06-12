@@ -1,4 +1,11 @@
 <div class="message <%= user_is_messages_author ? "right" : "" %>">
-  <%= image_tag message.user.avatar_url, class: "avatar" %>
-  <div class="message-content"><%= message.content %></div>
+  <div class="row-1">
+    <p>
+      <%= message.french_date_time %>
+    </p>
+  </div>
+  <div class="row-2 <%= user_is_messages_author ? "right" : "" %>">
+    <%= image_tag message.user.avatar_url, class: "avatar" %>
+    <div class="message-content"><%= message.content %></div>
+  </div>
 </div>

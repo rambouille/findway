@@ -5,8 +5,8 @@
 #  id            :bigint           not null, primary key
 #  client_id     :bigint
 #  coach_id      :bigint
-#  start_time    :datetime
-#  end_time      :datetime
+#  start_time    :datetime         not null
+#  end_time      :datetime         not null
 #  weekly        :boolean
 #  amount_cents  :integer
 #  video_channel :integer
@@ -64,7 +64,7 @@ class Booking < ApplicationRecord
 
   # create a chat_room as soon as a booking is booked by a client
   def create_chat_room
-    if client
+    if client && ChatRoom.where(coach: coach, client: client).empty?
       ChatRoom.create name: "#{coach.firstname} & #{client.firstname}", coach: coach, client: client
     end
   end
