@@ -8,7 +8,8 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 60px;
+  color: white;
 }
 
 .navbar-home {
@@ -28,7 +29,13 @@
 }
 
 .logo {
-  width: 50px;
+  width: 60px;
+  color: white;
+}
+
+.logo:hover {
+  transform: rotate(360deg);
+    transition: all 0.3s ease-in-out 0s;
 }
 
 .nav-item {

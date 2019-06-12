@@ -4,7 +4,7 @@
       <% @chat_rooms.each do |chat_room| %>
         <% if current_user.coach? %>
           <a href="/chat_rooms/<%=chat_room.id%>">
-            <div class="card-channel d-flex  justify-content-between my-1">
+            <div class="card-channel d-flex  justify-content-between my-1 <%= 'ml-4' if chat_room == @chat_room %>">
               <div class="card-left d-flex align-items-center">
                 <div class="avatar-client">
                   <img src="<%= chat_room.client.avatar %>" class="avatar" alt="Avatar">

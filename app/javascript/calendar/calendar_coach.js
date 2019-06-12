@@ -133,4 +133,12 @@ const displayCalendarCoach = () => {
   });
 }
 
+
+const cardChannel = document.querySelectorAll("#card-channel");
+cardChannel.addEventListener("click", (event) => {
+  console.log(event);
+  console.log(event.currentTarget);
+});
+
+
 export { displayCalendarCoach };
