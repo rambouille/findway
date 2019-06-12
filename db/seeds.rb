@@ -44,69 +44,53 @@ CLIENT_AVATAR_URL = [
 
 ]
 
-puts "creating client Titeuf"
-titeuf = User.new(
-  firstname: "Titeuf",
-  lastname: "",
-  email: "titeuf@a.com",
-  description: "Test pour geocoding",
-  age: 45,
-  password: "123456",
-  status: "client"
-)
-titeuf.remote_avatar_url = "https://i.pinimg.com/originals/a7/6f/33/a76f33faee9ebf5390edfc298c33703f.gif"
-titeuf.save!
+puts "creating client Camille"
+cam = User.new(firstname: "Camille", lastname: "Paumier", email: "campaum@email.com", description: "Je suis actuellement en réflexion sur mon avenir professionnel.", age: 28, password: "123456", status: "client")
+cam.remote_avatar_url = "https://lh3.googleusercontent.com/tO4SHBKzgyAYGLAmzJEpjMfbQE0REocq3WRkqdDGcXdPXYPAxKXPN6S1Bpn0FgVaPHyJjxxK89q6WneUfA7-gS4aF5i8qnVxp7_vuTI4HQLFBJgn5TUtmzRxgXBBgej2PaAJ45DblPa7c5ufiiiS_Mu41ndcdEiWmW8boCLuGcb959qSUCF8rqbKPFdXNJat3As1nKQ4q3-7jbiX-f647q5_XlCg8F-8DAeZaKy-Udqm25QRTdyi2G9XpdDeMtIMAG4XtBN03j9-Id1T0ezVICYf4aSacccKU-W43wDGwXhlv-xRVnheMREccD7sQ-tHV9SyNR8CV5ZjpGs4SPwXZVd4DMJBvKxcddMo6iyoxDh4-LSB0XaWPi_GzC8jqJKDR55dfsDn5HrLKxXJGbHQpTe76GvuxuLqpYD6w5W6lc7-Z23qSghSW3HHXcKPykci8w_vMPGhWPDSWhZ7YK4Fg9tyKWRVTbgpZZkyPYKLcP9dMaGpZDkZoWwee_OeYPsJEpdHipNPhMHER2W1JhAZbZO8qArFnaEjP6HSc5pZewhifRnNVSAqA5x3r36i0aPfhzoZ15wEAXatYQeGIwC2lAIvr8P4FDQgG5XQq6Ph9ye9tSqFkYSEQOKefaR5rDhhOQuyEsEjoHob8ukxN9190F7x9fLkphOipB8qELQ2cZ_ZhPlFcdv62dqeRuSwMZf2OesASHJPoTrQin4zBKch4GTR=w872-h1308-no"
+cam.save!
 
-puts "creating coach Pascal"
-pascal = User.new(
-  firstname: "Pascal",
-  lastname:"legrandfrere",
-  email: "pascal@a.com",
-  description: "Salut c'est moi Pascal, ton grand frère!",
-  age: 30,
-  password: "123456",
-  status: "coach",
-  hourly_price_cents: 3400,
-  linkedin: "Gagnez du temps dans l’orientation de vos enfants et aidez les à prendre confiance en eux ! En 3 séances avec un spécialiste de l’orientation collège, votre enfant aura trouvé sa voie et pourra se projeter en confiance dans l’avenir.",
-  speciality: "coaching personnalisé",
-  business_expertise: "tous secteurs"
-  )
-pascal.remote_avatar_url = "https://o1.ldh.be/image/thumb/58a52af9cd703b981540caa0.jpg"
-pascal.save!
+puts "creating coach Antoine"
+antoine = User.new(firstname: "Antoine", lastname: "Rambert", email: "antoine.rambert@gmail.com",
+  description: "Coach depuis maintenant 3 ans en cabinet, je souhaiterais proposer mes services à des personnes qui n'y avaient pas accès: sur internet. ",
+  age: 32, password: "123456", status: "coach", hourly_price_cents: 4800, linkedin: 'antoine.rambert', speciality: "coaching personnalisé", business_expertise: "tous secteurs")
+antoine.remote_avatar_url = "https://lh3.googleusercontent.com/GtpIz0OQAL33Opo0NWIvM5Y0GGHhAge6bpDwtFyvGHxqGSj1h1DzrGeSIFN4ei5IPOQNIoDRJhuQpKeWLUKfSFo_38Aqg0u5yiONkERi24ngRpmi0Zb91ko-CJvnxjqrZ8EoMpAzPo-YO-ySI3MBU7m8VNKw7OJ8V1q2R9Dl9fvmnm9-SpwiHMNPJY8CVcvR4gmxFT1m2UOdD-SyupCwv-3piVbPm87mCQo6yDqmHay9pNpQGatwqn8uqRjMHczdwSa3VCv36hYrILUoeH_yjO-VbEIYRqR7g5qm0GAzEbzDqbGddYSwFFNyDGVTHGZEnaOvj2vdTYUGopADy7zIyQCVF5wA1OjRl51g_SQ_GlnUW32eVJLSC1zZJOVAt4mRrLjWrEkfOs5CleY9k1m5UBKGkOmkW9vochAHxDQV350qG_0wJgJShjfLwG7xr-9vy5o_39po8KkfH6e3tLDMZpsHTItUO4JRn04DC9R73nRl-eYg-Fov1iY3pD_eex7zbP9fvokVJiBfwswU6WrzHBWxjLjWW9y7RMAiDSUOc9JIs4oyoSW8gZAnxCTXY33pOe2RZUWOdjeGmOLjh7XT5Ch8N_y1f7ZHrp73_BuSWkOoUwsfim2BCL9twnDxTbkSGAW-6vo--w6V1HZHKjIuN3ZhZ9IfFeRK1n5ERUhqREcTPi2pB4zd5lN_XSU0zcWlCaqYs4eBNka_YgyKSmzossBJ=w872-h1308-no"
+antoine.save!
+
+
 
 puts "creating 5 bookings from coach"
 b = Booking.create(
-  coach: pascal,
+  coach: antoine,
   start_time: "06/06/2019 at 14:00",
   end_time: "06/06/2019 at 16:00",
   weekly: true)
 
 b2 = Booking.create(
-  coach: pascal,
+  coach: antoine,
   start_time: "08/06/2019 at 11:00",
   end_time: "08/06/2019 at 12:00",
   weekly: false)
 
 b3 = Booking.create(
-  coach: pascal,
+  coach: antoine,
   start_time: "08/06/2019 at 12:00",
   end_time: "08/06/2019 at 13:00",
   weekly: false)
 
 b4 = Booking.create(
-  coach: pascal,
+  coach: antoine,
   start_time: "08/06/2019 at 14:00",
   end_time: "08/06/2019 at 15:00",
   weekly: false)
 
 b5 = Booking.create(
-  coach: pascal,
+  coach: antoine,
   start_time: "08/06/2019 at 15:00",
   end_time: "08/06/2019 at 16:00",
   weekly: false)
 
 puts "affecting booking to client"
-b.client = titeuf
+b.client = cam
 b.client_need = "Je suis complètement perdu. S'il vous plait aidez-moi!!"
 b.video_channel = "skype"
 b.state = "booked"
@@ -115,15 +99,15 @@ b.save
 puts "creating review from client"
 Review.create(
   booking: b,
-  user: titeuf,
+  user: cam,
   content: "Tellement un bon coach!!",
   rating: 5)
 
 puts "creating review from coach"
 Review.create(
   booking: b,
-  user: pascal,
-  content: "Titeuf est très gentil. Mais il n'avait pas fait les tests que je lui avais demandé...",
+  user: antoine,
+  content: "cam est très gentil. Mais il n'avait pas fait les tests que je lui avais demandé...",
   rating: 4)
 
 puts "creating 5 male clients"
@@ -190,9 +174,9 @@ puts "creating 50 past bookings with reviews"
  Review.create!(REVIEWS_FOR_CLIENT.sample.merge(user: coach, booking: booking))
 end
 
-puts "creating 5 past bookings with reviews for Pascal"
+puts "creating 5 past bookings with reviews for antoine"
 5.times do
- coach = User.where(firstname: "Pascal").first
+ coach = User.where(firstname: "Antoine").first
  client = User.client.sample
  booking = create_past_booking(coach, client)
 
@@ -200,9 +184,9 @@ puts "creating 5 past bookings with reviews for Pascal"
  Review.create!(REVIEWS_FOR_CLIENT.sample.merge(user: coach, booking: booking))
 end
 
-puts "creating 2 past bookings without review for Pascal"
+puts "creating 2 past bookings without review for antoine"
 2.times do
- coach = User.where(firstname: "Pascal").first
+ coach = User.where(firstname: "Antoine").first
  client = User.client.sample
  create_past_booking(coach, client)
 end
