@@ -1,0 +1,11 @@
+#dashboard {
+  display: flex;
+  align-items: stretch;
+  flex: 0 0 60%;
+}
+
+#rdv {
+  height: calc(580px - 62px);
+  flex: 0 0 40%;
+  overflow: scroll;
+}

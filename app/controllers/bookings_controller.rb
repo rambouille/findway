@@ -31,8 +31,12 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @booking.destroy
     if current_user.coach?
+      if @booking.client
+        Message.create content: "La réservation a été annulée.", chat_room: @booking.chat_room, user: @booking.coach
+      end
       redirect_to '/dashboard_coach'
     else
+      Message.create content: "La réservation a été annulée.", chat_room: @booking.chat_room, user: @booking.client
       redirect_to '/dashboard_client'
     end
   end
