@@ -1,77 +1,14 @@
-<div class="container mt-2">
-  <div class="row" id="big-container">
-    <div id="summary" class="col-sm-4">
-      <% @chat_rooms.each do |chat_room| %>
-        <% if current_user.coach? %>
-          <a href="/chat_rooms/<%=chat_room.id%>">
-            <div class="card-channel d-flex  justify-content-between my-1">
-              <div class="card-left d-flex align-items-center">
-                <div class="avatar-client">
-                  <img src="<%= chat_room.client.avatar %>" class="avatar" alt="Avatar">
-                </div>
-                <div class="name pl-3"><%= chat_room.client.fullname %></div>
-              </div>
-              <div class="card-right notif">
-                <% if chat_room.new_for_coach %>
-                  <i class="fas fa-bell"></i>
-                <% end %>
-              </div>
-            </div>
-          </a>
-        <% else %>
-          <a href="/chat_rooms/<%=chat_room.id%>">
-            <div class="card-channel d-flex align-items-center justify-content-between my-1">
-              <div class="card-left d-flex align-items-center">
-                <div class="avatar-coach">
-                  <img src="<%= chat_room.coach.avatar %>" class="avatar" alt="Avatar">
-                </div>
-                <div class="name pl-3"><%= chat_room.coach.fullname %></div>
-              </div>
-              <div class="card-left notif">
-                <% if chat_room.new_for_client %>
-                  <i class="fas fa-bell"></i>
-                <% end %>
-              </div>
-            </div>
-          </a>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="col-sm-8" id="channel">
-        <div class="col-sm-12 col-sm-offset-12">
-          <div class="chat-header"><h4>#<%= @chat_room.name %></h4></div>
-          <div class="messages">
-            <% @chat_room.messages.each do |message| %>
-              <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
-            <% end %>
-          </div>
-          <div id="create-message">
-            <%= simple_form_for [ @chat_room, Message.new ], remote: true do |f| %>
-              <%= f.input :content, label: false %>
-              <%= button_tag(type: 'submit', class: "btn btn-outline-primary border-0") do %>
-                <i class="fab fa-telegram-plane"></i>
-              <% end %>
-
-            <% end %>
-          </div>
-        </div>
-    </div>
-    <% content_for :after_js do %>
-      <script>
-        scrollLastMessageIntoView();
-        App['chat_room_<%= @chat_room.id %>'] = App.cable.subscriptions.create(
-          { channel: 'ChatRoomsChannel', chat_room_id: <%= @chat_room.id %> },
-          {
-            received: (data) => {
-              if (data.current_user_id !== <%= current_user.id %>) {
-                const messagesContainer = document.querySelector('.messages');
-                messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
-              }
-              scrollLastMessageIntoView();
-            }
-          }
-        )
-      </script>
-    <% end %>
+  <%= content_for(:navbar_class, "navbar-home") %>
+  <div class="chatroom-background">
+<svg class="chatroom" viewBox="0 0 591 1056" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M590.987 527.345C592.263 316.804 500 -10 500 -10V0H-19V1056H500V1046C500 1046 589.755 730.613 590.987 527.345Z" fill="url(#paint0_linear)"/>
+<defs>
+<linearGradient id="paint0_linear" x1="286" y1="-10" x2="286" y2="1056" gradientUnits="userSpaceOnUse">
+<stop stop-color="#2F2FA2"/>
+<stop offset="1" stop-color="#F64C72"/>
+</linearGradient>
+</defs>
+<%= render 'shared/chatroom' %>
+</svg>
   </div>
-</div>
+
