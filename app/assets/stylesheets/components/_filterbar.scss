@@ -73,7 +73,7 @@ input#max-filter.form-control.filter {
 }
 
 .filter-block {
-  background-color: $my-blue;
+  background: linear-gradient($my-blue, $my-red);
   padding-top: 100px;
     .btn {
       color: white;
@@ -96,7 +96,7 @@ input#max-filter.form-control.filter {
   padding: 82px 20px;
   overflow-y: scroll;
   max-height: 100vh;
-  background: linear-gradient($my-blue, $my-red);
+  background-color: $my-blue;
   display: flex;
   flex-wrap: wrap;
 }

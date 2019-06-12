@@ -57,9 +57,9 @@
 }
 
 .message .row-2.right .message-content {
-  background-color: transparent;
   color: $my-blue;
   border-radius: 16px;
+  background-color: #F7F7F7;
 }
 
 #summary {
@@ -69,6 +69,10 @@
     width: 35px;
     height: 35px;
   }
+}
+
+.message .row-2.right {
+  color: $my-blue;
 }
 
 
@@ -91,3 +95,6 @@
 .message .row-1 {
   margin-bottom: 5px;
 }
+
+
+
