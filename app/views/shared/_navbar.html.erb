@@ -23,14 +23,14 @@
           <li class="nav-item">
             <%= link_to "Trouver un coach", coaches_path, class: "nav-link" %>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <% if current_user.coach? %>
               <%= link_to "Tableau de bord", dashboard_coach_path, class: "nav-link" %>
             <% else %>
               <%= link_to "Mes réservations", dashboard_client_path, class: "nav-link" %>
             <% end %>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <% if current_user.coach? %>
               <%= link_to "Messages", chat_room_path(current_user.coach_chat_rooms.first.id), class: "nav-link" %>
             <% else %>
@@ -39,7 +39,7 @@
               <% end %>
             <% end %>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
           </li>
           <% else %>

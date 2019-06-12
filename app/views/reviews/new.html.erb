@@ -1,5 +1,19 @@
-<%= simple_form_for [@booking, @review] do |f| %>
-  <%= f.input :content %>
-  <%= f.input :rating %>
-  <%= f.submit "add a review", class: "btn btn-primary" %>
-<% end %>
+<%= content_for(:navbar_class, "navbar-home") %>
+
+<div class="background-red">
+  <div class="background-blue">
+    <div class="row justify-content-center">
+      <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+        <div class="form-login">
+
+          <%= simple_form_for [@booking, @review] do |f| %>
+          <%= f.input :content %>
+          <%= f.input :rating %>
+          <%= f.submit "add a review", class: "btn btn-primary" %>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
