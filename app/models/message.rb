@@ -15,7 +15,7 @@ class Message < ApplicationRecord
   # after_create :broadcast_message
   after_create :set_new
 
-  belongs_to :user, optional: true
+  belongs_to :user
   belongs_to :chat_room
 
   # enum author: [:client, :coach]
@@ -33,7 +33,7 @@ class Message < ApplicationRecord
         partial: "messages/message",
         locals: { message: self, user_is_messages_author: false }
       ),
-      current_user_id: user.id
+        current_user_id: user.id
     })
   end
 
