@@ -7,6 +7,7 @@
   display: flex;
   height: 300px;
   width: 400px;
+  border-radius: 4px;
 }
 
 .card-booking {
@@ -37,6 +38,9 @@
   display: flex;
   justify-content: space-between;
   padding-top: 20px;
+  p {
+    font-size: 16px;
+  }
 }
 
 .card-index:hover {
@@ -81,6 +85,10 @@
   font-size: 30px;
   color: $my-blue;
   padding-bottom: 20px;
+}
+
+#cards {
+  border-radius: 4px;
 }
 
 .card-title {
@@ -156,12 +164,13 @@
 // card in booking for client
 .card-day {
   background-color: white;                         /* White background */
-  padding: 10px;                             /* Internal space */                       /* Small radius */
+  padding: 10px;
+  border-radius: 4px;                            /* Internal space */                       /* Small radius */
   margin: 2rem;
   margin-left: 0;
   color: $my-blue;
   .btn {
-    border-radius: 0px !important;
+    border-radius: 4px !important;
     border: 2px solid $my-red;
 
   }

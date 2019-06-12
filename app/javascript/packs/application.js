@@ -5,9 +5,8 @@ import "bootstrap";
 import { displayCalendarVisitor } from "calendar/calendar_visitor";
 import { displayCalendarCoach } from "calendar/calendar_coach";
 
-if (Window.pathname === "/bookings") {
   displayCalendarCoach();
-};
+
 
 // displayCalendarVisitor();
 
