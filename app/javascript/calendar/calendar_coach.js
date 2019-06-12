@@ -138,13 +138,4 @@ const displayCalendarCoach = () => {
     setTimeout(renderCalendar, 250);
   });
 }
-
-
-const cardChannel = document.querySelectorAll("#card-channel");
-cardChannel.addEventListener("click", (event) => {
-  console.log(event);
-  console.log(event.currentTarget);
-});
-
-
 export { displayCalendarCoach };
