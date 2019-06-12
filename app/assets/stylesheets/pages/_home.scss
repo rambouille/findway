@@ -3,7 +3,7 @@
   display: flex;
   height: 100vh;
   align-items: center;
-  background-color: #2F2FA2;
+  background: linear-gradient($my-blue, $my-red);
   background-size: cover;
   justify-content: space-around;
 }
@@ -102,7 +102,9 @@
 
 #bouton-home {
   color: white;
+  background-color: $my-blue;
   font-weight: 900;
+  border: none;
   border-radius: 0px;
   transition: all 0.5s ease;
 }
