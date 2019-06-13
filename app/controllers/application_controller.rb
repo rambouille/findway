@@ -18,9 +18,16 @@ class ApplicationController < ActionController::Base
   # #   redirect_to(root_path)
   # # end
 
-  # private
+  private
 
   # def skip_pundit?
   #   devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   # end
+ def configure_permitted_parameters
+    # For additional fields in app/views/devise/registrations/new.html.erb
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:firstname, :lastname, :description, :age, :hourly_price_cents])
+
+    # For additional in app/views/devise/registrations/edit.html.erb
+    devise_parameter_sanitizer.permit(:account_update, keys: [:firstname, :lastname, :description, :age, :hourly_price_cents, :speciality, :business, :expertise])
+  end
 end
