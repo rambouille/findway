@@ -9,6 +9,7 @@ class BookingsController < ApplicationController
     @future_bookings = @bookings.booked.where("start_time > ?", Time.now).order(:start_time)
     @past_bookings = @bookings.booked.where("end_time < ?", Time.now).order(start_time: :DESC)
     @booking = Booking.new
+    @review = Review.new
   end
 
   def new
