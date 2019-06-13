@@ -13,7 +13,15 @@
 
 REVIEWS_FOR_COACH = [
   { content: "Une magnifique expérience. Merci!", rating: 5 },
+  { content: "Une magnifique expérience. Merci!", rating: 5 },
+  { content: "Une magnifique expérience. Merci!", rating: 5 },
+  { content: "Une magnifique expérience. Merci!", rating: 5 },
   { content: "C'était très agréable. Ce coach m'a vraiment aidé!", rating: 4 },
+  { content: "C'était très agréable. Ce coach m'a vraiment aidé!", rating: 4 },
+  { content: "C'était très agréable. Ce coach m'a vraiment aidé!", rating: 4 },
+  { content: "C'était très agréable. Ce coach m'a vraiment aidé!", rating: 4 },
+  { content: "C'était très instructif", rating: 3 },
+  { content: "C'était très instructif", rating: 3 },
   { content: "C'était très instructif", rating: 3 },
   { content: "Ce coach est sympathique, mais il était en retard...", rating: 2 },
   { content: "Je suis très déçu...", rating: 1 },
@@ -29,6 +37,10 @@ REVIEWS_FOR_CLIENT = [
   { content: "Ne prenez pas ce client. Il était en retard et très désagréable.", rating: 0 }
 ]
 
+MALE_FIRSTNAMES = ['Gabriel', 'Louis', 'Raphaël', 'Jules', 'Adam', 'Lucas', 'Léo', 'Hugo', 'Arthur', 'Nathan', 'Paul', 'Gabin', 'Mathis', 'Axel', 'Victor', 'Antoine', 'Valentin', 'Martin', 'Marius', 'Clément', 'Baptiste', 'Maxime', 'Samuel', 'Léon', 'Augustin', 'Maxence', 'Alexandre', 'Thomas', 'Simon', 'Gaspard', 'Malo', 'Marceau', 'Alexis', 'Camille', 'Oscar', 'Mathys', 'Adrien', 'Benjamin', 'Joseph', 'William', 'Jean', 'Bastien', 'Léandre', 'Antonin', 'David', 'Charles', 'Pierre', 'Basile', 'Timothée', 'Thibault', 'Lucien', 'Auguste', 'Abel', 'Alban', 'Marcel', 'Quentin', 'Mathias', 'Corentin', 'Marin', 'Achille', 'Tristan', 'Romain', 'Nicolas', 'Daniel', 'Armand', 'Amaury', 'Lilian', 'Roméo', 'Ulysse', 'Mathieu', 'Jonas', 'Johan', 'Gustave', 'Emmanuel', 'Julien', 'Emile', 'Tim', 'Gauthier', 'Morgan', 'Anatole', 'Félix', 'Henri', 'Hector', 'Elie', 'Octave', 'Edouard', 'Anthony', 'Matthieu', 'Ange', 'Edgar', 'Gaston', 'Joachim', 'Ernest', 'Aubin', 'Justin', 'Marc', 'Georges', 'Alix', 'Louison', 'Loïc']
+FEMALE_FIRSTNAMES = ['Emma', 'Louise', 'Jade', 'Alice', 'Chloé', 'Lina', 'Léa', 'Manon', 'Rose', 'Anna', 'Inès', 'Camille', 'Ambre', 'Léna', 'Zoé', 'Juliette', 'Julia', 'Lou', 'Sarah', 'Lucie', 'Jeanne', 'Romane', 'Agathe', 'Eva', 'Charlotte', 'Léonie', 'Margaux', 'Clara', 'Olivia', 'Adèle', 'Clémence', 'Capucine', 'Victoria', 'Mathilde', 'Margot', 'Iris', 'Anaïs', 'Elise', 'Victoire', 'Elsa', 'Lise', 'Lisa', 'Marie', 'Soline', 'Apolline', 'Alix', 'Gabrielle', 'Valentine', 'Pauline', 'Faustine', 'Héloïse', 'Océane', 'Mélina', 'Salomé', 'Maria', 'Constance', 'Sara', 'Elisa', 'Laura', 'Justine', 'Elina', 'Lison', 'Charline', 'Suzanne', 'Garance', 'Ninon', 'Julie', 'Andréa', 'Myriam', 'Albane', 'Céleste', 'Elya', 'Diane', 'Emilie', 'Coline', 'Cassandre', 'Mélissa', 'Clémentine', 'Sophie', 'Louison', 'Augustine', 'Elia', 'Axelle', 'Madeleine', 'Marion', 'Lucile', 'Clarisse', 'Morgane', 'Judith', 'Line', 'Aurore', 'Bérénice', 'Rachel', 'Daphné', 'Hortense', 'Amélie', 'Esther', 'Estelle', 'Flora', 'Olympe']
+LASTNAMES = ['Bernard', 'Dubois', 'Thomas', 'Robert', 'Richard', 'Petit', 'Durand', 'Leroy', 'Moreau', 'Simon', 'Laurent', 'Lefebvre', 'Michel', 'Garcia', 'David', 'Bertrand', 'Roux', 'Vincent', 'Fournier', 'Morel', 'Girard', 'Andre', 'Lefevre', 'Mercier', 'Dupont', 'Lambert', 'Bonnet', 'Francois', 'Martinez', 'Roger', 'Roche', 'Roy', 'Noel', 'Meyer', 'Lucas', 'Meunier', 'Jean', 'Perez', 'Marchand', 'Dufour', 'Blanchard', 'Marie', 'Barbier', 'Brun', 'Dumas', 'Brunet', 'Schmitt', 'Leroux', 'Colin', 'Fernandez', 'Pierre', 'Renard', 'Arnaud', 'Rolland', 'Caron', 'Aubert', 'Giraud', 'Leclerc', 'Vidal', 'Legrand', 'Garnier', 'Faure', 'Rousseau', 'Blanc', 'Guerin', 'Muller', 'Henry', 'Roussel', 'Nicolas', 'Perrin', 'Morin', 'Mathieu', 'Clement', 'Gauthier', 'Dumont', 'Lopez', 'Fontaine', 'Chevalier', 'Robin', 'Masson', 'Sanchez', 'Gerard', 'Nguyen', 'Boyer', 'Denis', 'Lemaire', 'Duval', 'Joly', 'Gautier', 'Bourgeois', 'Renaud', 'Lemoine', 'Picard', 'Gaillard', 'Philippe', 'Leclercq', 'Lacroix', 'Fabre', 'Dupuis', 'Olivier', 'Rodriguez', 'Da Silva', 'Hubert', 'Louis', 'Charles', 'Guillot', 'Riviere', 'Le gall', 'Guillaume', 'Adam', 'Rey', 'Moulin', 'Gonzalez', 'Berger', 'Lecomte', 'Menard', 'Fleury', 'Deschamps', 'Carpentier']
+
 AVATAR_URLS = {
     coaches: {
       male: ['https://i.pravatar.cc/300?img=11', 'https://i.pravatar.cc/300?img=12', 'https://i.pravatar.cc/300?img=13', 'https://i.pravatar.cc/300?img=17', 'https://i.pravatar.cc/300?img=50', 'https://i.pravatar.cc/300?img=59', 'https://i.pravatar.cc/300?img=65', 'https://i.pravatar.cc/300?img=68', 'https://i.pravatar.cc/300?img=70', 'https://www.cpacanada.ca/-/media/cpa-digital-hub/featured-images/2018/07/hub-07-19-coaches-hero-700x525.jpg'],
@@ -40,116 +52,59 @@ AVATAR_URLS = {
     },
 }
 
-CLIENT_AVATAR_URL = [
-
+COACH_DIPLOMS = [
+  "Diplôme d'Etat de conseiller d'orientation-psychologue (DECOP), Institut national d'étude du travail et d'orientation professionnelle (INETOP - CNAM)",
+  "Licence Sciences Humaines et Sociales mention Psychologie",
+  "Master Sciences Humaines et Sociales mention Psychologie",
+  "Master de Psychologie clinique",
+  "Master de Psychologie du développement",
+  "Master de Psychologie sociale, psychologie cognitive",
+  "Master de Psychologie cognitive",
+  "Formation de coaching à distance - KOREVA",
+  "Diplôme d'Etat de psychologue scolaire (DEPS)"
 ]
 
-puts "creating client Titeuf"
-titeuf = User.new(
-  firstname: "Titeuf",
-  lastname: "",
-  email: "titeuf@a.com",
-  description: "Test pour geocoding",
-  age: 45,
-  password: "123456",
-  status: "client"
-)
-titeuf.remote_avatar_url = "https://i.pinimg.com/originals/a7/6f/33/a76f33faee9ebf5390edfc298c33703f.gif"
-titeuf.save!
+puts "creating client Camille"
+cam = User.new(firstname: "Camille", lastname: "Paumier", email: "campaum@email.com", description: "Je suis actuellement en réflexion sur mon avenir professionnel.", age: 28, password: "123456", status: "client")
+cam.remote_avatar_url = "https://lh3.googleusercontent.com/tO4SHBKzgyAYGLAmzJEpjMfbQE0REocq3WRkqdDGcXdPXYPAxKXPN6S1Bpn0FgVaPHyJjxxK89q6WneUfA7-gS4aF5i8qnVxp7_vuTI4HQLFBJgn5TUtmzRxgXBBgej2PaAJ45DblPa7c5ufiiiS_Mu41ndcdEiWmW8boCLuGcb959qSUCF8rqbKPFdXNJat3As1nKQ4q3-7jbiX-f647q5_XlCg8F-8DAeZaKy-Udqm25QRTdyi2G9XpdDeMtIMAG4XtBN03j9-Id1T0ezVICYf4aSacccKU-W43wDGwXhlv-xRVnheMREccD7sQ-tHV9SyNR8CV5ZjpGs4SPwXZVd4DMJBvKxcddMo6iyoxDh4-LSB0XaWPi_GzC8jqJKDR55dfsDn5HrLKxXJGbHQpTe76GvuxuLqpYD6w5W6lc7-Z23qSghSW3HHXcKPykci8w_vMPGhWPDSWhZ7YK4Fg9tyKWRVTbgpZZkyPYKLcP9dMaGpZDkZoWwee_OeYPsJEpdHipNPhMHER2W1JhAZbZO8qArFnaEjP6HSc5pZewhifRnNVSAqA5x3r36i0aPfhzoZ15wEAXatYQeGIwC2lAIvr8P4FDQgG5XQq6Ph9ye9tSqFkYSEQOKefaR5rDhhOQuyEsEjoHob8ukxN9190F7x9fLkphOipB8qELQ2cZ_ZhPlFcdv62dqeRuSwMZf2OesASHJPoTrQin4zBKch4GTR=w872-h1308-no"
+cam.save!
 
-puts "creating coach Pascal"
-pascal = User.new(
-  firstname: "Pascal",
-  lastname:"legrandfrere",
-  email: "pascal@a.com",
-  description: "Salut c'est moi Pascal, ton grand frère!",
-  age: 30,
-  password: "123456",
-  status: "coach",
-  hourly_price_cents: 3400,
-  linkedin: "Gagnez du temps dans l’orientation de vos enfants et aidez les à prendre confiance en eux ! En 3 séances avec un spécialiste de l’orientation collège, votre enfant aura trouvé sa voie et pourra se projeter en confiance dans l’avenir.",
-  speciality: "coaching personnalisé",
-  business_expertise: "tous secteurs"
-  )
-pascal.remote_avatar_url = "https://o1.ldh.be/image/thumb/58a52af9cd703b981540caa0.jpg"
-pascal.save!
+puts "creating coach Antoine"
+antoine = User.new(firstname: "Antoine", lastname: "Rambert", email: "antoine.rambert@gmail.com",
+  description: "Coach depuis maintenant 3 ans en cabinet, je souhaiterais proposer mes services à des personnes qui n'y avaient pas accès: sur internet. ",
+  age: 32, password: "123456", status: "coach", hourly_price_cents: 4800, diplom: COACH_DIPLOMS.sample, speciality: "coaching personnalisé", business_expertise: "tous secteurs")
+antoine.remote_avatar_url = "http://res.cloudinary.com/tootoon/image/upload/v1560420054/j5kbczylxrj07cfwhudf.jpg"
+antoine.save!
 
-puts "creating 5 bookings from coach"
-b = Booking.create(
-  coach: pascal,
-  start_time: "06/06/2019 at 14:00",
-  end_time: "06/06/2019 at 16:00",
-  weekly: true)
-
-b2 = Booking.create(
-  coach: pascal,
-  start_time: "08/06/2019 at 11:00",
-  end_time: "08/06/2019 at 12:00",
-  weekly: false)
-
-b3 = Booking.create(
-  coach: pascal,
-  start_time: "08/06/2019 at 12:00",
-  end_time: "08/06/2019 at 13:00",
-  weekly: false)
-
-b4 = Booking.create(
-  coach: pascal,
-  start_time: "08/06/2019 at 14:00",
-  end_time: "08/06/2019 at 15:00",
-  weekly: false)
-
-b5 = Booking.create(
-  coach: pascal,
-  start_time: "08/06/2019 at 15:00",
-  end_time: "08/06/2019 at 16:00",
-  weekly: false)
-
-puts "affecting booking to client"
-b.client = titeuf
-b.client_need = "Je suis complètement perdu. S'il vous plait aidez-moi!!"
-b.video_channel = "skype"
-b.state = "booked"
-b.save
-
-puts "creating review from client"
-Review.create(
-  booking: b,
-  user: titeuf,
-  content: "Tellement un bon coach!!",
-  rating: 5)
-
-puts "creating review from coach"
-Review.create(
-  booking: b,
-  user: pascal,
-  content: "Titeuf est très gentil. Mais il n'avait pas fait les tests que je lui avais demandé...",
-  rating: 4)
 
 puts "creating 5 male clients"
 5.times do
-  client = User.new(email: Faker::Internet.email, password: "123456", firstname: Faker::Name.male_first_name, lastname: Faker::Name.last_name, description: Faker::Lorem.paragraphs, age: (11..60).to_a.sample, status: "client")
+  client = User.new(firstname: MALE_FIRSTNAMES.sample, lastname: LASTNAMES.sample, password: "123456", description: Faker::Lorem.paragraphs, age: (11..60).to_a.sample, status: "client")
+  client.email = "#{client.firstname}.#{client.lastname}@email.fr"
   client.remote_avatar_url = AVATAR_URLS[:clients][:male].sample
   client.save
 end
 
 puts "creating 5 female clients"
 5.times do
-  client = User.new(email: Faker::Internet.email, password: "123456", firstname: Faker::Name.female_first_name, lastname: Faker::Name.last_name, description: Faker::Lorem.paragraphs, age: (11..60).to_a.sample, status: "client")
+  client = User.new(firstname: FEMALE_FIRSTNAMES.sample, lastname: LASTNAMES.sample, password: "123456", description: Faker::Lorem.paragraphs, age: (11..60).to_a.sample, status: "client")
+  client.email = "#{client.firstname}.#{client.lastname}@email.fr"
   client.remote_avatar_url = AVATAR_URLS[:clients][:female].sample
   client.save
 end
 
 puts "creating 5 male coaches"
 5.times do
-  coach = User.new(email: Faker::Internet.email, password: "123456", firstname: Faker::Name.male_first_name, lastname: Faker::Name.last_name, description: Faker::Lorem.paragraphs, linkedin: Faker::Lorem.paragraphs, age: (11..60).to_a.sample, status: "coach", hourly_price_cents: (2000..8000).to_a.sample.round(-2), speciality: User::SPECIALIZATIONS.sample, business_expertise: User::BUSINESS_EXPERTISES.sample)
+  coach = User.new(firstname: MALE_FIRSTNAMES.sample, lastname: LASTNAMES.sample, password: "123456", description: Faker::Lorem.paragraphs, diplom: COACH_DIPLOMS.sample, age: (11..60).to_a.sample, status: "coach", hourly_price_cents: (2000..8000).to_a.sample.round(-2), speciality: User::SPECIALIZATIONS.sample, business_expertise: User::BUSINESS_EXPERTISES.sample)
+  coach.email = "#{coach.firstname}.#{coach.lastname}@email.fr"
   coach.remote_avatar_url = AVATAR_URLS[:coaches][:male].sample
   coach.save
 end
 
 puts "creating 5 female coaches"
 5.times do
-  coach = User.new(email: Faker::Internet.email, password: "123456", firstname: Faker::Name.female_first_name, lastname: Faker::Name.last_name, description: Faker::Lorem.paragraphs, linkedin: Faker::Lorem.paragraphs, age: (11..60).to_a.sample, status: "coach", hourly_price_cents: (2000..8000).to_a.sample.round(-2), speciality: User::SPECIALIZATIONS.sample, business_expertise: User::BUSINESS_EXPERTISES.sample)
+  coach = User.new(firstname: FEMALE_FIRSTNAMES.sample, lastname: LASTNAMES.sample, password: "123456", description: Faker::Lorem.paragraphs, diplom: COACH_DIPLOMS.sample, age: (11..60).to_a.sample, status: "coach", hourly_price_cents: (2000..8000).to_a.sample.round(-2), speciality: User::SPECIALIZATIONS.sample, business_expertise: User::BUSINESS_EXPERTISES.sample)
+  coach.email = "#{coach.firstname}.#{coach.lastname}@email.fr"
   coach.remote_avatar_url = AVATAR_URLS[:coaches][:female].sample
   coach.save
 end
@@ -190,9 +145,9 @@ puts "creating 50 past bookings with reviews"
  Review.create!(REVIEWS_FOR_CLIENT.sample.merge(user: coach, booking: booking))
 end
 
-puts "creating 5 past bookings with reviews for Pascal"
+puts "creating 5 past bookings with reviews for antoine"
 5.times do
- coach = User.where(firstname: "Pascal").first
+ coach = User.where(firstname: "Antoine").first
  client = User.client.sample
  booking = create_past_booking(coach, client)
 
@@ -200,9 +155,9 @@ puts "creating 5 past bookings with reviews for Pascal"
  Review.create!(REVIEWS_FOR_CLIENT.sample.merge(user: coach, booking: booking))
 end
 
-puts "creating 2 past bookings without review for Pascal"
+puts "creating 2 past bookings without review for antoine"
 2.times do
- coach = User.where(firstname: "Pascal").first
+ coach = User.where(firstname: "Antoine").first
  client = User.client.sample
  create_past_booking(coach, client)
 end
