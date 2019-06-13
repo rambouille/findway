@@ -180,8 +180,11 @@ puts "creating 5 past bookings with reviews for antoine"
  coach = User.where(firstname: "Antoine").first
  client = User.client.sample
  booking = create_past_booking(coach, client)
-
- Review.create!(REVIEWS_FOR_COACH.sample.merge(user: client, booking: booking))
+ review = REVIEWS_FOR_COACH.sample
+ until review[:rating] >= 4
+  review = REVIEWS_FOR_COACH
+end
+ Review.create!(user: client, booking: booking, content: review[:content], rating: review[:rating])
  Review.create!(REVIEWS_FOR_CLIENT.sample.merge(user: coach, booking: booking))
 end
 
