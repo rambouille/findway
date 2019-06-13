@@ -15,7 +15,7 @@
 #  description            :text
 #  age                    :integer
 #  status                 :integer          default("client")
-#  linkedin               :string
+#  diplom                 :string
 #  speciality             :string
 #  business_expertise     :string
 #  hourly_price_cents     :integer          default(0), not null

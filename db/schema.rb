@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2019_06_13_103515) do
     t.text "description"
     t.integer "age"
     t.integer "status", default: 0
-    t.string "linkedin"
+    t.string "diplom"
     t.string "speciality"
     t.string "business_expertise"
     t.integer "hourly_price_cents", default: 0, null: false
