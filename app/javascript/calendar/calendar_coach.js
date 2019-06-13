@@ -47,8 +47,8 @@ const displayCalendarCoach = () => {
       hiddenDays: [6, 0],
       header: false,
       footer: {
-        left: '',
-        center: 'prev,next',
+        left: 'prev,next',
+        center: '',
         right: ''
       },
       eventRender: function() {

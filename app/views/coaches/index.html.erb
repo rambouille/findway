@@ -7,7 +7,7 @@
         <%= select_tag :speciality, options_for_select(User::SPECIALIZATIONS),
                         include_blank: "SPECIALITÉ", placeholder: "Spé", class: "form-control filter", id: "spe-filter" %>
         <%= select_tag :business_expertise, options_for_select(User::BUSINESS_EXPERTISES),
-                        include_blank: "EXPERTISE", class: "form-control filter", id: "exp-filter" %>
+                        include_blank: "SECTEURS", class: "form-control filter", id: "exp-filter" %>
         <%= number_field_tag :price_min, params[:price_min], in: 1...150, placeholder: "MIN €/H",
                         style: "width: 7rem; text-align: center;", class: "form-control filter", id: "min-filter" %>
         <%= number_field_tag :price_max, params[:price_max], in: 1...150, placeholder: "MAX €/H",
@@ -47,7 +47,7 @@
                   <div>
                      <p class="card-font">SPECIALISATION</p>
                      <p class="font-helve"><%= user.speciality.capitalize %></p>
-                     <p class="card-font">EXPERTISE SECTORIELLE</p>
+                     <p class="card-font">SECTEUR</p>
                      <p class="font-helve"><%= user.business_expertise.capitalize %></p>
 
                     <p class="card-font">TARIF HORAIRE</p>
