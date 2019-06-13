@@ -10,10 +10,10 @@
 #  remember_created_at    :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  firstname              :string           not null
-#  lastname               :string           not null
-#  description            :text             not null
-#  age                    :integer          not null
+#  firstname              :string
+#  lastname               :string
+#  description            :text
+#  age                    :integer
 #  status                 :integer          default("client")
 #  linkedin               :string
 #  speciality             :string
