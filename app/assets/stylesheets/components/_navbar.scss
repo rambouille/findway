@@ -75,10 +75,10 @@ label .hamburger:after, label .hamburger:before {
 label {
   .menu {
     position: absolute;
-    right: -100px;
+    right: 0px;
     top: -100px;
     z-index: 100;
-    width: 200px;
+    width: 128px;
     height: 200px;
     // background: #FFF;
     border-radius: 50% 50% 50% 50%;
@@ -140,9 +140,9 @@ label {
   ul {
     z-index: 200;
     position: absolute;
-    top: 80%;
-    left: 82%;
-    width: 900px;
+    top: 45px;
+    left: 71%;
+    width: 573px;
     transform: translate(-50%,-50%);
     opacity: 0;
     transition: .25s 0s ease-in-out;
