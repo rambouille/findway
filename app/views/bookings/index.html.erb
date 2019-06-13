@@ -1,14 +1,19 @@
 <%= content_for(:navbar_class, "navbar-home") %>
-
-<div id="dashboard" class="mt-5">
-  <div id="planning" class="flex-60">
-    <h1>Mon planning</h1>
-    <div id="calendar-coach" class="m-3"></div>
-    <%= render 'calendar_modal' %>
+<div class="container">
+  <div id="titles" class="mt-5 d-flex justify-content-around">
+    <div>
+      <h1>Mon planning</h1>
+    </div>
+    <div>
+      <h1>Mes rdv futurs</h1>
+    </div>
   </div>
-  <div id="rdv" class="flex-40">
-    <h1>Mes rdv futurs</h1>
-    <div id="futur-bookings" class="overflow-scroll">
+  <div id="dashboard" class="flex-container" >
+    <div id="planning" class="flex-60">
+      <div id="calendar-coach" class="m-3"></div>
+      <%= render 'calendar_modal' %>
+    </div>
+    <div id="futur-bookings" class="flex-40 overflow-scroll">
       <% @future_bookings.each do |booking| %>
         <%= render 'booking_coach_card', booking: booking %>
       <% end %>

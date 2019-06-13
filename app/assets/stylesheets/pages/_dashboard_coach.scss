@@ -1,11 +1,21 @@
-#dashboard {
-  display: flex;
+
+#futur-bookings {
+  height: calc(580px - 62px);
+}
+
+.flex-container {
   align-items: stretch;
+  display: flex;
+}
+
+.flex-40 {
   flex: 0 0 60%;
 }
 
-#rdv {
-  height: calc(580px - 62px);
+.flex-40 {
   flex: 0 0 40%;
+}
+
+.overflow-scroll {
   overflow: scroll;
 }
