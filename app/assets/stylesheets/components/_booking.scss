@@ -49,7 +49,7 @@
 
 .planning {
   display: flex;
-  height: 100vh;
+  height: 80vh;
   align-items: center;
   background: linear-gradient($my-blue, $my-red);
   background-size: cover;
@@ -66,4 +66,8 @@
 
 #contents-cards {
   height:auto;
+}
+
+.planning .top-box {
+  padding-top: 60px;
 }
