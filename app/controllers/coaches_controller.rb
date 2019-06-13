@@ -28,6 +28,18 @@ class CoachesController < ApplicationController
     @booking.client = current_user
     @booking.booked!
     @booking.save
+    notif_new_booking(@booking)
     redirect_to dashboard_client_path
   end
+
+  private
+
+  def notif_new_booking(booking)
+    client = booking.client
+    coach = booking.coach
+    chatroom = ChatRoom.create name: "#{coach.firstname} & #{client.firstname}", coach: coach, client: client
+    Message.create content: "Bonjour, merci pour votre réservation pour le #{booking.french_date}! Si vous avez des questions avant notre entretien je suis à votre disposition.", chat_room: chatroom, user: chatroom.coach
+  end
+
 end
+

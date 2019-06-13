@@ -76,8 +76,6 @@ class Booking < ApplicationRecord
   def create_chat_room
     if client && ChatRoom.where(coach: coach, client: client).empty?
       booking = Booking.where(coach: coach, client: client).last
-      chatroom = ChatRoom.create name: "#{coach.firstname} & #{client.firstname}", coach: coach, client: client
-      Message.create content: "Bonjour, merci pour votre réservation pour le #{booking.french_date}! Si vous avez des questions avant notre entretien je suis à votre disposition.", chat_room: chatroom, user: chatroom.coach
     end
   end
 
