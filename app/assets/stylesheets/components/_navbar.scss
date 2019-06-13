@@ -17,6 +17,8 @@
   width: 100%;
   background: transparent;
   box-shadow: none;
+  padding: 0px;
+  margin: 0px;
   z-index: 999;
   .navbar-wagon-link {
     color: white;
@@ -55,6 +57,10 @@
   font-size: 18px;
 }
 
+.navbar-light .navbar-nav .nav-link:hover {
+  color: $my-red;
+}
+
 .avatar-nav {
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
@@ -65,10 +71,11 @@
 *:before,
 *:after {
   box-sizing: border-box;
+  z-index: 1;
 }
 
 label .hamburger:after, label .hamburger:before {
-  color: white;
+  background: white !important;
 }
 
 
@@ -140,9 +147,10 @@ label {
   ul {
     z-index: 200;
     position: absolute;
+    justify-content: flex-end;
     top: 45px;
-    left: 71%;
-    width: 573px;
+    left: 65%;
+    width: 56%;
     transform: translate(-50%,-50%);
     opacity: 0;
     transition: .25s 0s ease-in-out;
@@ -159,6 +167,11 @@ label {
     color: #000;
     text-decoration: none;
   }
+}
+
+
+label .hamburger:after, label .hamburger:before {
+  color: white;
 }
 
 // h1 {

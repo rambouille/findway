@@ -7,7 +7,7 @@
         <%= render 'booking_client_card', booking: booking %>
         <% end %>
       </div>
-      <h2>Réservations passées</h2>
+      <h2><%= @past_bookings.empty? ? '' : 'Réservations passées' %> </h2>
       <div id="past-bookings" class="mt-3">
         <% @past_bookings.select { |booking| booking.reviews.empty? }.each do |booking| %>
         <%= render 'booking_client_card', booking: booking %>

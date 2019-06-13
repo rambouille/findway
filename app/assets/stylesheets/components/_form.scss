@@ -19,6 +19,10 @@
   }
 }
 
+.form-login .btn:hover {
+  color: $my-red !important;
+  font-weight: bold;
+}
 
 select {
   text-decoration: none;

@@ -35,6 +35,16 @@
   padding-bottom: 12px;
 }
 
+.top-box-2 {
+  padding-left: 30px;
+  padding-top: 250px;
+}
+
+.top-box-2 h1{
+  color: white;
+  font-size: 100px;
+}
+
 .contents {
   height:90vh;
 }
@@ -122,4 +132,15 @@
   background-color:#2F2FA2;
 }
 
+@media screen and (max-width: 600px) {
+  .humaaans {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .humaaans2 {
+    display: none;
+  }
+}
 

@@ -75,6 +75,7 @@ input#max-filter.form-control.filter {
 .filter-block {
   background: linear-gradient($my-blue, $my-red);
   padding-top: 100px;
+  min-height: 100vh;
     .btn {
       color: white;
       border-radius:5px;
@@ -99,6 +100,7 @@ input#max-filter.form-control.filter {
   background-color: $my-blue;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .stars {

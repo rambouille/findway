@@ -1,6 +1,7 @@
 <div class="container mt-2 chatbox">
   <div class="row" id="big-container">
     <div id="summary" class="col-sm-4">
+      <h1><%= current_user.coach? ? '' : 'Mes coachs' %></h1>
       <% @chat_rooms.each do |chat_room| %>
         <% if current_user.coach? %>
           <a href="/chat_rooms/<%=chat_room.id%>">
@@ -20,7 +21,7 @@
           </a>
         <% else %>
           <a href="/chat_rooms/<%=chat_room.id%>">
-            <div class="card-channel d-flex align-items-center justify-content-between my-1">
+            <div class="card-channel d-flex align-items-center justify-content-between my-1 <%= 'ml-4' if chat_room == @chat_room %>">
               <div class="card-left d-flex align-items-center">
                 <div class="avatar-coach">
                   <img src="<%= chat_room.coach.avatar %>" class="avatar" alt="Avatar">

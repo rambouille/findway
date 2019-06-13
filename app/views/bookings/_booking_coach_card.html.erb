@@ -1,22 +1,45 @@
 <div class="booking-card d-flex  p-2">
-    <div class="booking-card-img avatar-large">
-      <img src="<%= booking.client.avatar %>" alt="avatar" class="avatar avatar-large avatar-index">
-    </div>
-    <div class="booking-card-text justify-content-center ml-3">
-      <h5> <%= booking.client.fullname %></h5>
-      <div class="colorbar"></div>
-      <p><i class="fas fa-calendar-day"></i>   <%= booking.french_date  %> </p>
-      <p><i class="far fa-clock"></i>   <%= booking.time_slot  %> </p>
-      <p><i class="fas fa-video"></i>   <%= booking.video_channel %> </p>
-    </div>
-    <div class="card-booking-buttons">
-      <% if booking.reviews.empty? && booking.end_time.past? %>
-        <%= link_to '<i class="far fa-heart"></i>'.html_safe, new_booking_review_path(booking), class: "btn btn-primary mt-3" %>
-      <% end %>
-      <% if booking.start_time.future? %>
-        <%= link_to 'x', booking_path(booking), method: :delete, class: "btn btn-primary mt-3" %>
-        <%= link_to '<i class="fas fa-comments"></i>'.html_safe, chat_room_path(ChatRoom.where(client: booking.client, coach: booking.coach).first), class: "btn btn-primary mt-3" %>
+  <div class="booking-card-img avatar-large">
+    <img src="<%= booking.client.avatar %>" alt="avatar" class="avatar avatar-large avatar-index">
+  </div>
+  <div class="booking-card-text justify-content-center ml-3">
+    <h5> <%= booking.client.fullname %></h5>
+    <div class="colorbar"></div>
+    <p><i class="fas fa-calendar-day"></i>   <%= booking.french_date  %> </p>
+    <p><i class="far fa-clock"></i>   <%= booking.time_slot  %> </p>
+    <p><i class="fas fa-video"></i>   <%= booking.video_channel %> </p>
+  </div>
+  <div class="card-booking-buttons">
+    <% if booking.reviews.empty? && booking.end_time.past? %>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+      <i class="far fa-heart"></i>
+    </button>
+    <% end %>
+    <% if booking.start_time.future? %>
+    <%= link_to 'x', booking_path(booking), method: :delete, class: "btn btn-primary mt-3" %>
+    <%= link_to '<i class="fas fa-comments"></i>'.html_safe, chat_room_path(ChatRoom.where(client: booking.client, coach: booking.coach).first), class: "btn btn-primary mt-3" %>
 
-      <% end %>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Ajouter un avis</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [booking, @review] do |f| %>
+        <%= f.input :content, label: 'Contenu' %>
+        <%= f.input :rating, label: 'Note', collection: 1..5 %>
+        <%= f.submit "Valider", class: "btn btn-primary" %>
+        <% end %>
+      </div>
     </div>
+  </div>
 </div>
