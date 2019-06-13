@@ -8,7 +8,7 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 60px;
+  width: 50px;
   color: white;
 }
 
@@ -67,6 +67,10 @@
   box-sizing: border-box;
 }
 
+label .hamburger:after, label .hamburger:before {
+  color: white;
+}
+
 
 label {
   .menu {
@@ -88,7 +92,7 @@ label {
     left: 50px;
     width: 30px;
     height: 2px;
-    background: #000;
+    background: white;
     display: block;
     transform-origin: center;
     transition: .5s ease-in-out;
@@ -97,6 +101,7 @@ label {
       transition: .5s ease-in-out;
       content: "";
       position: absolute;
+      background: white;
       display: block;
       width: 100%;
       height: 100%;

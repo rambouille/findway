@@ -139,5 +139,4 @@ const displayCalendarCoach = () => {
     setTimeout(renderCalendar, 250);
   });
 }
-
 export { displayCalendarCoach };
