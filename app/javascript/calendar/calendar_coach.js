@@ -38,12 +38,13 @@ const displayCalendarCoach = () => {
       titleFormat: 'DD/MM',
       slotLabelFormat: genericTimeFormat,
       eventTimeFormat: genericTimeFormat,
-      minTime: '8:00:00',
+      minTime: '10:00:00',
       maxTime: '19:00:00',
-      slotDuration: '02:00:00',
-      firstDay: 1,
+      slotDuration: '01:00:00',
+      firstDay: 3,
       eventColor: '#F64C72',
       eventBackgroundColor: '#F64C72',
+      hiddenDays: [6, 0],
       header: false,
       footer: {
         left: '',
@@ -65,59 +66,59 @@ const displayCalendarCoach = () => {
             location.reload();
           }
         });
-    },
-    eventDragStart: function(){
-      console.log('event drag start')
-    },
-    eventDragStop: function(){
-      console.log('event drag stop')
-    },
+      },
+      eventDragStart: function(){
+        console.log('event drag start')
+      },
+      eventDragStop: function(){
+        console.log('event drag stop')
+      },
 
-    eventClick: function(event, jsEvent, view) {
-      const booking_id = event.event._def.extendedProps.booking_id;
-      const client_id = event.event._def.extendedProps.client_id;
-      const state = event.event._def.extendedProps.state;
-      fetch(`/api/v1/bookings/${booking_id}`)
-        .then(response => response.json())
-        .then((data) => {
-            var state = data.state;
-            var day = data.day;
-            var start_hour = data.start_hour;
-            var end_hour = data.end_hour;
-            if (state === 'booked') {
-              var client_firstname = data.client_firstname;
-              var client_lastname = data.client_lastname;
-              var video_channel = data.video_channel;
-              var chat_room_id = data.chat_room_id
-              var client_avatar_url = data.client_avatar_urls.bright_face.url;
-              var title = `Entretien réservé`;
-              var bodyText = `<p style="opacity: 0.6;"><i class="fas fa-user"></i>   ${client_firstname} ${client_lastname}</p>
-                          <p style="opacity: 0.6;"><i class="fas fa-calendar-day"></i>   ${day}</p>
-                          <p style="opacity: 0.6;"><i class="far fa-clock"></i>   ${start_hour} - ${end_hour}</p>
-                          <p style="opacity: 0.6;"><i class="fas fa-video"></i>   ${video_channel}</p>`;
-              var bodyImage = `<img src=${client_avatar_url} class="rounded-circle;" width="100px;" alt="avatar"/>`;
-              var baliseChat = `<a class="btn btn-outline-primary mt-3" href="/chat_rooms/${chat_room_id}"><i class="fas fa-comments"></i></a>`
-              $('#chatButton').html(baliseChat);
-              $('#modalTitle').html(title);
-              $('#modalBodyText').html(bodyText);
-              $('#modalBodyImage').html(bodyImage);
-            } else {
-              var title = `Entretien proposé`;
-              var bodyText = `<p style="opacity: 0.6;"><i class="fas fa-calendar-day"></i>   ${day}</p>
-                          <p style="opacity: 0.6;"><i class="far fa-clock"></i>   ${start_hour} - ${end_hour}</p>`;
-              $('#modalTitle').html(title);
-              $('#modalBodyText').html(bodyText);
-            }
+      eventClick: function(event, jsEvent, view) {
+        const booking_id = event.event._def.extendedProps.booking_id;
+        const client_id = event.event._def.extendedProps.client_id;
+        const state = event.event._def.extendedProps.state;
+        fetch(`/api/v1/bookings/${booking_id}`)
+          .then(response => response.json())
+          .then((data) => {
+              var state = data.state;
+              var day = data.day;
+              var start_hour = data.start_hour;
+              var end_hour = data.end_hour;
+              if (state === 'booked') {
+                var client_firstname = data.client_firstname;
+                var client_lastname = data.client_lastname;
+                var video_channel = data.video_channel;
+                var chat_room_id = data.chat_room_id
+                var client_avatar_url = data.client_avatar_urls.bright_face.url;
+                var title = `Entretien réservé`;
+                var bodyText = `<p style="opacity: 0.6;"><i class="fas fa-user"></i>   ${client_firstname} ${client_lastname}</p>
+                            <p style="opacity: 0.6;"><i class="fas fa-calendar-day"></i>   ${day}</p>
+                            <p style="opacity: 0.6;"><i class="far fa-clock"></i>   ${start_hour} - ${end_hour}</p>
+                            <p style="opacity: 0.6;"><i class="fas fa-video"></i>   ${video_channel}</p>`;
+                var bodyImage = `<img src=${client_avatar_url} class="rounded-circle;" width="100px;" alt="avatar"/>`;
+                var baliseChat = `<a class="btn btn-outline-primary mt-3" href="/chat_rooms/${chat_room_id}"><i class="fas fa-comments"></i></a>`
+                $('#chatButton').html(baliseChat);
+                $('#modalTitle').html(title);
+                $('#modalBodyText').html(bodyText);
+                $('#modalBodyImage').html(bodyImage);
+              } else {
+                var title = `Entretien proposé`;
+                var bodyText = `<p style="opacity: 0.6;"><i class="fas fa-calendar-day"></i>   ${day}</p>
+                            <p style="opacity: 0.6;"><i class="far fa-clock"></i>   ${start_hour} - ${end_hour}</p>`;
+                $('#modalTitle').html(title);
+                $('#modalBodyText').html(bodyText);
+              }
 
-          var baliseDelete = `<a data-confirm="Êtes vous sûr de supprimer cette réservation ?" class="btn btn-outline-primary" rel="nofollow" data-method="delete" href="/bookings/${booking_id}">Annuler</a>`;
-          $('#delButton').html(baliseDelete);
-          $('#calendarModal').modal();
-        });
-    },
+            var baliseDelete = `<a data-confirm="Êtes vous sûr de supprimer cette réservation ?" class="btn btn-outline-primary" rel="nofollow" data-method="delete" href="/bookings/${booking_id}">Annuler</a>`;
+            $('#delButton').html(baliseDelete);
+            $('#calendarModal').modal();
+          });
+      },
 
-    eventDrop: function(){
-      console.log('event drop')
-        // call ajax?
+      eventDrop: function(){
+        console.log('event drop')
+          // call ajax?
       },
 
 

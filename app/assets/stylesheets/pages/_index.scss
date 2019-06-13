@@ -1,4 +1,16 @@
 // Import page-specific CSS files here.
+@import "dashboard_coach";
 @import "home";
 @import "show";
 @import "review";
+
+
+input[type=number] {
+   -moz-appearance:textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+}

@@ -57,6 +57,10 @@
   font-size: 18px;
 }
 
+.navbar-light .navbar-nav .nav-link:hover {
+  color: $my-red;
+}
+
 .avatar-nav {
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
@@ -70,17 +74,17 @@
 }
 
 label .hamburger:after, label .hamburger:before {
-  color: white;
+  background: white !important;
 }
 
 
 label {
   .menu {
     position: absolute;
-    right: -100px;
+    right: 0px;
     top: -100px;
     z-index: 100;
-    width: 200px;
+    width: 128px;
     height: 200px;
     // background: #FFF;
     border-radius: 50% 50% 50% 50%;
@@ -142,9 +146,9 @@ label {
   ul {
     z-index: 200;
     position: absolute;
-    top: 80%;
-    left: 82%;
-    width: 900px;
+    top: 45px;
+    left: 65%;
+    width: 56%;
     transform: translate(-50%,-50%);
     opacity: 0;
     transition: .25s 0s ease-in-out;
@@ -162,3 +166,18 @@ label {
     text-decoration: none;
   }
 }
+
+
+label .hamburger:after, label .hamburger:before {
+  color: white;
+}
+
+// h1 {
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%,-50%);
+//   width: 80%;
+//   text-align: center;
+// }
+
