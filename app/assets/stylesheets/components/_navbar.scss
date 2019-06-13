@@ -72,7 +72,7 @@
 }
 
 label .hamburger:after, label .hamburger:before {
-  color: white;
+  background: white !important;
 }
 
 
@@ -163,6 +163,10 @@ label {
     color: #000;
     text-decoration: none;
   }
+}
+
+label .hamburger:after, label .hamburger:before {
+  color: white;
 }
 
 // h1 {
