@@ -27,13 +27,15 @@ class Booking < ApplicationRecord
              6 => 'juin', 7 => 'juillet', 8 => 'août', 9 => 'septembre',
              10 => 'octobre', 11 =>  'novembre', 12 => 'décembre' }
 
+  CHANNELS = %i[skype hangout facetime]
+
   belongs_to :coach, class_name: "User", foreign_key: "coach_id"
   belongs_to :client, class_name: "User", foreign_key: "client_id", optional: true
 
   has_many :reviews, dependent: :destroy
 
   enum state: %i[pending booked payed cancelled]
-  enum video_channel: %i[skype hangout facetime]
+  enum video_channel: CHANNELS
 
   validate :end_must_be_after_start
   validate :check_redundancy_schedule
