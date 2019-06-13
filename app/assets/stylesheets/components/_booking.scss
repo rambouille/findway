@@ -1,6 +1,7 @@
 .client-bookings {
   background: linear-gradient($my-blue, $my-red);
   padding-top: 100px;
+  min-height: 100vh;
   h2 {
     color: white;
     text-align: center;
