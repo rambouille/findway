@@ -33,9 +33,9 @@
           <% end %>
         </li>
         <li class="nav-item">
-          <% if current_user.coach? && current_user.coach_chat_rooms %>
+          <% if current_user.coach? && current_user.coach_chat_rooms.any? %>
             <%= link_to "Messages", chat_room_path(current_user.coach_chat_rooms.first.id), class: "nav-link" %>
-          <% elsif current_user.client_chat_rooms %>
+          <% elsif current_user.client_chat_rooms.any? %>
             <%= link_to "Messages", chat_room_path(current_user.client_chat_rooms.first.id), class: "nav-link" %>
           <% end %>
         </li>

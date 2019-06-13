@@ -13,18 +13,30 @@
 
 REVIEWS_FOR_COACH = [
   { content: "Une magnifique expérience. Merci!", rating: 5 },
+  { content: "Magnifique!", rating: 5 },
+  { content: "Merci pour ce moment", rating: 5 },
+  { content: "A très bientôt!", rating: 5 },
+  { content: "Ce m'a vraiment aidé.", rating: 5 },
+  { content: "Merci beaucoup!", rating: 5 },
+  { content: "Je recommande vivement ce coach", rating: 5 },
   { content: "Une magnifique expérience. Merci!", rating: 5 },
-  { content: "Une magnifique expérience. Merci!", rating: 5 },
-  { content: "Une magnifique expérience. Merci!", rating: 5 },
+  { content: "Ce site est vraiment génial!", rating: 5 },
+  { content: "Ce coaching m'a vraiment ouvert des portes!", rating: 5 },
+  { content: "Un grand merci!", rating: 5 },
+  { content: "Quelle écoute, et quels bons conseils!!", rating: 5 },
+  { content: "Très intéressant!", rating: 4 },
+  { content: "Super", rating: 4 },
+  { content: "Super coach!!", rating: 4 },
+  { content: "Merci beaucoup!!", rating: 4 },
+  { content: "Expérience très intéressante!", rating: 4 },
+  { content: "J'ai enfin trouvé ma voie!", rating: 5 },
+  { content: "Super coach pour trouver sa voie", rating: 5 },
+  { content: "C'était très chouette. Ce coaching m'a beaucoup aidé.", rating: 4 },
   { content: "C'était très agréable. Ce coach m'a vraiment aidé!", rating: 4 },
-  { content: "C'était très agréable. Ce coach m'a vraiment aidé!", rating: 4 },
-  { content: "C'était très agréable. Ce coach m'a vraiment aidé!", rating: 4 },
-  { content: "C'était très agréable. Ce coach m'a vraiment aidé!", rating: 4 },
-  { content: "C'était très instructif", rating: 3 },
-  { content: "C'était très instructif", rating: 3 },
-  { content: "C'était très instructif", rating: 3 },
+  { content: "Intéressant...", rating: 3 },
+  { content: "C'était instructif", rating: 3 },
   { content: "Ce coach est sympathique, mais il était en retard...", rating: 2 },
-  { content: "Je suis très déçu...", rating: 1 },
+  { content: "Je suis déçu...", rating: 1 },
   { content: "Une perte de temps et d'argent... :(", rating: 0 }
 ]
 
@@ -64,14 +76,11 @@ COACH_DIPLOMS = [
   "Diplôme d'Etat de psychologue scolaire (DEPS)"
 ]
 
-puts "creating client Camille"
-cam = User.new(firstname: "Camille", lastname: "Paumier", email: "campaum@email.com", description: "Je suis actuellement en réflexion sur mon avenir professionnel.", age: 28, password: "123456", status: "client")
-cam.remote_avatar_url = "https://lh3.googleusercontent.com/tO4SHBKzgyAYGLAmzJEpjMfbQE0REocq3WRkqdDGcXdPXYPAxKXPN6S1Bpn0FgVaPHyJjxxK89q6WneUfA7-gS4aF5i8qnVxp7_vuTI4HQLFBJgn5TUtmzRxgXBBgej2PaAJ45DblPa7c5ufiiiS_Mu41ndcdEiWmW8boCLuGcb959qSUCF8rqbKPFdXNJat3As1nKQ4q3-7jbiX-f647q5_XlCg8F-8DAeZaKy-Udqm25QRTdyi2G9XpdDeMtIMAG4XtBN03j9-Id1T0ezVICYf4aSacccKU-W43wDGwXhlv-xRVnheMREccD7sQ-tHV9SyNR8CV5ZjpGs4SPwXZVd4DMJBvKxcddMo6iyoxDh4-LSB0XaWPi_GzC8jqJKDR55dfsDn5HrLKxXJGbHQpTe76GvuxuLqpYD6w5W6lc7-Z23qSghSW3HHXcKPykci8w_vMPGhWPDSWhZ7YK4Fg9tyKWRVTbgpZZkyPYKLcP9dMaGpZDkZoWwee_OeYPsJEpdHipNPhMHER2W1JhAZbZO8qArFnaEjP6HSc5pZewhifRnNVSAqA5x3r36i0aPfhzoZ15wEAXatYQeGIwC2lAIvr8P4FDQgG5XQq6Ph9ye9tSqFkYSEQOKefaR5rDhhOQuyEsEjoHob8ukxN9190F7x9fLkphOipB8qELQ2cZ_ZhPlFcdv62dqeRuSwMZf2OesASHJPoTrQin4zBKch4GTR=w872-h1308-no"
-cam.save!
+DESCRIPTION_COACH = "Je propose de vous accompagner dans les moments charnières de votre vie professionnelle : transition de carrière, définition d'une nouvelle trajectoire, mais aussi perte d'emploi, reconversion ... L'approche que je propose est hybride et s’appuie sur ma formation en Psychologie et mes années de pratique dans les Ressources Humaines. Par l'intermédiaire d'un accompagnement individuel ajusté à vos besoins, nous définirons un programme sur-mesure, à votre rythme pour retrouver un souffle et avancer ensemble, en fonction de vos objectifs. En tant que Coach, je facilite ici le questionnement au sein des personnes et la prise de décision en étant un acteur du dialogue intérieur, une aide à la prise de recul et à la réflexion, dans une relation d'écoute et d'accompagnement bienveillante."
 
 puts "creating coach Antoine"
 antoine = User.new(firstname: "Antoine", lastname: "Rambert", email: "antoine.rambert@gmail.com",
-  description: "Coach depuis maintenant 3 ans en cabinet, je souhaiterais proposer mes services à des personnes qui n'y avaient pas accès: sur internet. ",
+  description: "Coach depuis maintenant 3 ans en cabinet, je suis passionné par mon métier. Je crois vraiment que chaque personne peut trouver un métier qui lui corresponde vraiment, le rende heureux. Je reçois sur rendez-vous, par vidéo ou à mon cabinet. N'hésitez pas à me contacter pour toute question. ",
   age: 32, password: "123456", status: "coach", hourly_price_cents: 4800, diplom: COACH_DIPLOMS.sample, speciality: "coaching personnalisé", business_expertise: "tous secteurs")
 antoine.remote_avatar_url = "http://res.cloudinary.com/tootoon/image/upload/v1560420054/j5kbczylxrj07cfwhudf.jpg"
 antoine.save!
@@ -95,7 +104,7 @@ end
 
 puts "creating 5 male coaches"
 5.times do
-  coach = User.new(firstname: MALE_FIRSTNAMES.sample, lastname: LASTNAMES.sample, password: "123456", description: Faker::Lorem.paragraphs, diplom: COACH_DIPLOMS.sample, age: (11..60).to_a.sample, status: "coach", hourly_price_cents: (2000..8000).to_a.sample.round(-2), speciality: User::SPECIALIZATIONS.sample, business_expertise: User::BUSINESS_EXPERTISES.sample)
+  coach = User.new(firstname: MALE_FIRSTNAMES.sample, lastname: LASTNAMES.sample, password: "123456", description: DESCRIPTION_COACH, diplom: COACH_DIPLOMS.sample, age: (11..60).to_a.sample, status: "coach", hourly_price_cents: (2000..8000).to_a.sample.round(-2), speciality: User::SPECIALIZATIONS.sample, business_expertise: User::BUSINESS_EXPERTISES.sample)
   coach.email = "#{coach.firstname}.#{coach.lastname}@email.fr"
   coach.remote_avatar_url = AVATAR_URLS[:coaches][:male].sample
   coach.save
@@ -103,30 +112,42 @@ end
 
 puts "creating 5 female coaches"
 5.times do
-  coach = User.new(firstname: FEMALE_FIRSTNAMES.sample, lastname: LASTNAMES.sample, password: "123456", description: Faker::Lorem.paragraphs, diplom: COACH_DIPLOMS.sample, age: (11..60).to_a.sample, status: "coach", hourly_price_cents: (2000..8000).to_a.sample.round(-2), speciality: User::SPECIALIZATIONS.sample, business_expertise: User::BUSINESS_EXPERTISES.sample)
+  coach = User.new(firstname: FEMALE_FIRSTNAMES.sample, lastname: LASTNAMES.sample, password: "123456", description: DESCRIPTION_COACH, diplom: COACH_DIPLOMS.sample, age: (11..60).to_a.sample, status: "coach", hourly_price_cents: (2000..8000).to_a.sample.round(-2), speciality: User::SPECIALIZATIONS.sample, business_expertise: User::BUSINESS_EXPERTISES.sample)
   coach.email = "#{coach.firstname}.#{coach.lastname}@email.fr"
   coach.remote_avatar_url = AVATAR_URLS[:coaches][:female].sample
   coach.save
 end
 
-def new_future_date_time_between_8_and_18(future = true)
+def date_between_monday_and_friday?(date)
+  %w[1 2 3 4 5].include? date.strftime('%u') #Check the rendez-vous is between monday and friday
+end
+
+def new_future_date_time_between_10_and_18(future = true)
   if future
-    date = (Time.now + rand(14).days).to_date.to_s
+    date = (Time.now + rand(14).days)
+    until date_between_monday_and_friday?(date)
+      date = (Time.now + rand(14).days)
+    end
+    date_string = date.to_date.to_s
   else
-    date = (Time.now - rand(14).days).to_date.to_s
+    date = (Time.now - rand(14).days)
+    until date_between_monday_and_friday?(date)
+      date = (Time.now - rand(14).days)
+    end
+    date_string = date.to_date.to_s
   end
-  hour = " at #{rand(8..18)}:00+02:00"
-  date_time = DateTime.strptime(date + hour, '%Y-%m-%d at %H:%M%z')
+  hour = " at #{rand(10..18).to_s}:00+02:00"
+  date_time = DateTime.strptime("#{date_string}#{hour}", '%Y-%m-%d at %H:%M%z')
 end
 
 def create_past_booking(coach, client)
-  start_hour = new_future_date_time_between_8_and_18(false)
+  start_hour = new_future_date_time_between_10_and_18(false)
   end_hour = start_hour + 1.hour
-  Booking.create(coach: coach, client: client, start_time: start_hour, end_time: end_hour, state: 'booked', video_channel: 'skype')
+  Booking.create(coach: coach, client: client, start_time: start_hour, end_time: end_hour, state: 'booked', video_channel: Booking::CHANNELS.sample)
 end
 
 def create_future_booking(coach, state = 'pending', client = nil, video_channel = nil)
-  start_hour = new_future_date_time_between_8_and_18
+  start_hour = new_future_date_time_between_10_and_18
   end_hour = start_hour + 1.hour
   Booking.create(coach: coach, client: client, start_time: start_hour, end_time: end_hour, state: state, video_channel: video_channel)
 end
@@ -141,7 +162,7 @@ puts "creating 40 future bookings with client"
 40.times do
   coach = User.coach.sample
   client = User.client.sample
-  create_future_booking(coach, 'booked', client, 'skype')
+  create_future_booking(coach, 'booked', client, Booking::CHANNELS.sample)
 end
 
 puts "creating 50 past bookings with reviews"
@@ -170,3 +191,8 @@ puts "creating 2 past bookings without review for antoine"
  client = User.client.sample
  create_past_booking(coach, client)
 end
+
+puts "creating client Camille"
+cam = User.new(firstname: "Camille", lastname: "Paumier", email: "campaum@email.com", description: "Je suis actuellement en réflexion sur mon avenir professionnel.", age: 26, password: "123456", status: "client")
+cam.remote_avatar_url = "https://lh3.googleusercontent.com/tO4SHBKzgyAYGLAmzJEpjMfbQE0REocq3WRkqdDGcXdPXYPAxKXPN6S1Bpn0FgVaPHyJjxxK89q6WneUfA7-gS4aF5i8qnVxp7_vuTI4HQLFBJgn5TUtmzRxgXBBgej2PaAJ45DblPa7c5ufiiiS_Mu41ndcdEiWmW8boCLuGcb959qSUCF8rqbKPFdXNJat3As1nKQ4q3-7jbiX-f647q5_XlCg8F-8DAeZaKy-Udqm25QRTdyi2G9XpdDeMtIMAG4XtBN03j9-Id1T0ezVICYf4aSacccKU-W43wDGwXhlv-xRVnheMREccD7sQ-tHV9SyNR8CV5ZjpGs4SPwXZVd4DMJBvKxcddMo6iyoxDh4-LSB0XaWPi_GzC8jqJKDR55dfsDn5HrLKxXJGbHQpTe76GvuxuLqpYD6w5W6lc7-Z23qSghSW3HHXcKPykci8w_vMPGhWPDSWhZ7YK4Fg9tyKWRVTbgpZZkyPYKLcP9dMaGpZDkZoWwee_OeYPsJEpdHipNPhMHER2W1JhAZbZO8qArFnaEjP6HSc5pZewhifRnNVSAqA5x3r36i0aPfhzoZ15wEAXatYQeGIwC2lAIvr8P4FDQgG5XQq6Ph9ye9tSqFkYSEQOKefaR5rDhhOQuyEsEjoHob8ukxN9190F7x9fLkphOipB8qELQ2cZ_ZhPlFcdv62dqeRuSwMZf2OesASHJPoTrQin4zBKch4GTR=w872-h1308-no"
+cam.save!

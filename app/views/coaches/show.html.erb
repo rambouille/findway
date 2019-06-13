@@ -64,6 +64,7 @@
           </div>
           <br>
           <p><% @reviews.each do |review| %></p>
+
           <% nb_stars = review.rating %>
               <% nb_stars.times do %>
                 <span style="color: #2F2FA2"><i class="fas fa-star"></i></span>

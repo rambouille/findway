@@ -86,6 +86,10 @@ class User < ApplicationRecord
   end
 
   def rating_average
-    self.reviews.average(:rating)
+    if self.coach?
+      Review.where(booking: Booking.where(coach: self)).where.not(user: self).average(:rating)
+    else
+      Review.where(booking: Booking.where(client: self)).where.not(user: self).average(:rating)
+    end
   end
 end
