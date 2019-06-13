@@ -21,33 +21,33 @@ class Booking < ApplicationRecord
   COMMISSION_RATE = 0
 
   DAYS = { 1 => 'lundi', 2 => 'mardi', 3 => 'mercredi', 4 => 'jeudi',
-           5 => 'vendredi', 6 => 'samedi', 7 => 'dimanche' }
+   5 => 'vendredi', 6 => 'samedi', 7 => 'dimanche' }
 
-  MONTHS = { 1 => 'janvier', 2 => 'février', 3 => 'mars', 4 => 'avril', 5 => 'mai',
-             6 => 'juin', 7 => 'juillet', 8 => 'août', 9 => 'septembre',
-             10 => 'octobre', 11 =>  'novembre', 12 => 'décembre' }
+   MONTHS = { 1 => 'janvier', 2 => 'février', 3 => 'mars', 4 => 'avril', 5 => 'mai',
+     6 => 'juin', 7 => 'juillet', 8 => 'août', 9 => 'septembre',
+     10 => 'octobre', 11 =>  'novembre', 12 => 'décembre' }
 
-  belongs_to :coach, class_name: "User", foreign_key: "coach_id"
-  belongs_to :client, class_name: "User", foreign_key: "client_id", optional: true
+     belongs_to :coach, class_name: "User", foreign_key: "coach_id"
+     belongs_to :client, class_name: "User", foreign_key: "client_id", optional: true
 
-  has_many :reviews, dependent: :destroy
+     has_many :reviews, dependent: :destroy
 
-  enum state: %i[pending booked payed cancelled]
-  enum video_channel: %i[skype hangout facetime]
+     enum state: %i[pending booked payed cancelled]
+     enum video_channel: %i[skype hangout facetime]
 
-  validate :end_must_be_after_start
-  validate :check_redundancy_schedule
+     validate :end_must_be_after_start
+     validate :check_redundancy_schedule
 
-  after_validation :set_amount
-  after_save :create_chat_room
+     after_validation :set_amount
+     after_save :create_chat_room
 
-  def end_must_be_after_start
-    if start_time >= end_time
-      errors.add(:end_time, "l'horaire de fin doit être après l'horaire de début")
+     def end_must_be_after_start
+      if start_time >= end_time
+        errors.add(:end_time, "l'horaire de fin doit être après l'horaire de début")
+      end
     end
-  end
 
-  def check_redundancy_schedule
+    def check_redundancy_schedule
     # Booking.where(coach: coach).each do |coach_booking|
     #   if start_time == coach_booking.start_time
     #     errors.add(:start_time, "Vous avez déjà un booking")
@@ -57,14 +57,15 @@ class Booking < ApplicationRecord
 
   def french_date
     date = start_time
+    day_in_week = date.strftime('%u').to_i
+    day = date.strftime('%d').to_i
+    month = date.strftime('%m').to_i
+    french_date = "#{DAYS[day_in_week]} #{day} #{MONTHS[month]}"
+
     if date.today?
-      "aujourd'hui"
-    else
-      day_in_week = date.strftime('%u').to_i
-      day = date.strftime('%d').to_i
-      month = date.strftime('%m').to_i
-      "#{DAYS[day_in_week]} #{day} #{MONTHS[month]}"
+      french_date = french_date + " (aujourd'hui)"
     end
+    return french_date
   end
 
   def time_slot
@@ -74,8 +75,7 @@ class Booking < ApplicationRecord
   # create a chat_room as soon as a booking is booked by a client
   def create_chat_room
     if client && ChatRoom.where(coach: coach, client: client).empty?
-      chatroom = ChatRoom.create name: "#{coach.firstname} & #{client.firstname}", coach: coach, client: client
-      Message.create content: "Bonjour, merci pour votre réservation ! Si vous avez des questions avant notre entretien je suis à votre disposition.", chat_room: chatroom, user: chatroom.coach
+      booking = Booking.where(coach: coach, client: client).last
     end
   end
 
