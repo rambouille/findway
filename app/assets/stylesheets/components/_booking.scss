@@ -42,6 +42,9 @@
 
 .humaaans2 {
   height: 500px;
+  margin-top: 260px;
+  z-index: 12000;
+  margin-left: 150px;
 }
 
 .booking-card-img img {
@@ -50,7 +53,7 @@
 
 .planning {
   display: flex;
-  height: 60vh;
+  height: 82vh;
   align-items: center;
   background: linear-gradient($my-blue, $my-red);
   background-size: cover;
@@ -58,6 +61,7 @@
 }
 .bottom_pink {
   width: 100vw;
+  z-index:1;
 }
 
 #card-deck-center {
@@ -67,4 +71,8 @@
 
 #contents-cards {
   height:auto;
+}
+
+.planning .top-box {
+  padding-top: 60px;
 }

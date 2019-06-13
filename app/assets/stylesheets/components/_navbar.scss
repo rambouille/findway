@@ -17,6 +17,8 @@
   width: 100%;
   background: transparent;
   box-shadow: none;
+  padding: 0px;
+  margin: 0px;
   z-index: 999;
   .navbar-wagon-link {
     color: white;
@@ -69,6 +71,7 @@
 *:before,
 *:after {
   box-sizing: border-box;
+  z-index: 1;
 }
 
 label .hamburger:after, label .hamburger:before {
@@ -144,6 +147,7 @@ label {
   ul {
     z-index: 200;
     position: absolute;
+    justify-content: flex-end;
     top: 45px;
     left: 65%;
     width: 56%;
@@ -164,6 +168,7 @@ label {
     text-decoration: none;
   }
 }
+
 
 label .hamburger:after, label .hamburger:before {
   color: white;
