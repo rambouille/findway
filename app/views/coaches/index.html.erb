@@ -2,7 +2,7 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="filter-block col-lg-4">
+    <div class="filter-block col-lg-2">
       <%= form_tag coaches_path, method: :get, class: 'form-horizontal' do %>
         <%= select_tag :speciality, options_for_select(User::SPECIALIZATIONS),
                         include_blank: "SPECIALITÉ", placeholder: "Spé", class: "form-control filter", id: "spe-filter" %>
@@ -16,7 +16,7 @@
       <% end %>
     </div>
 
-    <div class="coachcards col-lg-8">
+    <div class="coachcards col-lg-10">
       <!-- div id="results-infos" class="pb-5">
         <p><strong><%= @users.count %> coachs</strong> trouvés</p>
       </div> -->
