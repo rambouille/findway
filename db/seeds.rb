@@ -109,17 +109,26 @@ puts "creating 5 female coaches"
   coach.save
 end
 
+def new_future_date_time_between_8_and_18(future = true)
+  if future
+    date = (Time.now + rand(14).days).to_date.to_s
+  else
+    date = (Time.now - rand(14).days).to_date.to_s
+  end
+  hour = " at #{rand(8..18)}:00+02:00"
+  date_time = DateTime.strptime(date + hour, '%Y-%m-%d at %H:%M%z')
+end
 
 def create_past_booking(coach, client)
- start_hour = (DateTime.now - rand(10).day + rand(24).hour).beginning_of_hour
- end_hour = start_hour + (1..2).to_a.shuffle.first.hour
- Booking.create(coach: coach, client: client, start_time: start_hour, end_time: end_hour, state: 'booked', video_channel: 'skype')
+  start_hour = new_future_date_time_between_8_and_18(false)
+  end_hour = start_hour + 1.hour
+  Booking.create(coach: coach, client: client, start_time: start_hour, end_time: end_hour, state: 'booked', video_channel: 'skype')
 end
 
 def create_future_booking(coach, state = 'pending', client = nil, video_channel = nil)
-  start_hour = (DateTime.now + rand(7).day + rand(7).hour).beginning_of_hour
-  end_hour = start_hour + (1..2).to_a.shuffle.first.hour
-  booking = Booking.create(coach: coach, client: client, start_time: start_hour, end_time: end_hour, state: state, video_channel: video_channel)
+  start_hour = new_future_date_time_between_8_and_18
+  end_hour = start_hour + 1.hour
+  Booking.create(coach: coach, client: client, start_time: start_hour, end_time: end_hour, state: state, video_channel: video_channel)
 end
 
 puts "creating 100 future bookings without client"
