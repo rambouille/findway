@@ -1,18 +1,17 @@
 <%= content_for(:navbar_class, "navbar-home") %>
 
 <div class="planning">
- <div class="container">
-  <div class="top-box-2 text-center">
-    <h1>Mon planning</h1>
+  <div class="container">
+    <div class="top-box-2 text-center">
+      <h1>Mon planning</h1>
       <div id="calendar-coach" class="m-3">
-   <div class="bouton-resa"></div>
- </div>
-   <%= render 'calendar_modal' %>
+        <div class="bouton-resa"></div>
+      </div>
+    </div>
   </div>
- </div>
- <div class="container">
-   <%= render 'shared/humaaans2' %>
- </div>
+  <div class="container">
+     <%= render 'shared/humaaans2' %>
+  </div>
 </div>
 
 <div>
@@ -22,18 +21,16 @@
 <div class="container">
 
  <div id="contents-cards" class="contents">
-
    <div class="why-us text-center">
      <h1>Laisser un avis</h1>
    </div>
-
    <div id="card-deck-center" class="card-deck">
 
-     <div id="futur-bookings">
-        <% (@past_bookings.select { |booking| booking.reviews.empty? }).uniq{ |x| x.client }.each do |booking| %>
-       <%= render 'booking_coach_card', booking: booking %>
-       <% end %>
-     </div>
+    <div id="futur-bookings">
+      <% (@past_bookings.select { |booking| booking.reviews.empty? }).uniq{ |x| x.client }.each do |booking| %>
+      <%= render 'booking_coach_card', booking: booking %>
+      <% end %>
+    </div>
    </div>
  </div>
 </div>
@@ -68,3 +65,5 @@
  </div>
 
 </div>
+
+<%= render 'calendar_modal' %>

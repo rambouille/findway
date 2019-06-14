@@ -92,20 +92,21 @@ const displayCalendarCoach = () => {
                 var chat_room_id = data.chat_room_id
                 var client_avatar_url = data.client_avatar_urls.bright_face.url;
                 var title = `Entretien réservé`;
-                var bodyText = `<p style="opacity: 0.6;"><i class="fas fa-user"></i>   ${client_firstname} ${client_lastname}</p>
-                            <p style="opacity: 0.6;"><i class="fas fa-calendar-day"></i>   ${day}</p>
-                            <p style="opacity: 0.6;"><i class="far fa-clock"></i>   ${start_hour} - ${end_hour}</p>
-                            <p style="opacity: 0.6;"><i class="fas fa-video"></i>   ${video_channel}</p>`;
+                var bodyText = `<p><i class="fas fa-user"></i>   ${client_firstname} ${client_lastname}</p>
+                            <p><i class="fas fa-calendar-day"></i>   ${day}</p>
+                            <p><i class="far fa-clock"></i>   ${start_hour} - ${end_hour}</p>
+                            <p><i class="fas fa-video"></i>   ${video_channel}</p>`;
                 var bodyImage = `<img src=${client_avatar_url} class="rounded-circle;" width="100px;" alt="avatar"/>`;
-                var baliseChat = `<a class="btn btn-outline-primary mt-3" href="/chat_rooms/${chat_room_id}"><i class="fas fa-comments"></i></a>`
+                var baliseChat = `<a class="btn btn-outline-primary" href="/chat_rooms/${chat_room_id}"><i class="fas fa-comments"></i></a>`
                 $('#chatButton').html(baliseChat);
                 $('#modalTitle').html(title);
                 $('#modalBodyText').html(bodyText);
                 $('#modalBodyImage').html(bodyImage);
               } else {
+                $('#modalBodyImage').html("");
                 var title = `Entretien proposé`;
-                var bodyText = `<p style="opacity: 0.6;"><i class="fas fa-calendar-day"></i>   ${day}</p>
-                            <p style="opacity: 0.6;"><i class="far fa-clock"></i>   ${start_hour} - ${end_hour}</p>`;
+                var bodyText = `<p><i class="fas fa-calendar-day"></i>   ${day}</p>
+                            <p><i class="far fa-clock"></i>   ${start_hour} - ${end_hour}</p>`;
                 $('#modalTitle').html(title);
                 $('#modalBodyText').html(bodyText);
               }
