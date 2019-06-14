@@ -1,0 +1,27 @@
+<div class="modal fade" id="booking-<%= booking.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Confirmez-vous ce rendez-vous?
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="container card-confirmation-booking">
+                  <h2></h2>
+                  <p><i class="fas fa-calendar-day"></i>  <%= booking.french_date %></p>
+                  <p><i class="far fa-clock"></i> <%= booking.time_slot %></p>
+                  <% price = booking.coach.hourly_price_cents * (booking.end_time - booking.start_time) / 3600 /100 %>
+                  <p><i class="fas fa-euro-sign"></i>  <%= price.to_i %></p>
+                </div>
+              </div>
+              <div class="modal-footer d-flex align-items-center">
+                <%= link_to 'Réserver', coach_book_path(booking.coach, booking), class: 'btn btn-primary', method: :patch  %>
+                <%= link_to 'Retour', coach_slots_path(booking.coach), class: 'btn btn-secondary'  %>
+              </div>
+            </div>
+          </div>
+        </div>
