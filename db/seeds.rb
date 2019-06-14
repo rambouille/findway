@@ -188,6 +188,7 @@ end
 
 puts "creating 10 past bookings with or without reviews for antoine to the same clients"
 coach = User.where(email: 'antoine.rambert@gmail.com').first
+p coach
 client = User.client.sample
 2.times do
   booking = create_past_booking(coach, client)
