@@ -119,3 +119,7 @@ select {
   font-size: 40px;
   margin: 70px 0;
 }
+
+#exampleModalCenter > div > div {
+  z-index: 0;
+}
