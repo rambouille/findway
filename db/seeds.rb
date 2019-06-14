@@ -60,7 +60,7 @@ AVATAR_URLS = {
     },
     clients: {
       male: ['https://i.pravatar.cc/300?img=4', 'https://i.pravatar.cc/300?img=7', 'https://i.pravatar.cc/300?img=18', 'https://i.pravatar.cc/300?img=51', 'https://i.pravatar.cc/300?img=55', 'https://cdn9.dissolve.com/p/D430_49_193/D430_49_193_1200.jpg', 'https://cdn7.dissolve.com/p/D430_49_185/D430_49_185_1200.jpg', 'https://www.menshairstylesnow.com/wp-content/uploads/2017/01/Young-Professional-Haircut-Side-Swept-Hair.jpg', 'https://s.abcnews.com/images/US/botham-jean-01-ap-jef-180907_hpMain_4x3_992.jpg', 'http://nextluxury.com/wp-content/uploads/professional-male-beard-style-ideas.jpg', 'https://ak4.picdn.net/shutterstock/videos/6305984/thumb/2.jpg', 'https://images.sudouest.fr/2014/11/12/57ebc81466a4bd6726a75e18/widescreen/1000x500/paul-etait-certain-d-avoir-reussi-son-epreuve-il-avait-raison.jpg', 'https://www.letudiant.fr/image/articleetu/christopher--m-oui-156.jpg'],
-      female: ['https://i.pravatar.cc/300?img=1', 'https://i.pravatar.cc/300?img=5', 'https://i.pravatar.cc/300?img=9', 'https://i.pravatar.cc/300?img=23', 'https://i.pravatar.cc/300?img=24', 'https://i.pravatar.cc/300?img=25', 'https://i.pravatar.cc/300?img=30', 'https://i.pravatar.cc/300?img=38', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnDcMWI6r3Sn5Xl56e0tlpqU53UQY6w7-PJJ7az_SR2BTQne3d', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxoqXcsSgj9pvqN-GXc2fFeDxLs7FQ0KnvvcBls1CU7ImYm532', 'https://cdn.goodgallery.com/4c3d0d42-c7e0-4087-b491-6e686b1f59f4/s/0800/2b2l049l/best-professional-headshots-black-professional-woman.jpg', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSunIFBLnR2fZjAn8NnbKQPVIgPfEwypEXDdKhpoD-JP8lmMcHU' , 'https://www.superprof.fr/images/annonces/professeur-home-lyceenne-terminal-donne-cours-francais-primaire-1er-lycee.jpg']
+      female: ['https://i.pravatar.cc/300?img=1', 'https://i.pravatar.cc/300?img=5', 'https://i.pravatar.cc/300?img=9', 'https://i.pravatar.cc/300?img=23', 'https://i.pravatar.cc/300?img=24', 'https://i.pravatar.cc/300?img=25', 'https://i.pravatar.cc/300?img=30', 'https://i.pravatar.cc/300?img=38', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnDcMWI6r3Sn5Xl56e0tlpqU53UQY6w7-PJJ7az_SR2BTQne3d', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxoqXcsSgj9pvqN-GXc2fFeDxLs7FQ0KnvvcBls1CU7ImYm532', 'https://cdn.goodgallery.com/4c3d0d42-c7e0-4087-b491-6e686b1f59f4/s/0800/2b2l049l/best-professional-headshots-black-professional-woman.jpg', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSunIFBLnR2fZjAn8NnbKQPVIgPfEwypEXDdKhpoD-JP8lmMcHU']
     },
 }
 
@@ -144,7 +144,7 @@ def create_past_booking(coach, client)
   start_hour = new_future_date_time_between_10_and_18(false)
   end_hour = start_hour + 1.hour
   booking = Booking.create(coach: coach, client: client, start_time: start_hour, end_time: end_hour, state: 'booked', video_channel: Booking::CHANNELS.sample)
-  if client
+  if client && ChatRoom.where(client: client, coach: coach).empty?
     chatroom = ChatRoom.create! name: "#{coach.firstname} & #{client.firstname}", coach: coach, client: client
     Message.create! content: "Bonjour, merci pour votre réservation pour le #{booking.french_date}! Si vous avez des questions avant notre entretien je suis à votre disposition.", chat_room: chatroom, user: chatroom.coach
   end
@@ -155,7 +155,7 @@ def create_future_booking(coach, state = 'pending', client = nil, video_channel 
   start_hour = new_future_date_time_between_10_and_18
   end_hour = start_hour + 1.hour
   booking = Booking.create(coach: coach, client: client, start_time: start_hour, end_time: end_hour, state: state, video_channel: video_channel)
-  if client
+  if client && ChatRoom.where(client: client, coach: coach).empty?
     chatroom = ChatRoom.create name: "#{coach.firstname} & #{client.firstname}", coach: coach, client: client
     Message.create content: "Bonjour, merci pour votre réservation pour le #{booking.french_date}! Si vous avez des questions avant notre entretien je suis à votre disposition.", chat_room: chatroom, user: chatroom.coach
   end
@@ -171,14 +171,14 @@ end
 
 puts "creating 40 future bookings with client"
 40.times do
-  coach = User.coach.sample
+  coach = User.coach.where.not(email: 'antoine.rambert@gmail.com').sample
   client = User.client.sample
   create_future_booking(coach, 'booked', client, Booking::CHANNELS.sample)
 end
 
 puts "creating 50 past bookings with reviews"
 50.times do
- coach = User.coach.sample
+ coach = User.coach.where.not(email: 'antoine.rambert@gmail.com').sample
  client = User.client.sample
  booking = create_past_booking(coach, client)
 
@@ -186,17 +186,31 @@ puts "creating 50 past bookings with reviews"
  Review.create!(REVIEWS_FOR_CLIENT.sample.merge(user: coach, booking: booking))
 end
 
-puts "creating 5 past bookings with reviews for antoine"
-5.times do
- coach = User.where(firstname: "Antoine").first
- client = User.client.sample
- booking = create_past_booking(coach, client)
- review = REVIEWS_FOR_COACH.sample
- until review[:rating] >= 4
-  review = REVIEWS_FOR_COACH
+puts "creating 10 past bookings with or without reviews for antoine to the same clients"
+coach = User.where(email: 'antoine.rambert@gmail.com').first
+client = User.client.sample
+2.times do
+  booking = create_past_booking(coach, client)
+  review = REVIEWS_FOR_COACH.sample
+  until review[:rating] >= 4
+    review = REVIEWS_FOR_COACH.sample
+  end
 end
- Review.create!(user: client, booking: booking, content: review[:content], rating: review[:rating])
- Review.create!(REVIEWS_FOR_CLIENT.sample.merge(user: coach, booking: booking))
+8.times do
+  booking = create_past_booking(coach, client)
+  review = REVIEWS_FOR_COACH.sample
+  until review[:rating] >= 4
+    review = REVIEWS_FOR_COACH.sample
+  end
+  Review.create!(user: client, booking: booking, content: review[:content], rating: review[:rating])
+  Review.create!(REVIEWS_FOR_CLIENT.sample.merge(user: coach, booking: booking))
+end
+
+puts "creating 7 future bookings with client for Antoine"
+7.times do
+  coach = User.coach.where(email: 'antoine.rambert@gmail.com').first
+  client = User.client.sample
+  create_future_booking(coach, 'booked', client, Booking::CHANNELS.sample)
 end
 
 puts "creating client Camille"
