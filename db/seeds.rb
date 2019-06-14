@@ -143,14 +143,25 @@ end
 def create_past_booking(coach, client)
   start_hour = new_future_date_time_between_10_and_18(false)
   end_hour = start_hour + 1.hour
-  Booking.create(coach: coach, client: client, start_time: start_hour, end_time: end_hour, state: 'booked', video_channel: Booking::CHANNELS.sample)
+  booking = Booking.create(coach: coach, client: client, start_time: start_hour, end_time: end_hour, state: 'booked', video_channel: Booking::CHANNELS.sample)
+  if client
+    chatroom = ChatRoom.create! name: "#{coach.firstname} & #{client.firstname}", coach: coach, client: client
+    Message.create! content: "Bonjour, merci pour votre réservation pour le #{booking.french_date}! Si vous avez des questions avant notre entretien je suis à votre disposition.", chat_room: chatroom, user: chatroom.coach
+  end
+  booking
 end
 
 def create_future_booking(coach, state = 'pending', client = nil, video_channel = nil)
   start_hour = new_future_date_time_between_10_and_18
   end_hour = start_hour + 1.hour
-  Booking.create(coach: coach, client: client, start_time: start_hour, end_time: end_hour, state: state, video_channel: video_channel)
+  booking = Booking.create(coach: coach, client: client, start_time: start_hour, end_time: end_hour, state: state, video_channel: video_channel)
+  if client
+    chatroom = ChatRoom.create name: "#{coach.firstname} & #{client.firstname}", coach: coach, client: client
+    Message.create content: "Bonjour, merci pour votre réservation pour le #{booking.french_date}! Si vous avez des questions avant notre entretien je suis à votre disposition.", chat_room: chatroom, user: chatroom.coach
+  end
+  booking
 end
+
 
 puts "creating 100 future bookings without client"
 100.times do
@@ -186,13 +197,6 @@ puts "creating 5 past bookings with reviews for antoine"
 end
  Review.create!(user: client, booking: booking, content: review[:content], rating: review[:rating])
  Review.create!(REVIEWS_FOR_CLIENT.sample.merge(user: coach, booking: booking))
-end
-
-puts "creating 2 past bookings without review for antoine"
-2.times do
- coach = User.where(firstname: "Antoine").first
- client = User.client.sample
- create_past_booking(coach, client)
 end
 
 puts "creating client Camille"
