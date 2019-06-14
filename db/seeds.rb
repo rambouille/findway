@@ -190,14 +190,14 @@ puts "creating 10 past bookings with or without reviews for antoine to the same 
 coach = User.where(email: 'antoine.rambert@gmail.com').first
 p coach
 client = User.client.sample
-2.times do
+1.times do
   booking = create_past_booking(coach, client)
   review = REVIEWS_FOR_COACH.sample
   until review[:rating] >= 4
     review = REVIEWS_FOR_COACH.sample
   end
 end
-8.times do
+9.times do
   booking = create_past_booking(coach, client)
   review = REVIEWS_FOR_COACH.sample
   until review[:rating] >= 4
