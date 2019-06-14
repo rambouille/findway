@@ -39,7 +39,7 @@
             <%= link_to "Messages", chat_room_path(current_user.client_chat_rooms.first.id), class: "nav-link" %>
           <% end %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item mr-3">
           <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
         </li>
 
