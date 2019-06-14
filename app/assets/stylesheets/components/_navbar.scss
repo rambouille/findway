@@ -10,7 +10,9 @@
 .navbar-lewagon .navbar-brand img {
   width: 50px;
   color: white;
+  margin: 30px;
 }
+
 
 .navbar-home {
   position: absolute;
@@ -87,6 +89,7 @@ label {
     z-index: 100;
     width: 128px;
     height: 200px;
+    margin: 30px;
     // background: #FFF;
     border-radius: 50% 50% 50% 50%;
     transition: .5s ease-in-out;
