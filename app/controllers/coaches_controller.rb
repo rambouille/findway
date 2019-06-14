@@ -27,6 +27,8 @@ class CoachesController < ApplicationController
     @booking = Booking.find(params[:booking_id])
     @booking.client = current_user
     @booking.booked!
+    # attention on prend ici un channel au hasard
+    @booking.video_channel = Booking::CHANNELS.sample
     @booking.save
     notif_new_booking(@booking)
     redirect_to dashboard_client_path
