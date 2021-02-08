@@ -4,7 +4,7 @@ ruby '2.5.3'
 gem 'annotate'
 gem 'autoprefixer-rails'
 gem 'bootsnap', require: false
-gem 'carrierwave', '~> 1.2'
+gem 'carrierwave', '~> 1.3'
 gem 'cloudinary', '~> 1.9.1'
 gem 'devise'
 gem 'font-awesome-sass', '~> 5.6.1'
